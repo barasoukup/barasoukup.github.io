@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Mapa bankrotů</title>
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="leaflet.css" />
+	<link rel="stylesheet" href="leaflet.photon.css" />
+	<link rel="stylesheet" href="app.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.js" integrity="sha256-kdEnCVOWosn3TNsGslxB8ffuKdrZoGQdIdPwh7W1CsE=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.js" integrity="sha256-kmsDsaE/T0gIJXfV7sZF1SwQAdO2AU5DAkZwwnx46n4=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/spin.js/2.3.2/spin.min.js" integrity="sha256-PieqE0QdEDMppwXrTzSZQr6tWFX3W5KkyRVyF1zN3eg=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.Spin/1.1.0/leaflet.spin.min.js" integrity="sha256-KT7wva6UUkBy5G7XBYA3/u7axZJEhcEh8/2WeTk2F48=" crossorigin="anonymous"></script>
+	<!--<script src="https://unpkg.com/@mapbox/leaflet-pip@latest/leaflet-pip.js"></script>-->
+
+	<script src="leaflet.photon.js"></script>
+	<script src="breaks.js"></script>
+	<link rel="stylesheet" href="leaflet-search.css" />
+	<script src="leaflet-search.js"></script>
+	<style>
+
+	.search-tooltip {
+		width: 230px;
+	}
+	.leaflet-control-search .search-cancel {
+		position: static;
+		float: left;
+		margin-left: -22px;
+	}
+	</style>
+
+</head>
+
+<body>
+
+	<div id='right'>
+  	<div style="padding: .5em 0 1.5em 0;">
+    	<img src="images/logo_mapabankrotu.png" width="220" />
+    </div>
+		<a id="year_18" class="year" title="2018" href="#">2018</a>
+		<a id="year_19" class="year" title="2019" href="#" style="font-weight: bold;font-size:24px;border-bottom:5px solid #91375E;">2019</a>
+		<br /><br />
+		<form id="hodnota">
+			<b>Zobrazený ukazatel:</b><br>
+			<input id="rad_pob" type="radio" name="indi" value="pob" /><label for="rad_pove"> Podíl osob v bankrotu<br></label>
+			<input id="rad_bve" type="radio" name="indi" value="bve" /><label for="rad_bve"> Osobní bankrot vs. exekuce<br></label>
+			<hr />
+			<b>Meziroční změna:</b><br>
+			<input id="rad_pob_change9" type="radio" name="indi" value="pob_change9" /><label for="pob_change9"> 2019 vs. 2018<br></label>
+			</form>
+			<hr />
+			<form id="uzemi">
+			<b>Území:</b><br>
+			<input id="rad_auto" type="radio" name="uj" value="auto" /><label for="rad_auto"> Automaticky - <span id="uj_auto">kraje</span><br></label>
+			<input id="rad_kraje" type="radio" name="uj" value="kraje" checked="checked" /><label for="rad_kraje"> Kraje<br></label>
+			<input id="rad_okresy" type="radio" name="uj" value="okresy" /><label for="rad_okresy"> Okresy<br></label>
+			<input id="rad_orp" type="radio" name="uj" value="orp" /><label for="rad_orp"> Obce s rozšířenou působností<br></label>
+			<input id="rad_pou" type="radio" name="uj" value="pou" /><label for="rad_pou"> Pověřené obce<br></label>
+			<input id="rad_obce" type="radio" name="uj" value="obce" /><label for="rad_obce"> Obce<br></label>
+		</form>
+		<br />
+		<a id="reset_view" onclick="resetView()" href="#" style="outline: none;">Zobrazit celou ČR</a>
+		<br />
+
+<hr />
+		<div id="legenda"></div>
+		<hr />
+
+                <a href="https://www.institut-predluzeni.cz/mapy-a-statistiky/"
+                    target="_blank" style="font-size: 120%;">
+                    Statistiky
+                </a>
+
+                <p>Tento web provozuje:<br /><br />
+                    <a href="https://www.institut-predluzeni.cz/" target="_blank">
+                        <img src="images/logo_institut.png" width="180" />
+                    </a>
+                </p>
+
+                <div style="position: absolute; bottom: 0;">
+                    <a href="http://mapaexekuci.cz/" target="_blank" title="Přejít na mapu exekucí">
+                        <img src="images/mapa_exekuci.png" width="130" />
+                    </a>
+                </div>
+
+	<div id="findbox"></div>
+
+	</div>
+	<div id='container'>
+		<div id='map_sipka'>
+
+			<div id='sipka'>
+				<span id='sipka_span'>
+		<svg enable-background="new 0 0 26 26" height="26px" id="arrow_left" version="1.1" viewBox="0 0 26 26" width="26px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><polygon fill="#91375E" points="23.885,0.58 25.969,2.664 15.133,13.5 25.969,24.336 23.885,26.42 10.965,13.5  "/><polygon fill="#91375E" points="12.885,0.58 14.969,2.664 4.133,13.5 14.969,24.336 12.885,26.42 -0.035,13.5  "/></g></svg>
+		<svg enable-background="new 0 0 26 26" height="26px" id="arrow_right" version="1.1" viewBox="0 0 26 26" width="26px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><polygon fill="#91375E" points="2.049,0.58 -0.035,2.664 10.801,13.5 -0.035,24.336 2.049,26.42 14.969,13.5  "/><polygon fill="#91375E" points="13.049,0.58 10.965,2.664 21.801,13.5 10.965,24.336 13.049,26.42 25.969,13.5  "/></g></svg>
+	</span>
+			</div>
+			<div id='map'></div>
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
