@@ -33,7 +33,7 @@ L.Control.include({
 });
 
 
-base = L.tileLayer('https://api.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic291a3VwbWEiLCJhIjoiMGVjMjZjMWZmYzM1YjAxZDYwMmViNWU4NTQzZWNmYjUifQ.t-OJ7Re1gQXfP1vpY1ASVA', {
+base = L.tileLayer('https://api.mapbox.com/styles/v1/soukupma/cjky0su5j3dz52roblmfh2c4o/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic291a3VwbWEiLCJhIjoiMGVjMjZjMWZmYzM1YjAxZDYwMmViNWU4NTQzZWNmYjUifQ.t-OJ7Re1gQXfP1vpY1ASVA', {
   minZoom: 5,
   maxZoom: 20,
   attribution: 'Podkladová mapa &copy; <a href="https://www.mapbox.com/">Mapbox</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, zdroj dat <a href="http://www.ekcr.cz/">Exekutorská komora ČR</a>, kartografické zpracování <a href="mailto:bara.so@email.cz">Bára Soukupová</a>',

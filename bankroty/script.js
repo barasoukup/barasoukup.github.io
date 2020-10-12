@@ -31,12 +31,12 @@ L.Control.include({
 });
 
 
-
-base = L.tileLayer('https://api.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic291a3VwbWEiLCJhIjoiMGVjMjZjMWZmYzM1YjAxZDYwMmViNWU4NTQzZWNmYjUifQ.t-OJ7Re1gQXfP1vpY1ASVA', {
+
+base = L.tileLayer('https://api.mapbox.com/styles/v1/soukupma/cjky0su5j3dz52roblmfh2c4o/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic291a3VwbWEiLCJhIjoiMGVjMjZjMWZmYzM1YjAxZDYwMmViNWU4NTQzZWNmYjUifQ.t-OJ7Re1gQXfP1vpY1ASVA', {
   minZoom: 5,
   maxZoom: 20,
   attribution: 'Podkladová mapa &copy; <a href="https://www.mapbox.com/">Mapbox</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, zdroj dat Insolvenční rejstřík',
-  mapid: 'soukupma.68f89de5'
+  //mapid: 'soukupma.68f89de5'
 });
 
 map.addLayer(base);
@@ -90,20 +90,20 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">změna</td></tr>' +
-    '<tr><td>Počet osob v osobním bankrotu</td><td class="right">114 tis.</td><td class="right bold">116 tis.</td><td class="right">+1,6 %</td></tr>' +
-    '<tr><td>Podíl osob v bankrotu</td><td class="right">1,28 %</td><td class="right bold">1,29 %</td><td class="right">+0,01 p.b.</td></tr>' +
-    '<tr><td>Průměrný počet věřitelů</td><td class="right">9,6</td><td class="right bold">9,8</td><td class="right">+0,2</td></tr>' +
-    '<tr><td>Podíl muži / ženy</td><td class="right">51 % / 49 %</td><td class="right bold">52 % / 48 %</td><td class="right">+1 p.b. muži</td></tr>' +
-    '<tr><td>Podíl manželů</td><td class="right">29 %</td><td class="right bold">29 %</td><td class="right">-</td></tr>' +
-    '<tr><td>Průměrný / mediánový věk</td><td class="right">44,9 / 44</td><td class="right bold">43,7 / 43</td><td class="right">-1,2 / -1</td></tr>' +
-    '<tr><td>Osobní bankroty vs. exekuce</td><td class="right">13,26 %</td><td class="right bold">14,18 %</td><td class="right">+0,9 p.b.</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2019</td><td class="right grey bold">změna</td></tr>' +
+    '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">116 tis.</td><td class="right">+1,6 %</td></tr>' +
+    '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,29 %</td><td class="right">+0,01 p.b.</td></tr>' +
+    '<tr><td>Průměrný počet věřitelů</td><td class="right bold">9,8</td><td class="right">+0,2</td></tr>' +
+    '<tr><td>Podíl muži / ženy</td><td class="right bold">52 % / 48 %</td><td class="right">+1 p.b. muži</td></tr>' +
+    '<tr><td>Podíl manželů</td><td class="right bold">29 %</td><td class="right">-</td></tr>' +
+    '<tr><td>Průměrný / mediánový věk</td><td class="right bold">43,7 / 43</td><td class="right">-1,2 / -1</td></tr>' +
+    '<tr><td>Osobní bankroty vs. exekuce</td><td class="right bold">14,18 %</td><td class="right">+0,9 p.b.</td></tr>' +
     '<tr><td><u>Věková struktura osob v bankrotu:</u></td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right">10 % (11 585)</td><td class="right bold">13 % (14 753)</td><td class="right">+3 168</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right">26 % (30 548)</td><td class="right bold">27 % (31 301)</td><td class="right">+753</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right">30 % (34 500)</td><td class="right bold">29 % (34 212)</td><td class="right">-288</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right">26 % (29 696)</td><td class="right bold">24 % (28 173)</td><td class="right">-1 523</td></tr>' +
-    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right">8 % (8 765)</td><td class="right bold">6 % (7 476)</td><td class="right">-1 289</td></tr>'+
+    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right bold">13 % (14 753)</td><td class="right">+3 168</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right bold">27 % (31 301)</td><td class="right">+753</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right bold">29 % (34 212)</td><td class="right">-288</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right bold">24 % (28 173)</td><td class="right">-1 523</td></tr>' +
+    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right bold">6 % (7 476)</td><td class="right">-1 289</td></tr>'+
     '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>'+
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Zobrazit souhrnné údaje</a></div> ';
 
