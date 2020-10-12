@@ -119,7 +119,7 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">The Czech Republic</td><td class="right grey bold">2020</td><td class="grey right">YtY change</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">The Czech Republic</td><td class="right grey bold">2020</td><td class="grey right bold">YtY change</td></tr>' +
     '<tr><td>N° of people in enforcement proceedings (EP)</td><td class="right bold">775k</td><td class="right green">-6%</td></tr>' +
     '<tr><td>N° of people with 3 or more EPs</td><td class="right bold">474k</td><td class="right green">-3.2%</td></tr>' +
     '<tr><td>N° of people with 10 or more EPs</td><td class="right bold">157k</td><td class="right green">-1.0%</td></tr>' +
