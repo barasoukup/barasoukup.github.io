@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<govcz:organizacni_struktura_sluzebnich_uradu xmlns:govcz="http://opendata.gov.cz/schema/xsd/typy/" xmlns:cmn="urn:cz:mvcr:isoss:schemas:Common:v1" xmlns:n="urn:cz:mvcr:isoss:schemas:Opendata:OSYS:OSSU:v1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <cmn:ExportInfo>
+    <cmn:ExportId>00155D49A2001EDABCD4EC669B84C0E1</cmn:ExportId>
+    <cmn:ZdrojDat>ISoSS OSYS</cmn:ZdrojDat>
+    <cmn:ExportTyp>FULL</cmn:ExportTyp>
+    <cmn:ExportPokyn>INTERNAL</cmn:ExportPokyn>
+    <cmn:ExportDatumCas>2020-09-09T14:16:38Z</cmn:ExportDatumCas>
+  </cmn:ExportInfo>
+  <govcz:UradSluzebniSeznam>
+    <n:UradSluzebni id="11000002" idDS="trfaa33" oznaceni="Úřad vlády ČR" zkratka="ÚV ČR"/>
+    <n:UradSluzebni id="11000003" idDS="n75aau3" oznaceni="Ministerstvo dopravy" zkratka="MD ČR"/>
+    <n:UradSluzebni id="11000004" idDS="xzeaauv" oznaceni="Ministerstvo financí" zkratka="MF ČR"/>
+    <n:UradSluzebni id="11000005" idDS="8spaaur" oznaceni="Ministerstvo kultury" zkratka="MK ČR"/>
+    <n:UradSluzebni id="11000006" idDS="hjyaavk" oznaceni="Ministerstvo obrany" zkratka="MO ČR"/>
+    <n:UradSluzebni id="11000007" idDS="sc9aavg" oznaceni="Ministerstvo práce a sociálních věcí" zkratka="MPSV ČR"/>
+    <n:UradSluzebni id="11000008" idDS="26iaava" oznaceni="Ministerstvo pro místní rozvoj" zkratka="MMR ČR"/>
+    <n:UradSluzebni id="11000009" idDS="bxtaaw4" oznaceni="Ministerstvo průmyslu a obchodu" zkratka="MPO ČR"/>
+    <n:UradSluzebni id="11000010" idDS="kq4aawz" oznaceni="Ministerstvo spravedlnosti" zkratka="MSp ČR"/>
+    <n:UradSluzebni id="11000011" idDS="vidaawt" oznaceni="Ministerstvo školství, mládeže a tělov." zkratka="MŠMT ČR"/>
+    <n:UradSluzebni id="11000012" idDS="6bnaawp" oznaceni="Ministerstvo vnitra" zkratka="MV ČR"/>
+    <n:UradSluzebni id="11000013" idDS="e4xaaxh" oznaceni="Ministerstvo zahraničních věcí" zkratka="MZV ČR"/>
+    <n:UradSluzebni id="11000014" idDS="pv8aaxd" oznaceni="Ministerstvo zdravotnictví" zkratka="MZd ČR"/>
+    <n:UradSluzebni id="11000015" idDS="yphaax8" oznaceni="Ministerstvo zemědělství" zkratka="MZe ČR"/>
+    <n:UradSluzebni id="11000016" idDS="9gsaax4" oznaceni="Ministerstvo životního prostředí" zkratka="MŽP ČR"/>
+    <n:UradSluzebni id="11000101" idDS="6r3afce" oznaceni="Archiv bezpečnostních složek" zkratka="ABS"/>
+    <n:UradSluzebni id="11000102" idDS="rn6aas6" oznaceni="Český báňský úřad" zkratka="ČBÚ"/>
+    <n:UradSluzebni id="11000103" idDS="2gfaasy" oznaceni="Český statistický úřad" zkratka="ČSÚ"/>
+    <n:UradSluzebni id="11000104" idDS="a9qaats" oznaceni="Český telekomunikační úřad" zkratka="ČTÚ"/>
+    <n:UradSluzebni id="11000105" idDS="eeuaau7" oznaceni="Energetický regulační úřad" zkratka="ERÚ"/>
+    <n:UradSluzebni id="11000106" idDS="2fjadja" oznaceni="Rada pro rozhlasové a televizní vysílání" zkratka="RRTV"/>
+    <n:UradSluzebni id="11000107" idDS="4iqaa3x" oznaceni="Správa státních hmotných rezerv" zkratka="SSHR"/>
+    <n:UradSluzebni id="11000108" idDS="me7aazb" oznaceni="Státní úřad pro jadernou bezpečnost" zkratka="SÚJB"/>
+    <n:UradSluzebni id="11000109" idDS="fs2aa2t" oznaceni="Úřad pro ochranu hospodářské soutěže" zkratka="ÚOHS"/>
+    <n:UradSluzebni id="11000110" idDS="qkbaa2n" oznaceni="Úřad pro ochranu osobních údajů" zkratka="ÚOOÚ"/>
+    <n:UradSluzebni id="11000111" idDS="ix6aa38" oznaceni="Úřad průmyslového vlastnictví" zkratka="ÚPV"/>
+    <n:UradSluzebni id="11000112" idDS="uuaaatg" oznaceni="Český úřad zeměměřický a katastrální" zkratka="ČÚZK"/>
+    <n:UradSluzebni id="11001000" idDS="vi6aigp" idNadrizene="11000003" oznaceni="Drážní inspekce" zkratka="DI"/>
+    <n:UradSluzebni id="11001001" idDS="5mjaatd" idNadrizene="11000003" oznaceni="Drážní úřad" zkratka="DÚ"/>
+    <n:UradSluzebni id="11001002" idDS="e5qaihb" idNadrizene="11000003" oznaceni="Státní fond dopravní infrastruktury" zkratka="SFDI"/>
+    <n:UradSluzebni id="11001003" idDS="pwzaih7" idNadrizene="11000003" oznaceni="Státní plavební správa" zkratka="SPS"/>
+    <n:UradSluzebni id="11001004" idDS="v8gaaz5" idNadrizene="11000003" oznaceni="Úřad pro civilní letectví" zkratka="ÚPCL"/>
+    <n:UradSluzebni id="11001005" idDS="ij7aiyw" idNadrizene="11000003" oznaceni="Ústav pro odb. zjišť. příčin let. nehod" zkratka="ÚOZPLN"/>
+    <n:UradSluzebni id="11001006" idDS="p9iwj4f" idNadrizene="11000004" oznaceni="Generální finanční ředitelství" zkratka="GFŘ"/>
+    <n:UradSluzebni id="11001007" idDS="xjsn2gp" idNadrizene="11001006" oznaceni="Odvolací finanční ředitelství" zkratka="OFŘ"/>
+    <n:UradSluzebni id="11001008" idDS="7nyn2d9" idNadrizene="11001006" oznaceni="Finanční úřad pro hlavní město Prahu" zkratka="FÚ HMP"/>
+    <n:UradSluzebni id="11001009" idDS="6sxny3p" idNadrizene="11001006" oznaceni="Finanční úřad pro Středočeský kraj" zkratka="FÚ SČK"/>
+    <n:UradSluzebni id="11001010" idDS="scdnz6b" idNadrizene="11001006" oznaceni="Finanční úřad pro Jihočeský kraj" zkratka="FÚ JČK"/>
+    <n:UradSluzebni id="11001011" idDS="gf9n2e3" idNadrizene="11001006" oznaceni="Finanční úřad pro Plzeňský kraj" zkratka="FÚ PLK"/>
+    <n:UradSluzebni id="11001012" idDS="q9in2ev" idNadrizene="11001006" oznaceni="Finanční úřad pro Karlovarský kraj" zkratka="FÚ KVK"/>
+    <n:UradSluzebni id="11001013" idDS="qjfn2bj" idNadrizene="11001006" oznaceni="Finanční úřad pro Ústecký kraj" zkratka="FÚ ÚSK"/>
+    <n:UradSluzebni id="11001014" idDS="zcqn2bf" idNadrizene="11001006" oznaceni="Finanční úřad pro Liberecký kraj" zkratka="FÚ LIK"/>
+    <n:UradSluzebni id="11001015" idDS="fj8ny4i" idNadrizene="11001006" oznaceni="Finanční úřad pro Královéhradecký kraj" zkratka="FÚ KHK"/>
+    <n:UradSluzebni id="11001016" idDS="95zn2bb" idNadrizene="11001006" oznaceni="Finanční úřad pro Pardubický kraj" zkratka="FÚ PAK"/>
+    <n:UradSluzebni id="11001017" idDS="tqjn2cy" idNadrizene="11001006" oznaceni="Finanční úřad pro Kraj Vysočina" zkratka="FÚ KVY"/>
+    <n:UradSluzebni id="11001018" idDS="qdhny4c" idNadrizene="11001006" oznaceni="Finanční úřad pro Jihomoravský kraj" zkratka="FÚ JMK"/>
+    <n:UradSluzebni id="11001019" idDS="25nnz67" idNadrizene="11001006" oznaceni="Finanční úřad pro Olomoucký kraj" zkratka="FÚ OLK"/>
+    <n:UradSluzebni id="11001020" idDS="4hun2cu" idNadrizene="11001006" oznaceni="Finanční úřad pro Moravskoslezský kraj" zkratka="FÚ MSK"/>
+    <n:UradSluzebni id="11001021" idDS="n69nz5y" idNadrizene="11001006" oznaceni="Finanční úřad pro Zlínský kraj" zkratka="FÚ ZLK"/>
+    <n:UradSluzebni id="11001022" idDS="7cs8cge" idNadrizene="11001006" oznaceni="Specializovaný finanční úřad" zkratka="SFÚ"/>
+    <n:UradSluzebni id="11001025" idDS="r8yaefs" idNadrizene="11000006" oznaceni="KVV hlavní město Praha" zkratka="KVV HMP"/>
+    <n:UradSluzebni id="11001026" idDS="itvaemi" idNadrizene="11000006" oznaceni="KVV Praha – Středočeský kraj" zkratka="KVV Pra SČK"/>
+    <n:UradSluzebni id="11001027" idDS="y9baeku" idNadrizene="11000006" oznaceni="KVV Plzeň" zkratka="KVV Plz"/>
+    <n:UradSluzebni id="11001028" idDS="xu5aee9" idNadrizene="11000006" oznaceni="KVV České Budějovice" zkratka="KVV ČB"/>
+    <n:UradSluzebni id="11001029" idDS="eynaeht" idNadrizene="11000006" oznaceni="KVV Karlovy Vary" zkratka="KVV KV"/>
+    <n:UradSluzebni id="11001030" idDS="c7qaen3" idNadrizene="11000006" oznaceni="KVV Ústí nad Labem" zkratka="KVV ÚL"/>
+    <n:UradSluzebni id="11001031" idDS="btiaege" idNadrizene="11000006" oznaceni="KVV Hradec Králové" zkratka="KVV HK"/>
+    <n:UradSluzebni id="11001032" idDS="v37aejh" idNadrizene="11000006" oznaceni="KVV Pardubice" zkratka="KVV Par"/>
+    <n:UradSluzebni id="11001033" idDS="9chaehe" idNadrizene="11000006" oznaceni="KVV Liberec" zkratka="KVV Lib"/>
+    <n:UradSluzebni id="11001034" idDS="vd4aeg7" idNadrizene="11000006" oznaceni="KVV Jihlava" zkratka="KVV Jih"/>
+    <n:UradSluzebni id="11001035" idDS="eajaeeh" idNadrizene="11000006" oznaceni="KVV Brno" zkratka="KVV Brno"/>
+    <n:UradSluzebni id="11001036" idDS="chmaejr" idNadrizene="11000006" oznaceni="KVV Ostrava" zkratka="KVV Ost"/>
+    <n:UradSluzebni id="11001037" idDS="sw3aei4" idNadrizene="11000006" oznaceni="KVV Olomouc" zkratka="KVV Olo"/>
+    <n:UradSluzebni id="11001038" idDS="myzaenx" idNadrizene="11000006" oznaceni="KVV Zlín" zkratka="KVV Zlín"/>
+    <n:UradSluzebni id="11001040" idDS="m6gb3kh" idNadrizene="11000006" oznaceni="Újezdní úřad Boletice" zkratka="ÚÚ Boletice"/>
+    <n:UradSluzebni id="11001041" idDS="7q2b3ka" idNadrizene="11000006" oznaceni="Újezdní úřad Březina" zkratka="ÚÚ Březina"/>
+    <n:UradSluzebni id="11001042" idDS="i79bpnz" idNadrizene="11000006" oznaceni="Újezdní úřad Hradiště" zkratka="ÚÚ Hradiště"/>
+    <n:UradSluzebni id="11001043" idDS="gibb3m2" idNadrizene="11000006" oznaceni="Újezdní úřad Libavá" zkratka="ÚÚ Libavá"/>
+    <n:UradSluzebni id="11001044" idDS="xz7aier" idNadrizene="11000006" oznaceni="Úřad pro... urosksoj" zkratka="ÚOSKSOJ"/>
+    <n:UradSluzebni id="11001045" idDS="mt6427q" idNadrizene="11000008" oznaceni="Centrum pro regionální rozvoj České rep." zkratka="CRR"/>
+    <n:UradSluzebni id="11001046" idDS="x7cab34" idNadrizene="11000009" oznaceni="Česká obchodní inspekce" zkratka="ČOI"/>
+    <n:UradSluzebni id="11001047" idDS="j2zaatn" idNadrizene="11000009" oznaceni="Český úřad pro zk. zbraní a střeliva" zkratka="ČÚZZS"/>
+    <n:UradSluzebni id="11001048" idDS="hq2aev4" idNadrizene="11000009" oznaceni="Státní energetická inspekce" zkratka="SEI"/>
+    <n:UradSluzebni id="11001049" idDS="3umaayk" idNadrizene="11000009" oznaceni="Puncovní úřad" zkratka="PÚ"/>
+    <n:UradSluzebni id="11001050" idDS="zdkaa2i" idNadrizene="11000009" oznaceni="Úřad pro tech. norm., metr. a st. zkuš." zkratka="ÚNMZ"/>
+    <n:UradSluzebni id="11001051" idDS="g7zais9" idNadrizene="11000011" oznaceni="Česká školní inspekce" zkratka="ČŠI"/>
+    <n:UradSluzebni id="11001053" idDS="zpqai2i" idNadrizene="11000014" oznaceni="Hygienická stanice hlavního města Prahy" zkratka="HS HMP"/>
+    <n:UradSluzebni id="11001054" idDS="hhcai8e" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Středočeského kraje" zkratka="KHS SČK"/>
+    <n:UradSluzebni id="11001055" idDS="agzai3c" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Jihočeského kraje" zkratka="KHS JČK"/>
+    <n:UradSluzebni id="11001056" idDS="samai8a" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Plzeňského kraje" zkratka="KHS PLK"/>
+    <n:UradSluzebni id="11001057" idDS="t3jai32" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Karlovarského kraje" zkratka="KHS KVK"/>
+    <n:UradSluzebni id="11001058" idDS="8p3ai7n" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Ústeckého kraje" zkratka="KHS ÚSK"/>
+    <n:UradSluzebni id="11001059" idDS="nfeai4j" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Libereckého kraje" zkratka="KHS LIK"/>
+    <n:UradSluzebni id="11001060" idDS="dm5ai4r" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Královéhradeckého kraje" zkratka="KHS KHK"/>
+    <n:UradSluzebni id="11001061" idDS="23wai86" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Pardubického kraje" zkratka="KHS PAK"/>
+    <n:UradSluzebni id="11001062" idDS="4uuai3w" idNadrizene="11000014" oznaceni="Kr. hyg. stanice kraje Vysočina" zkratka="KHS KVY"/>
+    <n:UradSluzebni id="11001063" idDS="jaaai36" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Jihomoravského kraje" zkratka="KHS JMK"/>
+    <n:UradSluzebni id="11001064" idDS="7zyai4b" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Olomouckého kraje" zkratka="KHS OLK"/>
+    <n:UradSluzebni id="11001065" idDS="w8pai4f" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Moravskoslezského kraje" zkratka="KHS MSK"/>
+    <n:UradSluzebni id="11001066" idDS="xwsai7r" idNadrizene="11000014" oznaceni="Kr. hyg. stanice Zlínského kraje" zkratka="KHS ZLK"/>
+    <n:UradSluzebni id="11001067" idDS="qwfai2m" idNadrizene="11000014" oznaceni="Státní ústav pro kontrolu léčiv" zkratka="SÚKL"/>
+    <n:UradSluzebni id="11001068" idDS="8eqairg" idNadrizene="11000015" oznaceni="Česká plemenářská inspekce" zkratka="ČPI"/>
+    <n:UradSluzebni id="11001069" idDS="d2vairv" idNadrizene="11000015" oznaceni="Státní veterinární správa" zkratka="SVS"/>
+    <n:UradSluzebni id="11001070" idDS="avraiqg" idNadrizene="11000015" oznaceni="Státní zemědělská a potravinářská insp." zkratka="SZPI"/>
+    <n:UradSluzebni id="11001071" idDS="ugbaiq7" idNadrizene="11000015" oznaceni="Ústřední kontr. a zkuš. ústav zemědělský" zkratka="ÚKZÚZ"/>
+    <n:UradSluzebni id="11001072" idDS="z49per3" idNadrizene="11000015" oznaceni="Státní pozemkový úřad" zkratka="SPÚ"/>
+    <n:UradSluzebni id="11001073" idDS="jn2aiqd" idNadrizene="11000015" oznaceni="Státní zemědělský intervenční fond" zkratka="SZIF"/>
+    <n:UradSluzebni id="11001075" idDS="ixaaduf" idNadrizene="11000102" oznaceni="OBÚ pro území HMP a kraje SČK" zkratka="OBÚ HMP SČK"/>
+    <n:UradSluzebni id="11001076" idDS="m4eadvu" idNadrizene="11000102" oznaceni="OBÚ pro území krajů PLZ A JČ" zkratka="OBÚ PLK JČK"/>
+    <n:UradSluzebni id="11001077" idDS="7nyadvm" idNadrizene="11000102" oznaceni="OBÚ pro území kraje KV" zkratka="OBÚ KVK"/>
+    <n:UradSluzebni id="11001078" idDS="4huadu8" idNadrizene="11000102" oznaceni="OBÚ pro území kraje ÚL" zkratka="OBÚ ÚSK"/>
+    <n:UradSluzebni id="11001079" idDS="gf9adwf" idNadrizene="11000102" oznaceni="OBÚ pro území krajů KH A PCE" zkratka="OBÚ KHK PAK"/>
+    <n:UradSluzebni id="11001080" idDS="95zadtp" idNadrizene="11000102" oznaceni="OBÚ pro území krajů JM A ZL" zkratka="OBÚ JMK ZLK"/>
+    <n:UradSluzebni id="11001081" idDS="da5adv2" idNadrizene="11000102" oznaceni="OBÚ pro území krajů MSK A OL" zkratka="OBÚ MSK OLK"/>
+    <n:UradSluzebni id="11001082" idDS="tqjaduc" idNadrizene="11000102" oznaceni="OBÚ pro území krajů LB A VYS" zkratka="OBÚ LIK KVY"/>
+    <n:UradSluzebni id="11001085" idDS="6yvadsa" idNadrizene="11000112" oznaceni="Zeměměřický úřad" zkratka="ZMÚ"/>
+    <n:UradSluzebni id="11001086" idDS="qjfadtx" idNadrizene="11000112" oznaceni="Katastrální úřad pro hlavní město Prahu" zkratka="KÚ HMP"/>
+    <n:UradSluzebni id="11001087" idDS="zcqadtt" idNadrizene="11000112" oznaceni="Katastrální úřad pro Jihočeský kraj" zkratka="KÚ JČK"/>
+    <n:UradSluzebni id="11001088" idDS="pvcadqm" idNadrizene="11000112" oznaceni="Katastrální úřad pro Karlovarský kraj" zkratka="KÚ KVK"/>
+    <n:UradSluzebni id="11001089" idDS="ynmadqi" idNadrizene="11000112" oznaceni="Katastrální úřad pro Královéhradecký kr." zkratka="KÚ KHK"/>
+    <n:UradSluzebni id="11001090" idDS="9fwadqe" idNadrizene="11000112" oznaceni="Katastrální úřad pro Liberecký kraj" zkratka="KÚ LIK"/>
+    <n:UradSluzebni id="11001091" idDS="8rtadm4" idNadrizene="11000112" oznaceni="Katastrální úřad pro Plzeňský kraj" zkratka="KÚ PLK"/>
+    <n:UradSluzebni id="11001092" idDS="xyiadm7" idNadrizene="11000112" oznaceni="Katastrální úřad pro Pardubický kraj" zkratka="KÚ PAK"/>
+    <n:UradSluzebni id="11001093" idDS="hi4adnw" idNadrizene="11000112" oznaceni="Katastrální úřad pro Středočeský kraj" zkratka="KÚ SČK"/>
+    <n:UradSluzebni id="11001094" idDS="scdadnq" idNadrizene="11000112" oznaceni="Katastrální úřad pro Ústecký kraj" zkratka="KÚ ÚSK"/>
+    <n:UradSluzebni id="11001095" idDS="e33adqt" idNadrizene="11000112" oznaceni="Katastrální úřad pro Jihomoravský kraj" zkratka="KÚ JMK"/>
+    <n:UradSluzebni id="11001096" idDS="bwxadpe" idNadrizene="11000112" oznaceni="Katastrální úřad pro Moravskoslezský kr." zkratka="KÚ MSK"/>
+    <n:UradSluzebni id="11001097" idDS="kp8adpb" idNadrizene="11000112" oznaceni="Katastrální úřad pro Olomoucký kraj" zkratka="KÚ OLK"/>
+    <n:UradSluzebni id="11001098" idDS="25nadnk" idNadrizene="11000112" oznaceni="Katastrální úřad pro Vysočinu" zkratka="KÚ KVY"/>
+    <n:UradSluzebni id="11001099" idDS="vhhadp5" idNadrizene="11000112" oznaceni="Katastrální úřad pro Zlínský kraj" zkratka="KÚ ZLK"/>
+    <n:UradSluzebni id="11001100" idDS="mebadsi" idNadrizene="11000112" oznaceni="Zeměm. a kat. inspektorát v Brně" zkratka="ZKI Brn"/>
+    <n:UradSluzebni id="11001101" idDS="6asadpz" idNadrizene="11000112" oznaceni="Zeměm. a kat. inspektorát v ČB" zkratka="ZKI ČB"/>
+    <n:UradSluzebni id="11001102" idDS="v7kadse" idNadrizene="11000112" oznaceni="Zeměm. a kat. inspektorát v Liberci" zkratka="ZKI Lib"/>
+    <n:UradSluzebni id="11001103" idDS="h87adr8" idNadrizene="11000112" oznaceni="Zeměm. a kat. inspektorát v Opavě" zkratka="ZKI Opa"/>
+    <n:UradSluzebni id="11001104" idDS="s2gadr2" idNadrizene="11000112" oznaceni="Zeměm. a kat. inspektorát v Pardubicích" zkratka="ZKI Par"/>
+    <n:UradSluzebni id="11001105" idDS="3tradrw" idNadrizene="11000112" oznaceni="Zeměm. a kat. inspektorát v Plzni" zkratka="ZKI Plz"/>
+    <n:UradSluzebni id="11001106" idDS="ck2adsq" idNadrizene="11000112" oznaceni="Zeměm. a kat. inspektorát v Praze" zkratka="ZKI Prz"/>
+    <n:UradSluzebni id="11001107" idDS="fe3aixh" idNadrizene="11000012" oznaceni="Národní archiv" zkratka="NA"/>
+    <n:UradSluzebni id="11001109" idDS="jjqjqih" idNadrizene="11000012" oznaceni="Správa základních registrů" zkratka="SZR"/>
+    <n:UradSluzebni id="11001110" idDS="k28aiwy" idNadrizene="11000012" oznaceni="Státní oblastní archiv v Praze" zkratka="SOA Pra"/>
+    <n:UradSluzebni id="11001111" idDS="vuhaiws" idNadrizene="11000012" oznaceni="Státní oblastní archiv v Třeboni" zkratka="SOA Tře"/>
+    <n:UradSluzebni id="11001112" idDS="b9xaiw4" idNadrizene="11000012" oznaceni="Státní oblastní archiv v Plzni" zkratka="SOA Plz"/>
+    <n:UradSluzebni id="11001113" idDS="3gnaiva" idNadrizene="11000012" oznaceni="Státní oblastní archiv v Litoměřicích" zkratka="SOA Lit"/>
+    <n:UradSluzebni id="11001114" idDS="6msaiwp" idNadrizene="11000012" oznaceni="Státní oblastní archiv v Zámrsku" zkratka="SOA Zám"/>
+    <n:UradSluzebni id="11001115" idDS="p8caixb" idNadrizene="11000012" oznaceni="Moravský zemský archiv v Brně" zkratka="MZA Brno"/>
+    <n:UradSluzebni id="11001116" idDS="yzmaix7" idNadrizene="11000012" oznaceni="Zemský archiv v Opavě" zkratka="ZA Opa"/>
+    <n:UradSluzebni id="11001117" idDS="zr5efbb" idNadrizene="11000016" oznaceni="Česká inspekce životního prostředí" zkratka="ČIŽP"/>
+    <n:UradSluzebni id="11001119" idDS="dkkdkdj" idNadrizene="11000016" oznaceni="Agentura ochrany přírody a krajiny ČR" zkratka="AOPK ČR"/>
+    <n:UradSluzebni id="11001120" idDS="favab6q" idNadrizene="11000016" oznaceni="Státní fond životního prostředí" zkratka="SFŽP"/>
+    <n:UradSluzebni id="11001125" idDS="49kaiq3" idNadrizene="11000007" oznaceni="Česká správa sociálního zabezpečení" zkratka="ČSSZ"/>
+    <n:UradSluzebni id="11001126" idDS="cmwaazf" idNadrizene="11000007" oznaceni="Státní úřad inspekce práce" zkratka="SÚIP"/>
+    <n:UradSluzebni id="11001127" idDS="7hazk97" idNadrizene="11000007" oznaceni="Úřad práce ČR" zkratka="ÚP ČR"/>
+    <n:UradSluzebni id="11001128" idDS="6zraazz" idNadrizene="11000007" oznaceni="Úřad pro mezinárodněprávní ochranu dětí" zkratka="ÚMPOD"/>
+    <n:UradSluzebni id="11001129" idDS="hnhacvt" idNadrizene="11001125" oznaceni="Pražská správa sociálního zabezpečení" zkratka="PSSZ"/>
+    <n:UradSluzebni id="11001130" idDS="86jada7" idNadrizene="11001125" oznaceni="MSSZ Brno" zkratka="MSSZ Brno"/>
+    <n:UradSluzebni id="11001131" idDS="sfsacvp" idNadrizene="11001125" oznaceni="OSSZ Benešov" zkratka="OSSZ BN"/>
+    <n:UradSluzebni id="11001132" idDS="283acvj" idNadrizene="11001125" oznaceni="OSSZ Beroun" zkratka="OSSZ BE"/>
+    <n:UradSluzebni id="11001133" idDS="ydaadab" idNadrizene="11001125" oznaceni="OSSZ Blansko" zkratka="OSSZ BK"/>
+    <n:UradSluzebni id="11001134" idDS="hxuadbz" idNadrizene="11001125" oznaceni="OSSZ Brno - venkov" zkratka="OSSZ BO"/>
+    <n:UradSluzebni id="11001135" idDS="czsadfu" idNadrizene="11001125" oznaceni="OSSZ Bruntál" zkratka="OSSZ BR"/>
+    <n:UradSluzebni id="11001136" idDS="sq5adbw" idNadrizene="11001125" oznaceni="OSSZ Břeclav" zkratka="OSSZ BV"/>
+    <n:UradSluzebni id="11001137" idDS="gjnac5d" idNadrizene="11001125" oznaceni="OSSZ Česká Lípa" zkratka="OSSZ CL"/>
+    <n:UradSluzebni id="11001138" idDS="3w6acyv" idNadrizene="11001125" oznaceni="OSSZ České Budějovice" zkratka="OSSZ CB"/>
+    <n:UradSluzebni id="11001139" idDS="cqfaczn" idNadrizene="11001125" oznaceni="OSSZ Český Krumlov" zkratka="OSSZ CK"/>
+    <n:UradSluzebni id="11001140" idDS="rcxac59" idNadrizene="11001125" oznaceni="OSSZ Děčín" zkratka="OSSZ DC"/>
+    <n:UradSluzebni id="11001141" idDS="zf5ac2t" idNadrizene="11001125" oznaceni="OSSZ Domažlice" zkratka="OSSZ DO"/>
+    <n:UradSluzebni id="11001142" idDS="ms3adfq" idNadrizene="11001125" oznaceni="OSSZ Frýdek-Místek" zkratka="OSSZ FM"/>
+    <n:UradSluzebni id="11001143" idDS="3ieadbq" idNadrizene="11001125" oznaceni="OSSZ Havlíčkův Brod" zkratka="OSSZ HB"/>
+    <n:UradSluzebni id="11001144" idDS="cbpadci" idNadrizene="11001125" oznaceni="OSSZ Hodonín" zkratka="OSSZ HO"/>
+    <n:UradSluzebni id="11001145" idDS="g9rac8p" idNadrizene="11001125" oznaceni="OSSZ Hradec Králové" zkratka="OSSZ HK"/>
+    <n:UradSluzebni id="11001146" idDS="99eac2m" idNadrizene="11001125" oznaceni="OSSZ Cheb" zkratka="OSSZ CH"/>
+    <n:UradSluzebni id="11001147" idDS="z58ac55" idNadrizene="11001125" oznaceni="OSSZ Chomutov" zkratka="OSSZ CV"/>
+    <n:UradSluzebni id="11001148" idDS="r22ac8j" idNadrizene="11001125" oznaceni="OSSZ Chrudim" zkratka="OSSZ CR"/>
+    <n:UradSluzebni id="11001149" idDS="axhac6v" idNadrizene="11001125" oznaceni="OSSZ Jablonec nad Nisou" zkratka="OSSZ JN"/>
+    <n:UradSluzebni id="11001150" idDS="wkcadfj" idNadrizene="11001125" oznaceni="OSSZ Jeseník" zkratka="OSSZ JE"/>
+    <n:UradSluzebni id="11001151" idDS="2ubac8d" idNadrizene="11001125" oznaceni="OSSZ Jičín" zkratka="OSSZ JC"/>
+    <n:UradSluzebni id="11001152" idDS="k4yadce" idNadrizene="11001125" oznaceni="OSSZ Jihlava" zkratka="OSSZ JI"/>
+    <n:UradSluzebni id="11001153" idDS="mhqaczi" idNadrizene="11001125" oznaceni="OSSZ Jindřichův Hradec" zkratka="OSSZ JH"/>
+    <n:UradSluzebni id="11001154" idDS="i2pac3f" idNadrizene="11001125" oznaceni="OSSZ Karlovy Vary" zkratka="OSSZ KV"/>
+    <n:UradSluzebni id="11001155" idDS="7dmadff" idNadrizene="11001125" oznaceni="OSSZ Karviná" zkratka="OSSZ KI"/>
+    <n:UradSluzebni id="11001156" idDS="b2cacwb" idNadrizene="11001125" oznaceni="OSSZ Kladno" zkratka="OSSZ KL"/>
+    <n:UradSluzebni id="11001157" idDS="viedtba" idNadrizene="11001125" oznaceni="OSSZ Klatovy" zkratka="OSSZ KT"/>
+    <n:UradSluzebni id="11001158" idDS="ktmacw7" idNadrizene="11001125" oznaceni="OSSZ Kolín" zkratka="OSSZ KO"/>
+    <n:UradSluzebni id="11001159" idDS="vv9adca" idNadrizene="11001125" oznaceni="OSSZ Kroměříž" zkratka="OSSZ KM"/>
+    <n:UradSluzebni id="11001160" idDS="vkwacw4" idNadrizene="11001125" oznaceni="OSSZ Kutná Hora" zkratka="OSSZ KH"/>
+    <n:UradSluzebni id="11001161" idDS="jqsac6s" idNadrizene="11001125" oznaceni="OSSZ Liberec" zkratka="OSSZ LB"/>
+    <n:UradSluzebni id="11001162" idDS="uh3ac6n" idNadrizene="11001125" oznaceni="OSSZ Litoměřice" zkratka="OSSZ LT"/>
+    <n:UradSluzebni id="11001163" idDS="5bcac6g" idNadrizene="11001125" oznaceni="OSSZ Louny" zkratka="OSSZ LN"/>
+    <n:UradSluzebni id="11001164" idDS="6d7acwy" idNadrizene="11001125" oznaceni="OSSZ Mělník" zkratka="OSSZ ME"/>
+    <n:UradSluzebni id="11001165" idDS="e7gacxq" idNadrizene="11001125" oznaceni="OSSZ Mladá Boleslav" zkratka="OSSZ MB"/>
+    <n:UradSluzebni id="11001166" idDS="d4mac7a" idNadrizene="11001125" oznaceni="OSSZ Most" zkratka="OSSZ MO"/>
+    <n:UradSluzebni id="11001167" idDS="bmkac98" idNadrizene="11001125" oznaceni="OSSZ Náchod" zkratka="OSSZ NA"/>
+    <n:UradSluzebni id="11001168" idDS="f6wadg9" idNadrizene="11001125" oznaceni="OSSZ Nový Jičín" zkratka="OSSZ NJ"/>
+    <n:UradSluzebni id="11001169" idDS="pyracxk" idNadrizene="11001125" oznaceni="OSSZ Nymburk" zkratka="OSSZ NB"/>
+    <n:UradSluzebni id="11001170" idDS="qx7adg5" idNadrizene="11001125" oznaceni="OSSZ Olomouc" zkratka="OSSZ OL"/>
+    <n:UradSluzebni id="11001171" idDS="zrgadgy" idNadrizene="11001125" oznaceni="OSSZ Opava" zkratka="OSSZ OP"/>
+    <n:UradSluzebni id="11001172" idDS="airadhs" idNadrizene="11001125" oznaceni="OSSZ Ostrava" zkratka="OSSZ OV"/>
+    <n:UradSluzebni id="11001173" idDS="kevac94" idNadrizene="11001125" oznaceni="OSSZ Pardubice" zkratka="OSSZ PU"/>
+    <n:UradSluzebni id="11001174" idDS="6piadc5" idNadrizene="11001125" oznaceni="OSSZ Pelhřimov" zkratka="OSSZ PE"/>
+    <n:UradSluzebni id="11001175" idDS="wazacze" idNadrizene="11001125" oznaceni="OSSZ Písek" zkratka="OSSZ PI"/>
+    <n:UradSluzebni id="11001176" idDS="ttyac3b" idNadrizene="11001125" oznaceni="OSSZ Plzeň - jih" zkratka="OSSZ PJ"/>
+    <n:UradSluzebni id="11001177" idDS="4k9ac38" idNadrizene="11001125" oznaceni="OSSZ Plzeň - město" zkratka="OSSZ PM"/>
+    <n:UradSluzebni id="11001178" idDS="deiac4y" idNadrizene="11001125" oznaceni="OSSZ Plzeň - sever" zkratka="OSSZ PS"/>
+    <n:UradSluzebni id="11001179" idDS="yr2acxh" idNadrizene="11001125" oznaceni="OSSZ Praha - východ" zkratka="OSSZ PH"/>
+    <n:UradSluzebni id="11001180" idDS="9jbacxb" idNadrizene="11001125" oznaceni="OSSZ Praha - západ" zkratka="OSSZ PZ"/>
+    <n:UradSluzebni id="11001181" idDS="64aacz8" idNadrizene="11001125" oznaceni="OSSZ Prachatice" zkratka="OSSZ PT"/>
+    <n:UradSluzebni id="11001182" idDS="jb2adhn" idNadrizene="11001125" oznaceni="OSSZ Prostějov" zkratka="OSSZ PV"/>
+    <n:UradSluzebni id="11001183" idDS="t5badhg" idNadrizene="11001125" oznaceni="OSSZ Přerov" zkratka="OSSZ PR"/>
+    <n:UradSluzebni id="11001184" idDS="ickacy5" idNadrizene="11001125" oznaceni="OSSZ Příbram" zkratka="OSSZ PB"/>
+    <n:UradSluzebni id="11001185" idDS="s5vacyz" idNadrizene="11001125" oznaceni="OSSZ Rakovník" zkratka="OSSZ RA"/>
+    <n:UradSluzebni id="11001186" idDS="m7tac4u" idNadrizene="11001125" oznaceni="OSSZ Rokycany" zkratka="OSSZ RO"/>
+    <n:UradSluzebni id="11001187" idDS="u76ac9y" idNadrizene="11001125" oznaceni="OSSZ Rychnov nad Kněžnou" zkratka="OSSZ RK"/>
+    <n:UradSluzebni id="11001188" idDS="nvwac76" idNadrizene="11001125" oznaceni="OSSZ Semily" zkratka="OSSZ SM"/>
+    <n:UradSluzebni id="11001189" idDS="wy4ac4q" idNadrizene="11001125" oznaceni="OSSZ Sokolov" zkratka="OSSZ SO"/>
+    <n:UradSluzebni id="11001190" idDS="fvjac22" idNadrizene="11001125" oznaceni="OSSZ Strakonice" zkratka="OSSZ ST"/>
+    <n:UradSluzebni id="11001191" idDS="5zfac9s" idNadrizene="11001125" oznaceni="OSSZ Svitavy" zkratka="OSSZ SY"/>
+    <n:UradSluzebni id="11001192" idDS="4wkadhc" idNadrizene="11001125" oznaceni="OSSZ Šumperk" zkratka="OSSZ SU"/>
+    <n:UradSluzebni id="11001193" idDS="qnuac2x" idNadrizene="11001125" oznaceni="OSSZ Tábor" zkratka="OSSZ TA"/>
+    <n:UradSluzebni id="11001194" idDS="7sdac4i" idNadrizene="11001125" oznaceni="OSSZ Tachov" zkratka="OSSZ TC"/>
+    <n:UradSluzebni id="11001195" idDS="xn7ac73" idNadrizene="11001125" oznaceni="OSSZ Teplice" zkratka="OSSZ TP"/>
+    <n:UradSluzebni id="11001196" idDS="esqadak" idNadrizene="11001125" oznaceni="OSSZ Trutnov" zkratka="OSSZ TU"/>
+    <n:UradSluzebni id="11001197" idDS="fgtaddx" idNadrizene="11001125" oznaceni="OSSZ Třebíč" zkratka="OSSZ TR"/>
+    <n:UradSluzebni id="11001198" idDS="p94addt" idNadrizene="11001125" oznaceni="OSSZ Uherské Hradiště" zkratka="OSSZ UH"/>
+    <n:UradSluzebni id="11001199" idDS="8ggac7v" idNadrizene="11001125" oznaceni="OSSZ Ústí nad Labem" zkratka="OSSZ UL"/>
+    <n:UradSluzebni id="11001200" idDS="pjzadah" idNadrizene="11001125" oznaceni="OSSZ Ústí nad Orlicí" zkratka="OSSZ UO"/>
+    <n:UradSluzebni id="11001201" idDS="y3daddm" idNadrizene="11001125" oznaceni="OSSZ Vsetín" zkratka="OSSZ VS"/>
+    <n:UradSluzebni id="11001202" idDS="9unaddh" idNadrizene="11001125" oznaceni="OSSZ Vyškov" zkratka="OSSZ VY"/>
+    <n:UradSluzebni id="11001203" idDS="imxadec" idNadrizene="11001125" oznaceni="OSSZ Zlín" zkratka="OSSZ ZL"/>
+    <n:UradSluzebni id="11001204" idDS="te8ade8" idNadrizene="11001125" oznaceni="OSSZ Znojmo" zkratka="OSSZ ZN"/>
+    <n:UradSluzebni id="11001205" idDS="38hade2" idNadrizene="11001125" oznaceni="OSSZ Žďár nad Sázavou" zkratka="OSSZ ZR"/>
+    <n:UradSluzebni id="11001206" idDS="dqiefdg" idNadrizene="11001126" oznaceni="OIP pro hlavní město Prahu" zkratka="OIP HMP"/>
+    <n:UradSluzebni id="11001207" idDS="nhtefdc" idNadrizene="11001126" oznaceni="OIP pro Středočeský kraj" zkratka="OIP SČK"/>
+    <n:UradSluzebni id="11001208" idDS="n7wefgn" idNadrizene="11001126" oznaceni="OIP pro Jihočeský kraj a Vysočinu" zkratka="OIP JČK KVY"/>
+    <n:UradSluzebni id="11001209" idDS="uiqeezx" idNadrizene="11001126" oznaceni="OIP pro Plzeňský a Karlovarský kraj" zkratka="OIP PLK KVK"/>
+    <n:UradSluzebni id="11001210" idDS="xy7efgi" idNadrizene="11001126" oznaceni="OIP pro Ústecký a Liberecký kraj" zkratka="OIP ÚSK LIK"/>
+    <n:UradSluzebni id="11001211" idDS="8sgefgc" idNadrizene="11001126" oznaceni="OIP pro Královéhradecký a Pardubický kr." zkratka="OIP KHK PAK"/>
+    <n:UradSluzebni id="11001212" idDS="a9heffd" idNadrizene="11001126" oznaceni="OIP pro Jihomoravský a Zlínský kraj" zkratka="OIP JMK ZLK"/>
+    <n:UradSluzebni id="11001213" idDS="5bzeezt" idNadrizene="11001126" oznaceni="OIP pro Moravskoslezský a Olomoucký kraj" zkratka="OIP MSK OLK"/>
+    <n:UradSluzebni id="11001215" idDS="nntwcis" idNadrizene="11000009" oznaceni="Agentura pro podnikání a inovace" zkratka="API"/>
+    <n:UradSluzebni id="11001225" idDS="ra7aipu" idNadrizene="11000015" oznaceni="Ústav pro st. kon. vet. biopr. a léčiv" zkratka="ÚSKVBL"/>
+    <n:UradSluzebni id="11001226" idDS="egi8zyh" idNadrizene="11000004" oznaceni="Finanční analytický úřad" zkratka="FAU"/>
+    <n:UradSluzebni id="11001227" idDS="psn9irb" oznaceni="Úřad p.dohled n. hosp. p.stran a p.hnutí" zkratka="ÚDHPSPH"/>
+    <n:UradSluzebni id="11001228" idDS="yhygbyn" oznaceni="Úřad pro přístup k dopr. infrastruktuře" zkratka="ÚPDI"/>
+    <n:UradSluzebni id="11001229" idDS="vnadiz2" oznaceni="Národní sportovní agentura" zkratka="NSA"/>
+  </govcz:UradSluzebniSeznam>
+</govcz:organizacni_struktura_sluzebnich_uradu>

@@ -1,0 +1,1292 @@
+<HTML><HEAD><META charset="UTF8" /><META http-equiv="Content-Type" content="text/html; charset=utf-8" /><STYLE type="text/css">
+
+        .hiddenCSS {
+          display: none !important;
+        }
+
+        html {
+          margin: 0;
+          padding: 0;
+          font-size: 7pt;
+          -webkit-print-color-adjust: exact;
+          font-family: arial, sans-serif;
+        }
+
+        *,
+        :after,
+        :before {
+          -webkit-box-sizing: border-box;
+          -moz-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        .tree {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+
+        .tree :after,
+        .tree :before {
+          -webkit-box-sizing: content-box;
+          -moz-box-sizing: content-box;
+          box-sizing: content-box;
+        }
+
+        .inverted .parentIco span,
+        .inverted .parentIco:after {
+          border: 1px solid #00aeef;
+          background: transparent;
+        }
+
+        .inverted .parentIco:before {
+          background: #666666;
+          border: 0;
+        }
+
+        .inverted .siblingIco span {
+          border: 1px solid #00aeef;
+          background: transparent;
+        }
+
+        .inverted .siblingIco:after,
+        .inverted .siblingIco:before {
+          background: #666666;
+          border: 0;
+        }
+
+        .tree ul {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          display: table-cell;
+          vertical-align: top;
+        }
+
+        .tree input {
+          position: absolute;
+          clip: rect(0, 0, 0, 0);
+        }
+
+        .tree input~ul {
+          display: none;
+        }
+
+        .tree input:checked~ul {
+          display: block;
+        }
+
+        .tree li {
+          line-height: 1.2;
+          position: relative;
+          padding: 0 0 .3em 1em;
+          display: table;
+          width: 100%;
+        }
+
+        .tree li a {
+          text-decoration: underline;
+          color: #333;
+        }
+
+        .tree .trow {
+          display: table-row;
+        }
+
+        .tree li a:focus,
+        .tree li a:hover {
+          text-decoration: none;
+        }
+
+        .tree ul li {
+          padding: 0;
+          display: table;
+        }
+
+        .tree>li {
+          display: table;
+          width: 100%;
+          padding: 0;
+        }
+
+        .tree>li:last-child {
+          padding-bottom: 0;
+        }
+
+        .tree .tree_item {
+          display: table-cell;
+          vertical-align: top;
+          width: 1px;
+        }
+
+        .tree .tree_item.approve {
+          background: #e5e5e5;
+        }
+
+        .tree .tree_item.active,
+        .tree .tree_item.selected {
+          background: #eefaff;
+          color: #000;
+        }
+
+        .tree .tree_item.active .tree_mainText,
+        .tree .tree_item.selected .tree_mainText {
+          text-decoration: none;
+        }
+
+        .tree .tree_label {
+          position: relative;
+          display: block;
+          margin-bottom: 0;
+          vertical-align: top;
+          width: 0;
+          max-width: 0;
+        }
+
+        .tree .tree_mainText {
+          display: block;
+          padding-left: 0px;
+        }
+
+        .tree .btn-toolbar {
+          display: table-cell;
+          width: 1%;
+          vertical-align: top;
+          white-space: nowrap;
+          margin: 0;
+          padding-right: 0;
+          padding-left: .25rem;
+          padding-top: 0;
+          line-height: 1.25rem;
+        }
+
+        .tree .btn-toolbar .btn.iconBtn {
+          vertical-align: top;
+        }
+
+        .tree .btn-toolbar .btn-group {
+          margin-left: 0;
+          float: none;
+          vertical-align: top;
+        }
+
+        .tree label.tree_label {
+          cursor: pointer;
+        }
+
+        .tree label.tree_label:before {
+          background: #e6e6e6;
+          border: 0.1em solid #bfbfbf;
+          color: #000;
+          position: relative;
+          z-index: 1;
+          float: left;
+          margin: .3em 1em 0 -2em;
+          width: 1em;
+          height: 1em;
+          border-radius: 1em;
+          content: '+';
+          text-align: center;
+          line-height: .9em;
+        }
+
+        .tree label.tree_label:hover {
+          color: #666;
+        }
+
+        .tree :checked~.tree_item label.tree_label:before {
+          content: 'â€“';
+        }
+
+        .tree li.lineHidden:before {
+          border-left: none !important;
+        }
+
+        .tree li:before {
+          position: absolute;
+          top: .9em;
+          bottom: -.9em;
+          left: 1.1em;
+          display: block;
+          width: 0;
+          border-left: 0.1em solid #aaa;
+          content: "";
+        }
+
+        .tree_label:after {
+          position: absolute;
+          top: .4em;
+          left: -1.1em;
+          display: block;
+          height: .5em;
+          width: 1.1em;
+          border-bottom: 0.1em solid #aaa;
+          border-left: 0;
+          border-radius: 0 0 0 .15em;
+          content: '';
+        }
+
+        .tree_label:before {
+          position: absolute;
+          top: .4em;
+          right: -14.1em;
+          display: block;
+          height: .5em;
+          width: 1.1em;
+          border-bottom: 0.1em solid #aaa;
+          border-left: 0;
+          border-radius: 0 0 0 .15em;
+          content: '';
+        }
+
+        label.tree_label:after {
+          border-bottom: 0;
+        }
+
+        :checked~.tree_item label.tree_label:after {
+          border-radius: 0 .15em 0 0;
+          border-top: 1px solid #aaa;
+          border-right: 0.1em solid #aaa;
+          border-bottom: 0;
+          border-left: 0;
+          bottom: -.3em;
+          top: .8em;
+          height: auto;
+        }
+
+        .tree li:last-child:before {
+          height: 0em;
+          bottom: auto;
+        }
+
+        .tree>li:last-child:before {
+          display: none;
+        }
+
+        .tree_custom {
+          display: block;
+          background: #eee;
+          padding: 1em;
+          border-radius: .3em;
+        }
+
+
+        .container .menu {
+          display: none;
+          position: absolute;
+          top: -19px;
+          left: -6px;
+          height: 38px;
+          background: #eee;
+          z-index: 999;
+          box-shadow: 0px 1px 8px -1px #aaa;
+          white-space: nowrap;
+          padding: 4px;
+        }
+
+        .iconBtn {
+          height: 28px;
+          width: 28px;
+          display: inline-block;
+          border: 1px solid rgba(170, 170, 170, 0.36);
+          background: #f9f9f9;
+          margin: 2px;
+          padding: 2px 5px;
+          cursor: pointer;
+        }
+
+        .iconBtn:hover {
+          background: #cdcdcd;
+        }
+
+        .parentIco:before {
+          content: '';
+          display: block;
+          height: 5px;
+          width: 14px;
+          box-sizing: border-box;
+          border: 1px solid #00aeef;
+          margin: 2px;
+          margin-left: -2px;
+        }
+
+        .parentIco:after {
+          content: '';
+          display: block;
+          height: 5px;
+          width: 14px;
+          box-sizing: border-box;
+          background: #666666;
+          margin: 2px;
+        }
+
+        .parentIco span {
+          display: block;
+          height: 5px;
+          width: 14px;
+          box-sizing: border-box;
+          background: #666666;
+          margin: 2px;
+        }
+
+
+        .siblingIco:before {
+          content: '';
+          display: block;
+          height: 5px;
+          width: 14px;
+          box-sizing: border-box;
+          border: 1px solid #00aeef;
+          margin: 2px;
+        }
+
+        .siblingIco:after {
+          content: '';
+          display: block;
+          height: 5px;
+          width: 14px;
+          box-sizing: border-box;
+          border: 1px solid #00aeef;
+          margin: 2px;
+        }
+
+        .siblingIco span {
+          display: block;
+          height: 5px;
+          width: 14px;
+          box-sizing: border-box;
+          background: #666666;
+          margin: 2px;
+        }
+
+        .container:hover .menu {
+          display: block;
+        }
+
+        .container {
+          width: 13em;
+          border: 0.1em solid #aaa;
+          padding: 5px;
+          line-height: 16px;
+          margin-bottom: 0.8em;
+          text-align: center;
+          position: relative;
+          padding-right: 16px;
+          z-index: 2;
+        }
+
+        .container h3 {
+          font-size: 1.2rem;
+          margin: 0;
+          padding: 0;
+        }
+
+        .container .desc {
+          font-size: 1rem;
+        }
+
+        .bossBlock .container {
+          background: #999;
+          border-color: #777;
+        }
+
+        .sectionBlock .container {
+          background: #ccc;
+          border-color: #999;
+        }
+
+        .odborBlock .container {
+          background: #eee;
+          border-color: #bbb;
+        }
+
+
+        .departmentBlock .container {
+          background: #fff;
+
+        }
+
+        .departmentWrap .container {
+          width: 12em;
+          padding-right: 5px;
+        }
+
+        .tree .bossBlock .tree_label:after {
+          display: none;
+        }
+
+        .tree .departmentSection li {
+          display: block;
+          width: 100%;
+        }
+
+        .trow>.tree_item+ul.departmentSection>li {
+          padding: 0 0 0 0.8em;
+        }
+
+        .tree .departmentSection .departmentBlock {
+          display: inline-block;
+          width: auto;
+          margin: 0 0.4em;
+          float: left;
+        }
+
+        .tree .departmentSection .departmentWrap {
+          padding: 0.8em 0.4em 0em 0.4em;
+          border: 0.1em solid #aaa;
+          margin-bottom: 15px;
+          position: relative;
+          background: #f7f7f7;
+          float: left;
+        }
+
+        .tree .departmentSection .departmentWrap .tree_label {
+          margin-top: -0.9em;
+          position: absolute;
+          left: -1px;
+        }
+
+        .tree .departmentSection .departmentWrap .tree_label:before {
+          display: none;
+        }
+
+        .trow>.tree_item+ul>li {
+          padding: 0 0 0 2.2em;
+        }
+
+        .tree .expandButton {
+          width: 16px;
+          line-height: 16px;
+          position: absolute;
+          right: -1px;
+          z-index: 2;
+          background: rgba(0, 0, 0, 0.0392156862745098);
+          border-radius: 50px;
+          padding: 0;
+          top: -1px;
+          border-radius: 0;
+          bottom: -1px;
+          border: 1px solid #777;
+          cursor: pointer;
+        }
+
+        .tree .expandButton:hover {
+          background: rgba(0, 0, 0, 0.17);
+        }
+
+
+        .tree .expandButton:focus {
+          outline: 0;
+        }
+
+        .buttonsGroup {
+          float: right;
+        }
+
+        .buttonsGroup button {
+          background: #efefef;
+          border: 1px solid #c3c3c3;
+          padding: 3px 10px;
+          margin-left: 5px;
+        }
+
+        .buttonsGroup button:hover {
+          background: #d6d6d6;
+        }
+
+        .tree_item:not(.expanded) .tree_label:before {
+          display: none;
+        }        .hiddenCSS {
+            display: none !important;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            font-size: 7pt;
+            -webkit-print-color-adjust: exact;
+            font-family: arial, sans-serif;
+        }
+
+        *,
+        :after,
+        :before {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .tree {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .tree :after,
+        .tree :before {
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+    .inverted .parentIco span, .inverted .parentIco:after {
+            border: 1px solid #00aeef;
+            background: transparent;
+        }
+        .inverted .parentIco:before{
+            background: #666666;
+            border: 0;
+        }
+
+    .inverted .siblingIco span{
+            border: 1px solid #00aeef;
+            background: transparent;
+        }
+        .inverted .siblingIco:after, .inverted .siblingIco:before{
+            background: #666666;
+            border: 0;
+        }
+
+        .tree ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: table-cell;
+            vertical-align: top;
+        }
+
+        .tree input {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .tree input~ul {
+            display: none;
+        }
+
+        .tree input:checked~ul {
+            display: block;
+        }
+
+        .tree li {
+            line-height: 1.2;
+            position: relative;
+            padding: 0 0 .3em 1em;
+            display: table;
+            width: 100%;
+        }
+
+        .tree li a {
+            text-decoration: underline;
+            color: #333;
+        }
+
+        .tree .trow {
+            display: table-row;
+        }
+
+        .tree li a:focus,
+        .tree li a:hover {
+            text-decoration: none;
+        }
+
+        .tree ul li {
+            padding: 0;
+            display: table;
+        }
+
+        .tree>li {
+            display: table;
+            width: 100%;
+            padding: 0;
+        }
+
+        .tree>li:last-child {
+            padding-bottom: 0;
+        }
+
+        .tree .tree_item {
+            display: table-cell;
+            vertical-align: top;
+            width: 1px;
+        }
+
+        .tree .tree_item.approve {
+            background: #e5e5e5;
+        }
+
+        .tree .tree_item.active,
+        .tree .tree_item.selected {
+            background: #eefaff;
+            color: #000;
+        }
+
+        .tree .tree_item.active .tree_mainText,
+        .tree .tree_item.selected .tree_mainText {
+            text-decoration: none;
+        }
+
+        .tree .tree_label {
+            position: relative;
+            display: block;
+            margin-bottom: 0;
+            vertical-align: top;
+            width: 0;
+            max-width: 0;
+        }
+
+        .tree .tree_mainText {
+            display: block;
+            padding-left: 0px;
+        }
+
+        .tree .btn-toolbar {
+            display: table-cell;
+            width: 1%;
+            vertical-align: top;
+            white-space: nowrap;
+            margin: 0;
+            padding-right: 0;
+            padding-left: .25rem;
+            padding-top: 0;
+            line-height: 1.25rem;
+        }
+
+        .tree .btn-toolbar .btn.iconBtn {
+            vertical-align: top;
+        }
+
+        .tree .btn-toolbar .btn-group {
+            margin-left: 0;
+            float: none;
+            vertical-align: top;
+        }
+
+        .tree label.tree_label {
+            cursor: pointer;
+        }
+
+        .tree label.tree_label:before {
+            background: #e6e6e6;
+            border: 0.1em solid #bfbfbf;
+            color: #000;
+            position: relative;
+            z-index: 1;
+            float: left;
+            margin: .3em 1em 0 -2em;
+            width: 1em;
+            height: 1em;
+            border-radius: 1em;
+            content: '+';
+            text-align: center;
+            line-height: .9em;
+        }
+
+        .tree label.tree_label:hover {
+            color: #666;
+        }
+
+        .tree :checked~.tree_item label.tree_label:before {
+            content: 'â€“';
+        }
+
+    .tree li.lineHidden:before{
+       border-left: none !important;
+    }
+
+        .tree li:before {
+            position: absolute;
+            top: .9em;
+            bottom: -.9em;
+            left: 1.1em;
+            display: block;
+            width: 0;
+            border-left: 0.1em solid #aaa;
+            content: "";
+        }
+
+        .tree_label:after {
+            position: absolute;
+            top: .4em;
+            left: -1.1em;
+            display: block;
+            height: .5em;
+            width: 1.1em;
+            border-bottom: 0.1em solid #aaa;
+            border-left: 0;
+            border-radius: 0 0 0 .15em;
+            content: '';
+        }
+
+        .tree_label:before {
+            position: absolute;
+            top: .4em;
+            right: -14.1em;
+            display: block;
+            height: .5em;
+            width: 1.1em;
+            border-bottom: 0.1em solid #aaa;
+            border-left: 0;
+            border-radius: 0 0 0 .15em;
+            content: '';
+        }
+
+        label.tree_label:after {
+            border-bottom: 0;
+        }
+
+        :checked~.tree_item label.tree_label:after {
+            border-radius: 0 .15em 0 0;
+            border-top: 1px solid #aaa;
+            border-right: 0.1em solid #aaa;
+            border-bottom: 0;
+            border-left: 0;
+            bottom: -.3em;
+            top: .8em;
+            height: auto;
+        }
+
+        .tree li:last-child:before {
+            height: 0em;
+            bottom: auto;
+        }
+
+        .tree>li:last-child:before {
+            display: none;
+        }
+
+        .tree_custom {
+            display: block;
+            background: #eee;
+            padding: 1em;
+            border-radius: .3em;
+        }
+
+
+        .container .menu {
+            display: none;
+            position: absolute;
+            top: -19px;
+            left: -6px;
+            height: 38px;
+            background: #eee;
+            z-index: 999;
+            box-shadow: 0px 1px 8px -1px #aaa;
+            white-space: nowrap;
+            padding: 4px;
+        }
+
+        .iconBtn {
+            height: 28px;
+            width: 28px;
+            display: inline-block;
+            border: 1px solid rgba(170, 170, 170, 0.36);
+            background: #f9f9f9;
+            margin: 2px;
+            padding: 2px 5px;
+            cursor: pointer;
+        }
+        .iconBtn:hover {
+            background: #cdcdcd;
+        }
+
+        .parentIco:before {
+            content: '';
+            display: block;
+            height: 5px;
+            width: 14px;
+            box-sizing: border-box;
+            border: 1px solid #00aeef;
+            margin: 2px;
+            margin-left: -2px;
+        }
+        .parentIco:after {
+            content: '';
+            display: block;
+            height: 5px;
+            width: 14px;
+            box-sizing: border-box;
+            background: #666666;
+            margin: 2px;
+        }
+        .parentIco span {
+            display: block;
+            height: 5px;
+            width: 14px;
+            box-sizing: border-box;
+            background: #666666;
+            margin: 2px;
+        }
+
+
+        .siblingIco:before {
+            content: '';
+            display: block;
+            height: 5px;
+            width: 14px;
+            box-sizing: border-box;
+            border: 1px solid #00aeef;
+            margin: 2px;
+        }
+        .siblingIco:after {
+            content: '';
+            display: block;
+            height: 5px;
+            width: 14px;
+            box-sizing: border-box;
+            border: 1px solid #00aeef;
+            margin: 2px;
+        }
+        .siblingIco span {
+            display: block;
+            height: 5px;
+            width: 14px;
+            box-sizing: border-box;
+            background: #666666;
+            margin: 2px;
+        }
+
+        .container:hover .menu {
+            display: block;
+        }
+
+        .container {
+            width: 13em;
+            border: 0.1em solid #aaa;
+            padding: 5px;
+            line-height: 16px;
+            margin-bottom: 0.8em;
+            text-align: center;
+            position: relative;
+            padding-right: 16px;
+            z-index: 2;
+        }
+
+        .container h3 {
+            font-size: 1.2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container .desc {
+            font-size: 1rem;
+        }
+
+        .bossBlock .container {
+            background: #999;
+            border-color: #777;
+        }
+
+        .sectionBlock .container {
+            background: #ccc;
+            border-color: #999;
+        }
+
+        .odborBlock .container {
+            background: #eee;
+            border-color: #bbb;
+        }
+
+
+        .departmentBlock .container {
+            background: #fff;
+
+        }
+        .departmentWrap .container {
+            width: 12em;
+            padding-right: 5px;
+        }
+
+        .tree .bossBlock .tree_label:after {
+            display: none;
+        }
+
+        .tree .departmentSection li {
+            display: block;
+            width: 100%;
+        }
+
+        .trow>.tree_item+ul.departmentSection>li {
+            padding: 0 0 0 0.8em;
+        }
+
+        .tree .departmentSection .departmentBlock {
+            display: inline-block;
+            width: auto;
+            margin: 0 0.4em;
+            float: left;
+        }
+
+        .tree .departmentSection .departmentWrap {
+            padding: 0.8em 0.4em 0em 0.4em;
+            border: 0.1em solid #aaa;
+            margin-bottom: 15px;
+            position: relative;
+            background: #f7f7f7;
+            float: left;
+        }
+
+        .tree .departmentSection .departmentWrap .tree_label {
+            margin-top: -0.9em;
+            position: absolute;
+            left: -1px;
+        }
+
+        .tree .departmentSection .departmentWrap .tree_label:before {
+            display: none;
+        }
+
+        .trow>.tree_item+ul>li {
+            padding: 0 0 0 2.2em;
+        }
+
+        .tree .expandButton {
+            width: 16px;
+            line-height: 16px;
+            position: absolute;
+            right: -1px;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.0392156862745098);
+            border-radius: 50px;
+            padding: 0;
+            top: -1px;
+            border-radius: 0;
+            bottom: -1px;
+            border: 1px solid #777;
+            cursor: pointer;
+        }
+
+        .tree .expandButton:hover {
+            background: rgba(0, 0, 0, 0.17);
+        }
+
+
+        .tree .expandButton:focus {
+            outline: 0;
+        }
+
+        .buttonsGroup {
+            float: right;
+        }
+
+        .buttonsGroup button {
+            background: #efefef;
+            border: 1px solid #c3c3c3;
+            padding: 3px 10px;
+            margin-left: 5px;
+        }
+
+        .buttonsGroup button:hover {
+            background: #d6d6d6;
+        }
+
+        .tree_item:not(.expanded) .tree_label:before {
+            display: none;
+        }
+</STYLE><SCRIPT>
+window.onload = function() {
+  var list = document.getElementsByTagName("ul");
+  for (var i = 0; i < list.length; i++) {
+    if (!hasClass(list[i], "level1")) {
+      list[i].classList.add("hiddenCSS");
+    }
+    else {
+      list[i].classList.remove("hiddenCSS");
+    }
+  }
+}
+
+function hasClass(element, className) {
+  if (!element) {
+    return false;
+  }
+  return (' ' + element.className + ' ').indexOf(' ' + className + ' ')> -1;
+}
+
+function toggleClass(element, className) {
+  var classPresent = hasClass(element, className);
+  if (classPresent) {
+    element.classList.remove(className);
+  }
+  else {
+    element.classList.add(className);
+  }
+}
+
+function loadOpenLists() {
+  var returnList = [];
+  var list = document.getElementsByTagName("ul");
+  for (var i = 0; i < list.length; i++) {
+    if (!hasClass(list[i], "hiddenCSS")) {
+      returnList.push(list[i]);
+    }
+  }
+  return returnList;
+}
+
+function getListLevel(ulItem) {
+  var parent = ulItem.parentElement;
+  var level = 0;
+  while (parent != null) {
+    if (parent.tagName && parent.tagName.toLowerCase() == 'ul') {
+      level++;
+    }
+    parent = parent.parentElement;
+  }
+  return level;
+}
+
+function toggleList(element) {
+  var list = element.parentElement.parentElement.parentElement.parentElement.getElementsByTagName("ul")[0];
+  toggleClass(list, 'hiddenCSS');
+  toggleButton(element);
+  openOrphans(list);
+}
+
+function openOrphans(list) {
+  var items = getListItems(list);
+  if (items && items.length) {
+    for (var i = 0; i < items.length; i++) {
+      var item = items[i];
+      var childList = getLists(item)[0];
+      if (childList && !childList.previousElementSibling) {
+        childList.classList.remove("hiddenCSS");
+        var button = item.querySelector('button');
+        toggleButton(button);
+      }
+    }
+  }
+}
+
+function getListItems(list) {
+  if (!list) {
+    return null;
+  }
+  return list.children;
+}
+
+function getLists(item) {
+  if (!item) {
+    return null;
+  }
+  return item.getElementsByTagName("ul");
+}
+
+function toggleButton(button) {
+  if (button) {
+    var tree_item = button.parentElement.parentElement;
+    if (button.innerHTML == "+") {
+      button.innerHTML = "-";
+      toggleClass(tree_item, 'expanded');
+    }
+    else {
+      button.innerHTML = "+";
+      toggleClass(tree_item, 'expanded');
+    }
+  }
+}
+
+function expandAllLists() {
+  var list = loadOpenLists();
+  for (var i = 0; i < list.length; i++) {
+    var openItem = list[i];
+    var childs = openItem.childNodes;
+    for (var y = 0; y < childs.length; y++) {
+      var item = childs[y];
+      if (item.tagName && item.tagName.toLowerCase() == 'li') {
+        var childList = item.querySelector('ul');
+        if (hasClass(childList, "hiddenCSS")) {
+          childList.classList.remove("hiddenCSS");
+          var button = item.querySelector('button');
+          toggleButton(button);
+          openOrphans(childList);
+        }
+      }
+    }
+  }
+}
+
+function collapseLevel(lastItems, conditionFn) {
+  for (var i = 0; i < lastItems.length; i++) {
+    var lastItem = lastItems[i];
+    if (conditionFn(lastItem)) {
+      toggleClass(lastItem, 'hiddenCSS');
+      var button = lastItem.parentElement.querySelector('button');
+      toggleButton(button);
+    }
+  }
+}
+
+function collapseAllLists() {
+  var list = loadOpenLists();
+  var levelList = [];
+  for (var i = 0; i < list.length; i++) {
+    var openItem = list[i];
+    var level = getListLevel(openItem);
+    var listOnIndex = levelList[level];
+    if (!listOnIndex) {
+      levelList[level] = [];
+    }
+    levelList[level].push(openItem);
+  }
+  var lastItems = levelList[levelList.length - 1];
+  var normalItemClosed = false;
+  var closed = collapseLevel(lastItems, function(item) {
+    if (!hasClass(item, "level1") && item &&item.previousElementSibling) {
+      normalItemClosed = true;
+      return true;
+    }
+  });
+  if (!normalItemClosed) {
+    collapseLevel(lastItems, function(item) {
+      return !hasClass(item, "level1") && item &&!item.previousElementSibling;
+    });
+    lastItems = levelList[levelList.length - 2];
+    collapseLevel(lastItems, function(item) {
+      if (!hasClass(item, "level1") && item &&item.previousElementSibling) {
+        normalItemClosed = true;
+        return true;
+      }
+    });
+  }
+}
+
+function checkParent(parent, child) {
+  if (parent.contains(child)) {
+    return true;
+  }
+  else {
+    return false;
+  }
+};
+
+function getParentUl(elem) {
+  var parent = elem;
+  while (parent && parent.parentElement) {
+    parent = parent.parentElement;
+    if (parent.tagName.toLowerCase() == 'ul') {
+      return parent;
+    }
+  }
+  return null;
+}
+
+function getLiChildren(element) {
+  var returnList = [];
+  if (element && element.children) {
+    for (var i = 0; i < element.children.length; i++) {
+      var child = element.children[i];
+      if (child.tagName.toLowerCase() == 'li') {
+        returnList.push(child);
+      }
+    }
+  }
+  return returnList;
+}
+
+function getTreeItemDiv(element) {
+  var elems = element.getElementsByClassName('tree_item');
+  if (elems && elems.length) {
+    return elems[0];
+  }
+  return null;
+}
+
+function isHiding(elem) {
+  return !hasClass(elem, 'hiddenCSS');
+}
+
+function hideOrDisplayItem(hiding, element) {
+  if (hiding) {
+    element.classList.add('hiddenCSS');
+  }
+  else {
+    element.classList.remove('hiddenCSS');
+  }
+}
+
+function hideOrDisplayLine(hiding, element) {
+  if (hiding) {
+    element.classList.add('lineHidden');
+  }
+  else {
+    element.classList.remove('lineHidden');
+  }
+}
+
+function hideParents(element) {
+  var hiding = null;
+  var parentUl = getParentUl(element);
+  if (!parentUl.previousElementSibling) {
+    var parentUl = getParentUl(parentUl);
+  }
+  while (getParentUl(parentUl) != null) {
+    var secondParentUl = getParentUl(parentUl);
+    var childLiList = getLiChildren(secondParentUl);
+    for (var i = 0; i < childLiList.length; i++) {
+      var child = childLiList[i];
+      var hidingElement = getTreeItemDiv(child);
+      if (!checkParent(child, element)) {
+        hidingElement = child;
+      }
+      if (hiding == null) {
+        hiding = isHiding(hidingElement);
+      }
+      hideOrDisplayLine(hiding, child);
+      hideOrDisplayItem(hiding, hidingElement);
+    }
+    parentUl = secondParentUl;
+  }
+  var childLiList = getLiChildren(getParentUl(element));
+  for (var i = 0; i < childLiList.length; i++) {
+    var child = childLiList[i];
+    var elem = child.getElementsByClassName('menu')[0].getElementsByClassName('iconBtn')[0];
+    toggleClass(elem, 'inverted');
+    toggleTitle(elem, hiding, true);
+  }
+}
+
+function hideSiblings(elem) {
+  var hiding = null;
+  var parentUl = getParentUl(elem);
+  if (!parentUl.previousElementSibling) {
+    var parentUl = getParentUl(parentUl);
+  }
+  var childLiList = getLiChildren(parentUl);
+  var parentLi = null;
+  for (var i = 0; i < childLiList.length; i++) {
+    var child = childLiList[i];
+    if (!checkParent(child, elem)) {
+      hidingElement = child;
+      if (hiding == null) {
+        hiding = isHiding(hidingElement);
+      }
+      hideOrDisplayItem(hiding, hidingElement);
+    }
+    else {
+      parentLi = child;
+    }
+  }
+  hideOrDisplayLine(hiding, parentLi);
+  toggleClass(elem, 'inverted');
+  toggleTitle(elem, hiding, false);
+}
+
+function toggleTitle(element, hiding, parentsIco) {
+  if (parentsIco) {
+    if (hiding) {
+      element.setAttribute('title', 'Zobrazit nadřazené úrovně');
+    }
+    else {
+      element.setAttribute('title', 'Skrýt nadřazené úrovně');
+    }
+  }
+  else {
+    if (hiding) {
+      element.setAttribute('title', 'Zobrazit ostatní úrovně');
+    }
+    else {
+      element.setAttribute('title', 'Skrýt ostatní úrovně');
+    }
+  }
+}</SCRIPT></HEAD><BODY><DIV class="clearfix"><DIV class="buttonsGroup"><BUTTON onClick="collapseAllLists()">&#8672; Sbalit podúroveň</BUTTON><BUTTON onClick="expandAllLists()">Rozbalit podúroveň &#8694;</BUTTON></DIV><H3>Organigram ke dni 09.09.2020 pro služební úřad "Ministerstvo práce a sociálních věcí"</H3></DIV><UL class="tree level1"><LI><DIV class="trow"><DIV class="tree_item bossBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Ministerstvo práce a sociálních věcí</H3><SPAN class="desc">V + 0/2</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item departmentBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Sekce státního tajemníka</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. personální</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. personálního rozvoje a metodik</H3><SPAN class="desc">P + 8/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. personální</H3><SPAN class="desc">P + 14/3</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. právní a veřejných zakázek</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. centrálních nákupů</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. veřejných zakázek</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. právní</H3><SPAN class="desc">P + 7/1</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>odb. koordinace a právní podpory st.sl.</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koordinace státní služby</H3><SPAN class="desc">P + 3/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>oddělení právní podpory státní služby</H3><SPAN class="desc">P + 3/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. vnitřní správy</H3><SPAN class="desc">P + 0/3</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. správy majetku a autoprovozu</H3><SPAN class="desc">P + 4/19</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. pro řízení oběhu dokumentů</H3><SPAN class="desc">P + 4/5</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item sectionBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Sekce sociální politiky</H3><SPAN class="desc">P + 2/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. rodinné politiky a ochr. práv dětí</H3><SPAN class="desc">P + 2/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. politiky stárnutí</H3><SPAN class="desc">P + 2/7</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. služeb péče o děti</H3><SPAN class="desc">P + 3/35</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. metodické podpory</H3><SPAN class="desc">P + 5/9</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce náhr. rodinné péče</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd.koncep. a metodiky ochrany práv dětí</H3><SPAN class="desc">P + 10/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. trasform. služeb pro rodiny a děti</H3><SPAN class="desc">P + 0/24</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce rodinné politiky</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. soc. služeb,  soc.práce a soc.bydl.</H3><SPAN class="desc">P + 3/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. soc. bydlení a soc. začleňování</H3><SPAN class="desc">P + 8/12</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce soc. práce a vzdělávání</H3><SPAN class="desc">P + 14/10</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce sociálních služeb</H3><SPAN class="desc">P + 10/21</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce financování soc. služeb</H3><SPAN class="desc">P + 11/3</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. inspekce sociálních služeb</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. inspekce soc. sl. JZ Čechy</H3><SPAN class="desc">P + 8/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. inspekce soc. sl. Morava a Slezsko</H3><SPAN class="desc">P + 13/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. inspekce soc. sl. SV Čechy</H3><SPAN class="desc">P + 15/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. met.  insp. soc. sl. a insp. hl. mě</H3><SPAN class="desc">P + 11/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item sectionBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Sekce legislativy</H3><SPAN class="desc">P + 0/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. pracovněprávní legislativy</H3><SPAN class="desc">P + 0/2</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. pracovněprávní</H3><SPAN class="desc">P + 10/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. mzdověprávní</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. kolektivního vyjednávání</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb.legislativní</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. obecné legislativy</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. rozkladové komise</H3><SPAN class="desc">P + 3/1</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. sociální legislativy</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. kancelář náměstka pro legislativu</H3><SPAN class="desc">P + 1/3</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item sectionBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Sekce zaměstnanosti</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. koncepcí a strategií trhu práce</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. podpory výzkumu a vývoje</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepcí a strategií trhu práce</H3><SPAN class="desc">P + 16/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. odvolání a spr. č. v obl. zaměst.</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. č. v obl. zaměst.</H3><SPAN class="desc">P + 13/1</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. právní podpory zaměstnanosti</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd.plat.neschop.zaměst. a agentur.zaměs</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. inspekce a bezpečnosti práce</H3><SPAN class="desc">P + 6/1</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. zaměstnanosti a povolání</H3><SPAN class="desc">P + 0/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. zahraniční zaměstnanosti</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů a soustavy povolání</H3><SPAN class="desc">P + 3/26</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item sectionBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Sekce ekonomická a ICT</H3><SPAN class="desc">P + 1/2</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. programového financ. a statistiky</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. statistiiky a centr. reportingu</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. programového financování OSS</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. programového financování dotací</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb.ICT</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. provozu ICT</H3><SPAN class="desc">P + 1/5</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. kompetenčního centra</H3><SPAN class="desc">P + 6/1</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. systémové podpory</H3><SPAN class="desc">P + 5/1</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. pro architekturu ICT</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. financování ICT</H3><SPAN class="desc">P + 3/1</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. řízení projektů ICT</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>odd. EESSI a datové základny</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. řízení projektů</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. hlavní projektová kancelář</H3><SPAN class="desc">P + 3/9</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů služeb zaměstnanosti</H3><SPAN class="desc">P + 8/21</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů sociální politiky</H3><SPAN class="desc">P + 1/15</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů dalšího vzdělávání</H3><SPAN class="desc">V + 0/4</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. rozpočtu a účetnictví</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. rozpočtu</H3><SPAN class="desc">P + 8/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepcí a analýz příjmů</H3><SPAN class="desc">P + 8/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. metodiky účetnictví a finanč.výkaz</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. provozní účtárny</H3><SPAN class="desc">P + 5/8</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Samostatné odd. bezpečnosti informací</H3><SPAN class="desc">P + 1/2</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item sectionBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Sekce soc. pojist. syst. a nepoj. dávek</H3><SPAN class="desc">P + 1/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. odvolání a spr. čin. nepoj. dávek</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy KrHr. kr.</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Liber. kr.</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Úst. kr.</H3><SPAN class="desc">P + 9/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Karl. kr.</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Plz. kr.</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Praha</H3><SPAN class="desc">P + 14/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy StřČ. kr.</H3><SPAN class="desc">P + 13/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Jhč. kr.</H3><SPAN class="desc">P + 8/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Pard. kr.</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy kr. Vysočina</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Jhm. kr.</H3><SPAN class="desc">P + 10/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Olm. kr.</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Morsl. kr.</H3><SPAN class="desc">P + 16/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. odvolání a spr. agendy Zlín. kr.</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. výkonu posudkové služby</H3><SPAN class="desc">P + 0/3</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. výkonu PS Plzeň</H3><SPAN class="desc">V + 4/3</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. výkonu PS Ústí n. L.</H3><SPAN class="desc">V + 6/4</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. výkonu PS Praha</H3><SPAN class="desc">V + 10/9</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce posuzování zdravot. stavu</H3><SPAN class="desc">P + 3/5</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce lékařské posudkové služby</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. výkonu PS Brno</H3><SPAN class="desc">V + 11/8</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. výkonu PS Ostrava</H3><SPAN class="desc">V + 8/6</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. výkonu PS Č. Budějovice</H3><SPAN class="desc">V + 4/3</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. výkonu PS Hr.Králové</H3><SPAN class="desc">V + 7/5</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. sociálního pojištení</H3><SPAN class="desc">P + 0/2</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. nemocenského a úraz. pojištění</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. důchodového pojištění</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. pojistně matematické</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. nepojistných soc. a rodin. dávek</H3><SPAN class="desc">P + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. metodiky nepoj. soc. a rod. dávek</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepce nepoj. soc. a rod. dávek</H3><SPAN class="desc">P + 9/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koordinace sociálního zabezpečení</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item sectionBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Sekce Evropských fondů a mezinár.spolupr</H3><SPAN class="desc">P + 3/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="level2"><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. řízení programů ESF</H3><SPAN class="desc">P + 1/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. metodiky a koordinace</H3><SPAN class="desc">P + 9/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. monitorování a reportingu</H3><SPAN class="desc">P + 15/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. finančního řízení</H3><SPAN class="desc">P + 11/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. podpory implementace</H3><SPAN class="desc">P + 19/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. real. progr. ESF - zaměstn. a adapt</H3><SPAN class="desc">P + 2/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů syst. a region. podpory z.</H3><SPAN class="desc">P + 11/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů syst. DPV a podpory zam.</H3><SPAN class="desc">P + 12/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů podpory zaměstnanosti</H3><SPAN class="desc">P + 16/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů adapt. pracovní síly I</H3><SPAN class="desc">P + 19/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů adapt. pracovní síly II</H3><SPAN class="desc">P + 18/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odbor Evropské unie a mezinár. spolupr.</H3><SPAN class="desc">P + 1/2</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. mezinárodní spolupráce</H3><SPAN class="desc">P + 7/1</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. Evropské unie</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. realizace programů ESF - soc. začl.</H3><SPAN class="desc">P + 1/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů systému služeb</H3><SPAN class="desc">P + 17/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů CLLD</H3><SPAN class="desc">P + 24/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. systémových projektů</H3><SPAN class="desc">P + 12/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů sociálního začleňování</H3><SPAN class="desc">P + 19/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů sociálního podnikání</H3><SPAN class="desc">P + 5/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb.real.prog.ESF-veř.spr.,soc.inov. a..</H3><SPAN class="desc">P + 2/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů veřejné správy I</H3><SPAN class="desc">P + 13/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů veřejné správy II</H3><SPAN class="desc">P + 13/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů soc. inovací a mez. spol.</H3><SPAN class="desc">P + 17/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů rovnosti žen a mužů I</H3><SPAN class="desc">P + 18/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. projektů rovnosti žen a mužů II</H3><SPAN class="desc">P + 18/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. kontrol evropských programů</H3><SPAN class="desc">P + 1/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. kontrol projektů a rizik</H3><SPAN class="desc">P + 27/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. nesrovalostí a koordinace</H3><SPAN class="desc">P + 12/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. právní podpory a kontroly výb.říz.</H3><SPAN class="desc">P + 17/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. ostatních evropských fondů</H3><SPAN class="desc">P + 7/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. evaluací</H3><SPAN class="desc">P + 9/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. kabinet ministryně</H3><SPAN class="desc">V + 0/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. koncepčně analytické</H3><SPAN class="desc">V + 0/3</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>oddělení poradců</H3><SPAN class="desc">V + 0/7</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. sekretariát ministryně</H3><SPAN class="desc">V + 0/9</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. tiskový</H3><SPAN class="desc">V + 0/1</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. PR a elektronické komunikace</H3><SPAN class="desc">V + 0/4</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. tiskové</H3><SPAN class="desc">V + 0/5</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><DIV class="tree_item odborBlock"><SPAN class="tree_label">&#32;</SPAN><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odb. interního auditu a kontroly</H3><SPAN class="desc">P + 1/0</SPAN><BUTTON class="expandButton" onClick="toggleList(this)">+</BUTTON></DIV></DIV><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. auditů prostředků EU</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. auditů a kontrol</H3><SPAN class="desc">P + 6/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. auditů a kontrol výkonu stát. spr.</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI><LI><DIV class="trow"><UL class="departmentSection"><LI><DIV class="departmentWrap"><SPAN class="tree_label">&#32;</SPAN><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. parlamentní a vládní agendy</H3><SPAN class="desc">P + 4/0</SPAN></DIV></DIV><DIV class="tree_item departmentBlock"><DIV class="container"><DIV class="menu"><A class="iconBtn" title="Skrýt nadřazené úrovně" onClick="hideParents(this)"><span class="parentIco"><span></span></span></A><A class="iconBtn" title="Skrýt ostatní úrovně" onClick="hideSiblings(this)"><span class="siblingIco"><span></span></span></A></DIV><H3>Odd. bezpečn.,kriz.řízení a řízení rizik</H3><SPAN class="desc">P + 4/1</SPAN></DIV></DIV></DIV></LI></UL></DIV></LI></UL></DIV></LI></UL></BODY></HTML>
