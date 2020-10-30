@@ -73,7 +73,7 @@ icko.rozbal = function() {
     '<ul><li><b>Centrální evidence exekucí</b> spravovaná Exekutorskou komorou ČR</li>' +
     '<li><b>Český statistický úřad</b></li></ul>' +
     '<h4>Časová období</h4>' +
-    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> and <b>2019</b></li></ul>' +
+    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> a <b>2019</b></li></ul>' +
     '<h4>Mapa obsahuje</h4>' +
     '<ul><li><b>pouze fyzické osoby</b></li>' +
     '<li><b>počet obyvatel starších 15 let</b></li>' +
