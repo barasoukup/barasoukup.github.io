@@ -91,7 +91,7 @@ icko.rozbal = function() {
     '<ul><li><b>Central Register of Executions</b> – managed by Bailiff Chamber of the Czech Republic</li>' +
     '<li><b>Czech Statistical Office</b></li></ul>' +
     '<h4>Periods covered</h4>' +
-    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> a <b>2020</b></li></ul>' +
+    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> and <b>2019</b></li></ul>' +
     '<h4>This map contains</h4>' +
     '<ul><li><b>natural persons only</b></li>' +
     '<li><b>N° of inhabitants 15+</b></li>' +
@@ -119,14 +119,14 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">The Czech Republic</td><td class="right grey bold">2020</td><td class="grey right bold">YtY change</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">The Czech Republic</td><td class="right grey bold">2019</td><td class="grey right bold">YtY change</td></tr>' +
     '<tr><td>N° of people in enforcement proceedings (EP)</td><td class="right bold">775k</td><td class="right green">-6%</td></tr>' +
     '<tr><td>N° of people with 3 or more EPs</td><td class="right bold">474k</td><td class="right green">-3.2%</td></tr>' +
     '<tr><td>N° of people with 10 or more EPs</td><td class="right bold">157k</td><td class="right green">-1.0%</td></tr>' +
     '<tr><td>Percentage of people in EPs</td><td class="right bold">8,7%</td><td class="right green">-0.5 PP</td></tr>' +
     '<tr><td>Total number of EPs</td><td class="right bold">4,46M</td><td class="right green">-4.9%</td></tr>' +
     '<tr><td>Debt principal</td><td class="right bold">297B CZK (2018)</td><td class="right">-</td></tr>' +
-    '<tr><td><span class="italic">The published data covers only natural persons;<br>EP = enforcement proceeding<br>Data for 2020 are from April 24, 2020, other years from December 31</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
+    '<tr><td><span class="italic">The published data covers only natural persons;<br>EP = enforcement proceeding<br>Data for 2019 are from April 24, 2020, other years from December 31</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Show info</a></div> ';
   return this._div;
 };
@@ -796,15 +796,15 @@ function generateTooltip(feature) {
     t += ntn((props["pe8"] / props["poe8"]) - (props["pe7"] / props["poe7"]), 1) + ')</td></tr>';
   } else if (valIndi == "poe_change9") {
     if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>';
+      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>';
     } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
+      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
+      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
+      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
         '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }
 
@@ -850,15 +850,15 @@ function generateTooltip(feature) {
     t += ntn((props["pe9"] / props["poe9"]) - (props["pe8"] / props["poe8"]), 1) + ')</td></tr>';
   } else if (valIndi == "poe_changec") {
     if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>';
+      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>';
     } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
+      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
+      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
+      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
         '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }
 

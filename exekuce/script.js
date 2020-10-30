@@ -73,7 +73,7 @@ icko.rozbal = function() {
     '<ul><li><b>Centrální evidence exekucí</b> spravovaná Exekutorskou komorou ČR</li>' +
     '<li><b>Český statistický úřad</b></li></ul>' +
     '<h4>Časová období</h4>' +
-    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> and <b>2020</b></li></ul>' +
+    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> and <b>2019</b></li></ul>' +
     '<h4>Mapa obsahuje</h4>' +
     '<ul><li><b>pouze fyzické osoby</b></li>' +
     '<li><b>počet obyvatel starších 15 let</b></li>' +
@@ -84,7 +84,7 @@ icko.rozbal = function() {
     '<li><b>počet exekucí u jednotlivých osob</b> (tzv. vícečetnost exekucí)</li>' +
     '<li><b>ukazatele kombinující výše uvedená data</b></li></ul>' +
     '<p>Upozorňujeme, že v mapě se mohou objevit nepřesnosti vzniklé při exportu dat z Centrální evidence exekucí. </p>' +
-    '<p>* Jistina za rok 2016 obsahuje fyzické i právnické osoby. Jistina za rok 2017 je již očištěna a obsahuje pouze fyzické osoby.<br>Data za rok 2020 jsou z 20. 4. 2020, ostatní roky z 31. 12.</p>' +
+    '<p>* Jistina za rok 2016 obsahuje fyzické i právnické osoby. Jistina za rok 2017 je již očištěna a obsahuje pouze fyzické osoby.<br>Data za rok 2019 jsou z 20. 4. 2020, ostatní roky z 31. 12.</p>' +
     '<div style="text-align: center"><img src="images/ekcr.jpg" height="100">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/csu.png" height="40" style="vertical-align: top;"></div>' +
     '<div class="right"><a onclick="icko.sbal()" href="#" ><img src="images/70206.png" width="12px"></a></div></div>';
 };
@@ -102,14 +102,14 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2020</td><td class="grey right bold">meziroční změna</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2019</td><td class="grey right bold">meziroční změna</td></tr>' +
     '<tr><td>Počet osob v exekuci</td><td class="right bold">775 tis.</td><td class="right green">-6,0 %</td></tr>' +
     '<tr><td>Počet osob se 3 a více exekucemi</td><td class="right bold">474 tis.</td><td class="right green">-3,2 %</td></tr>' +
     '<tr><td>Počet osob s 10 a více exekucemi</td><td class="right bold">157 tis.</td><td class="right green">-1,0 %</td></tr>' +
     '<tr><td>Podíl osob v exekuci</td><td class="right bold">8,7 %</td><td class="right green">-0,5 p.b.</td></tr>' +
     '<tr><td>Celkový počet exekucí</td><td class="right bold">4,46 mil.</td><td class="right green">-4,9 %</td></tr>' +
     '<tr><td>Vymáhaná jistina</td><td class="right bold">297 mld. Kč (2018)</td><td class="right">-</td></tr>' +
-    '<tr><td><span class="italic">Údaje jsou pouze za fyzické osoby.<br>Data za rok 2020 jsou z 20. 4. 2020, ostatní roky z 31. 12.</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
+    '<tr><td><span class="italic">Údaje jsou pouze za fyzické osoby.<br>Data za rok 2019 jsou z 20. 4. 2020, ostatní roky z 31. 12.</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Zobrazit souhrnné údaje</a></div> ';
   return this._div;
 };
@@ -779,15 +779,15 @@ function generateTooltip(feature) {
     t += ntn((props["pe8"] / props["poe8"]) - (props["pe7"] / props["poe7"]), 1) + ')</td></tr>';
   } else if (valIndi == "poe_change9") {
     if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>';
+      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>';
     } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
+      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
+      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
+      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
         '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }
 
@@ -833,15 +833,15 @@ function generateTooltip(feature) {
     t += ntn((props["pe9"] / props["poe9"]) - (props["pe8"] / props["poe8"]), 1) + ')</td></tr>';
   } else if (valIndi == "poe_changec") {
     if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>';
+      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>';
     } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
+      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
+      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2020</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
+      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
         '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }
 
