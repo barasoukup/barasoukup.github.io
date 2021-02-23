@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGRVRTDataSource>
+    <OGRVRTLayer name="obce_arccr-obce_arccr">
+        <SrcDataSource relativeToVRT="1">obce_arccr.xlsx</SrcDataSource>
+        <!--Header=False-->
+        <SrcLayer>obce_arccr</SrcLayer>
+        <Field name="KOD_OBEC" src="KOD_OBEC" type="String"/>
+        <Field name="NAZ_OBEC" src="NAZ_OBEC" type="String"/>
+        <Field name="KOD_POU" src="KOD_POU" type="String"/>
+        <Field name="NAZ_POU" src="NAZ_POU" type="String"/>
+        <Field name="KOD_ORP" src="KOD_ORP" type="String"/>
+        <Field name="NAZ_ORP" src="NAZ_ORP" type="String"/>
+        <Field name="KOD_OKRES" src="KOD_OKRES" type="String"/>
+        <Field name="KOD_LAU1" src="KOD_LAU1" type="String"/>
+        <Field name="NAZ_LAU1" src="NAZ_LAU1" type="String"/>
+        <Field name="KOD_KRAJ" src="KOD_KRAJ" type="String"/>
+        <Field name="KOD_CZNUTS3" src="KOD_CZNUTS3" type="String"/>
+        <Field name="NAZ_CZNUTS3" src="NAZ_CZNUTS3" type="String"/>
+        <Field name="o6" src="o6" type="Integer"/>
+        <Field name="o7" src="o7" type="Integer"/>
+        <Field name="o8" src="o8" type="Integer"/>
+        <Field name="o9" src="o9" type="Integer"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>

@@ -123,7 +123,7 @@ prehled.onAdd = function(map) {
     '<tr><td>N° of people in enforcement proceedings (EP)</td><td class="right bold">775k</td><td class="right green">-6%</td></tr>' +
     '<tr><td>N° of people with 3 or more EPs</td><td class="right bold">474k</td><td class="right green">-3.2%</td></tr>' +
     '<tr><td>N° of people with 10 or more EPs</td><td class="right bold">157k</td><td class="right green">-1.0%</td></tr>' +
-    '<tr><td>Percentage of people in EPs</td><td class="right bold">8,7%</td><td class="right green">-0.5 PP</td></tr>' +
+    '<tr><td>Percentage of people in EPs</td><td class="right bold">8.6%</td><td class="right green">-0.5 PP</td></tr>' +
     '<tr><td>Total number of EPs</td><td class="right bold">4,46M</td><td class="right green">-4.9%</td></tr>' +
     '<tr><td>Debt principal</td><td class="right bold">297B CZK (2018)</td><td class="right">-</td></tr>' +
     '<tr><td><span class="italic">The published data covers only natural persons;<br>EP = enforcement proceeding<br>Data for 2019 are from April 24, 2020, other years from December 31</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
@@ -202,7 +202,7 @@ function getColor2(props) {
     if (valIndi == "pj") {
       d = props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)];
     } else if (valIndi == "poe") {
-      d = props["poe" + rok.slice(3, 4)] * 100 / props["o"];
+      d = props["poe" + rok.slice(3, 4)] * 100 / props["o"+ rok.slice(3, 4)];
     } else if (valIndi == "pove") {
       d = (props["p2e" + rok.slice(3, 4)] + props["p3e" + rok.slice(3, 4)] + props["p4e" + rok.slice(3, 4)] + props["p5e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)];
     } else if (valIndi == "poe_change7") {
@@ -447,14 +447,14 @@ function makeDivInfo(feature, index) {
   } else if (valUj == "obce") {
     heading += '<td class="grey"><b>' + props.b.toUpperCase() + '</b>&nbsp;&nbsp;<a title="Remove" href="#" onclick="cancel(' + index + ');return false;"><img src="images/70206.png" width="12px"></a></td></tr><tr><td class="italic">' + props.r.replace(/ /g, '&nbsp;') + '</td></tr><tr><td class="italic">' + props.k.replace(/ /g, '&nbsp;') + '</td></tr>';
   }
-  t = heading + '<tr><td><b>' + ntn(feature.properties["poe" + rok.slice(3, 4)] * 100 / feature.properties["o"], 2) + '%</b></td></tr>';
+  t = heading + '<tr><td><b>' + ntn(feature.properties["poe" + rok.slice(3, 4)] * 100 / feature.properties["o"+ rok.slice(3, 4)], 2) + '%</b></td></tr>';
   if (rok != "2016") {
     if (props["poe" + rok.slice(3, 4)] >= props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()]) {
       plus = "+";
     } else {
       plus = "";
     }
-    t += '<tr><td>' + plus + ntn((props["poe" + rok.slice(3, 4)] / props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()] - 1) * 100, 1) + '% (' + plus + ntn((props["poe" + rok.slice(3, 4)] - props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()]) * 100 / props["o"], 2) + ' PP)</td></tr>';
+    t += '<tr><td>' + plus + ntn((props["poe" + rok.slice(3, 4)] / props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()] - 1) * 100, 1) + '% (' + plus + ntn((props["poe" + rok.slice(3, 4)] - props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP)</td></tr>';
   }
   t += '<tr><td>' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>'
   if (rok == "2017" || rok == "2016") {
@@ -468,7 +468,7 @@ function makeDivInfo(feature, index) {
   if (rok == "2017") {
     t += '<tr class="plny_detail"><td>' + ntn(props["m7"]) + ' CZK</td></tr>';
   }
-  t += '<tr class="plny_detail"><td>' + ntn(props["o"]) + '</td></tr>' +
+  t += '<tr class="plny_detail"><td>' + ntn(props["o"+ rok.slice(3, 4)]) + '</td></tr>' +
     '<tr class="plny_detail"><td>' + ntn(props["poe" + rok.slice(3, 4)]) + '</td></tr>' +
     '<tr class="plny_detail"><td>' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>';
   if (rok != "2016") {
@@ -612,9 +612,9 @@ function generateTooltip(feature) {
       t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey italic">district ' + props.r + ', ' + props.k + '</td><td class="right grey">&nbsp;</td></tr>';
     }
-    t += '<tr><td>N° of people 15+ y/o</td><td class="right">' + ntn(props["o"]) + '</td></tr>' +
+    t += '<tr><td>N° of people 15+ y/o</td><td class="right">' + ntn(props["o"+ rok.slice(3, 4)]) + '</td></tr>' +
       '<tr><td>N° of people in enforcement proceedings (EP)</td><td class="right">' + ntn(props["poe" + rok.slice(3, 4)]) + '</td></tr>' +
-      '<tr><td class="vybrano">Percentage of people in EPs</td><td class="vybrano right">' + ntn(props["poe" + rok.slice(3, 4)] * 100 / props["o"], 2) + '%</td></tr>' +
+      '<tr><td class="vybrano">Percentage of people in EPs</td><td class="vybrano right">' + ntn(props["poe" + rok.slice(3, 4)] * 100 / props["o"+ rok.slice(3, 4)], 2) + '%</td></tr>' +
       '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>' +
       '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>';
 
@@ -646,7 +646,7 @@ function generateTooltip(feature) {
       t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
     }
-    t += '<tr><td>Percentage (N°) of people in EPs</td><td class="right">' + ntn(props["poe" + rok.slice(3, 4)] * 100 / props["o"], 2) + '% (' + ntn(props["poe" + rok.slice(3, 4)]) + ')</td></tr>' +
+    t += '<tr><td>Percentage (N°) of people in EPs</td><td class="right">' + ntn(props["poe" + rok.slice(3, 4)] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% (' + ntn(props["poe" + rok.slice(3, 4)]) + ')</td></tr>' +
       '<tr><td class="bold">Including:</td></tr>' +
       '<tr><td class="bold border_down">Percentage (N°) of people with 1 EP</td><td class="bold border_down right">' + ntn(props["p1e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["p1e" + rok.slice(3, 4)]) + ')</td></tr>' +
       '<tr><td>Percentage (N°) of people with 2 EPs</td><td class="right">' + ntn(props["p2e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["p2e" + rok.slice(3, 4)]) + ')</td></tr>' +
@@ -711,13 +711,13 @@ function generateTooltip(feature) {
       t += '+';
     }
     t += ntn(props["poe7"] - props["poe6"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe7"] * 100 / props["o"], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"], 2) + '% </td>';
+    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe7"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
     if ((props["poe7"] - props["poe6"]) >= 0) {
       t += '<td class="right red">+';
     } else {
       t += '<td class="right green">'
     }
-    t += ntn((props["poe7"] - props["poe6"]) * 100 / props["o"], 2) + ' PP</td></tr>' +
+    t += ntn((props["poe7"] - props["poe6"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
       '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe7"]) + '</td><td class="right">' + ntn(props["pe6"]) + '</td>';
     if ((props["pe7"] - props["pe6"]) >= 0) {
       t += '<td class="right red">+';
@@ -765,13 +765,13 @@ function generateTooltip(feature) {
       t += '+';
     }
     t += ntn(props["poe8"] - props["poe7"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe8"] * 100 / props["o"], 2) + '% </td><td class="right">' + ntn(props["poe7"] * 100 / props["o"], 2) + '% </td>';
+    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe8"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe7"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
     if ((props["poe8"] - props["poe7"]) >= 0) {
       t += '<td class="right red">+';
     } else {
       t += '<td class="right green">'
     }
-    t += ntn((props["poe8"] - props["poe7"]) * 100 / props["o"], 2) + ' PP</td></tr>' +
+    t += ntn((props["poe8"] - props["poe7"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
       '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe8"]) + '</td><td class="right">' + ntn(props["pe7"]) + '</td>';
     if ((props["pe8"] - props["pe7"]) >= 0) {
       t += '<td class="right red">+';
@@ -819,13 +819,13 @@ function generateTooltip(feature) {
       t += '+';
     }
     t += ntn(props["poe9"] - props["poe8"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"], 2) + '% </td><td class="right">' + ntn(props["poe8"] * 100 / props["o"], 2) + '% </td>';
+    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe8"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
     if ((props["poe9"] - props["poe8"]) >= 0) {
       t += '<td class="right red">+';
     } else {
       t += '<td class="right green">'
     }
-    t += ntn((props["poe9"] - props["poe8"]) * 100 / props["o"], 2) + ' PP</td></tr>' +
+    t += ntn((props["poe9"] - props["poe8"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
       '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe9"]) + '</td><td class="right">' + ntn(props["pe8"]) + '</td>';
     if ((props["pe9"] - props["pe8"]) >= 0) {
       t += '<td class="right red">+';
@@ -873,13 +873,13 @@ function generateTooltip(feature) {
       t += '+';
     }
     t += ntn(props["poe9"] - props["poe6"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"], 2) + '% </td>';
+    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
     if ((props["poe9"] - props["poe6"]) >= 0) {
       t += '<td class="right red">+';
     } else {
       t += '<td class="right green">'
     }
-    t += ntn((props["poe9"] - props["poe6"]) * 100 / props["o"], 2) + ' PP</td></tr>' +
+    t += ntn((props["poe9"] - props["poe6"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
       '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe9"]) + '</td><td class="right">' + ntn(props["pe6"]) + '</td>';
     if ((props["pe9"] - props["pe6"]) >= 0) {
       t += '<td class="right red">+';

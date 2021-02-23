@@ -179,7 +179,7 @@ function showSearchPoints(geojson) {
 function getColor2(props) {
   try {
     if (valIndi == "pob") {
-      d = props["b"+rok.substring(3,4)+"c"] * 100 / props["o"];
+      d = props["b"+rok.substring(3,4)+"c"] * 100 / props["o"+rok.substring(3,4)];
     } else if (valIndi == "bve") {
       d = props["b"+rok.substring(3,4)+"c"] * 100 / props["poe"+rok.substring(3,4)];
 
@@ -422,7 +422,7 @@ function makeDivInfo(feature, index) {
   } else {
     t += '<tr><td>'+ntn(props["b9c"] - props["b8c"]) + '</b></td></tr>';
   }
-    t+=  '<tr><td>'+'<b>'+ntn(props["b"+rok.substring(3,4)+"c"] * 100 / props["o"], 2) + ' %</b></td></tr>'+
+    t+=  '<tr><td>'+'<b>'+ntn(props["b"+rok.substring(3,4)+"c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</b></td></tr>'+
       '<tr><td>'+ntn(props["b"+rok.substring(3,4)+"pv"], 1) + '</td></tr>'+
       '<tr><td>'+ntn(props["b"+rok.substring(3,4)+"m"]*100/props["b"+rok.substring(3,4)+"c"], 0)+" % / "+ ntn(props["b"+rok.substring(3,4)+"z"]*100/props["b"+rok.substring(3,4)+"c"], 0)+ ' %</td></tr>'+
       '<tr><td>'+ntn(props["b"+rok.substring(3,4)+"p"]*100/props["b"+rok.substring(3,4)+"c"],1) + ' %</td></tr>'+
@@ -550,7 +550,7 @@ function generateTooltip(feature) {
         '<tr><td class="grey italic">okres ' +props.r +", "+props.k + '</td><td class="right grey">&nbsp;</td></tr>';
     }
     t += '<tr><td>Počet osob v osobním bankrotu</td><td class="right">' + ntn(props["b"+rok.substring(3,4)+"c"]) + '</td></tr>' +
-      '<tr><td class="vybrano">Podíl osob v bankrotu</td><td class="right vybrano">' + ntn(props["b"+rok.substring(3,4)+"c"] * 100 / props["o"], 2) + ' %</td></tr>' +
+      '<tr><td class="vybrano">Podíl osob v bankrotu</td><td class="right vybrano">' + ntn(props["b"+rok.substring(3,4)+"c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td></tr>' +
       '<tr><td>Průměrný počet věřitelů</td><td class="right">' + ntn(props["b"+rok.substring(3,4)+"pv"], 1) + '</td></tr>' +
       '<tr><td>Podíl muži / ženy</td><td class="right">' + ntn(props["b"+rok.substring(3,4)+"m"]*100/props["b"+rok.substring(3,4)+"c"], 0)+" % / "+ ntn(props["b"+rok.substring(3,4)+"z"]*100/props["b"+rok.substring(3,4)+"c"], 0)+ ' %</td></tr>' +
       '<tr><td>Podíl manželů</td><td class="right">' + ntn(props["b"+rok.substring(3,4)+"p"]*100/props["b"+rok.substring(3,4)+"c"],1) + ' %</td></tr>' +
@@ -615,13 +615,13 @@ function generateTooltip(feature) {
           t += '+';
         }
         t += ntn(props["b9c"] - props["b8c"]) + ' osob)</td></tr>';
-      t+='<tr><td>Podíl osob v bankrotu</td><td class="right">' + ntn(props["b8c"] * 100 / props["o"], 2) + ' %</td><td class="right">' + ntn(props["b9c"] * 100 / props["o"], 2) + ' %</td>';
+      t+='<tr><td>Podíl osob v bankrotu</td><td class="right">' + ntn(props["b8c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td><td class="right">' + ntn(props["b9c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td>';
       if ((props["b9c"] - props["b8c"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn((props["b9c"] - props["b8c"]) * 100 / props["o"], 2) + ' p.b.</td></tr>' +
+      t += ntn((props["b9c"] - props["b8c"]) * 100 / props["o"+rok.substring(3,4)], 2) + ' p.b.</td></tr>' +
       '<tr><td>Průměrný počet věřitelů</td><td class="right">' + ntn(props["b8pv"], 1) + '</td><td class="right">' + ntn(props["b9pv"], 1) + '</td>';
       if ((props["b9pv"] - props["b8pv"]) >= 0) {
         t += '<td class="right">+';

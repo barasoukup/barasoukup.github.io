@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGRVRTDataSource>
+    <OGRVRTLayer name="obce_arccr-okrsy">
+        <SrcDataSource relativeToVRT="1">obce_arccr.xlsx</SrcDataSource>
+        <!--Header=False-->
+        <SrcLayer>okrsy</SrcLayer>
+        <Field name="kod_okres" src="kod_okres" type="String"/>
+        <Field name="o6" src="o6" type="Integer"/>
+        <Field name="o7" src="o7" type="Integer"/>
+        <Field name="o8" src="o8" type="Integer"/>
+        <Field name="o9" src="o9" type="Integer"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>
