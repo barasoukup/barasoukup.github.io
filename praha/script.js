@@ -13,11 +13,11 @@ var strany = {
     },
     pirati: {
       name: "Piráti",
-      breaks: [15,18,21,24]
+      breaks: [14,18,22,26]
     },
     stan: {
       name: "STAN",
-      breaks: [4,5,6,7]
+      breaks: [3,5,7,9]
     },
     pirstan: {
       name: "Piráti+STAN",
@@ -29,15 +29,15 @@ var strany = {
     },
     top09: {
       name: "TOP09",
-      breaks: [9,12,15,18]
+      breaks: [8,12,16,20]
     },
     ods: {
       name: "ODS",
-      breaks: [14,16,18,20]
+      breaks: [14,18,22,26]
     },
     "kdu-csl": {
       name: "KDU-ČSL",
-      breaks: [3,6,9,12]
+      breaks: [3,5,7,9]
     },
     spolu: {
       name: "Spolu",
@@ -45,23 +45,23 @@ var strany = {
     },
     ano: {
       name: "ANO",
-      breaks: [15,18,21,24]
+      breaks: [14,18,22,26]
     },
     cssd: {
       name: "ČSSD",
-      breaks: [4,5,6,7]
+      breaks: [3,5,7,9]
     },
     zeleni: {
       name: "Zelení",
-      breaks: [1,2,3,4]
+      breaks: [2,4,6,8]
     },
     spd: {
       name: "SPD",
-      breaks: [3,6,9,12]
+      breaks: [3,5,7,9]
     },
     kscm: {
       name: "KSČM",
-      breaks: [3,4,5,6]
+      breaks: [3,5,7,9]
     },
     ps: {
       name: "Praha sobě",
@@ -71,7 +71,7 @@ var strany = {
 
 var volby = ["ps17","mhmp18","ep19","pps21"];
 //var viewPrehled = 0;
-
+var valUj = "okrsky";
 //var autoLayer = false;
 //var isComparing = false;
 //var showUJ = true;
@@ -300,72 +300,28 @@ function onEachFeature(feature, layer) {
 
 //var comparingList = [];
 
-/*function switchMap(coor) {
+function switchMap(coor) {
   map.spin(true);
   legendUpdate();
-  loKraje.removeFrom(map); //krajske obrysy
-  if (valUj == "kraje") {
-    nlyr = lKraje;
-  } else if (valUj == "okresy") {
-    loKraje.addTo(map);
-    if (typeof lOkresy === 'undefined') {
-      lOkresy = new L.GeoJSON.AJAX("okresy.geojson", {
-        style: style,
-        onEachFeature: onEachFeature
-      });
-
-    }
-    nlyr = lOkresy;
-  } else if (valUj == "orp") {
-
-    loKraje.addTo(map);
-    if (typeof lOrp === 'undefined') {
-      lOrp = new L.GeoJSON.AJAX("orp.geojson", {
-        style: style,
-        onEachFeature: onEachFeature
-      });
-
-    }
-    nlyr = lOrp;
-  } else if (valUj == "pou") {
-    loKraje.addTo(map);
-    if (typeof lPou === 'undefined') {
-      lPou = new L.GeoJSON.AJAX("pou.geojson", {
-        style: style,
-        onEachFeature: onEachFeature
-      });
-
-    }
-    nlyr = lPou;
-  } else if (valUj == "obce") {
-    loKraje.addTo(map);
-    if (typeof lObce === 'undefined') {
-      lObce = new L.GeoJSON.AJAX("obce.geojson", {
-        style: style,
-        onEachFeature: onEachFeature
-      });
-
-    }
-    nlyr = lObce;
-  }
+  //loKraje.removeFrom(map); //krajske obrysy
+  if (valUj == "mc") {
+    nlyr = lMC;
+  } else if (valUj == "okrsky") {
+    nlyr = lOkrsky;
+  }
+
   if (lyr != nlyr) {
-    comparingList = [];
-    comparing.update();
     lyr.removeFrom(map);
     lyr = nlyr;
   }
   lyr.setStyle(style);
-
   lyr.eachLayer(function(layer) {
     layer._tooltip.setContent(generateTooltip(layer.feature))
-  });
-  if (showUJ) {
+  });
   lyr.addTo(map);
-  }
   map.spin(false);
-
 }
-*/
+
 
 /*
 function compare(e) {
@@ -452,12 +408,11 @@ style: style,
   onEachFeature: onEachFeature
 });
 
-/*lMC = new L.GeoJSON.AJAX("MC.geojson", {
+var lMC = new L.GeoJSON.AJAX("MC.geojson", {
   style: style,
   onEachFeature: onEachFeature
-
 });
-*/
+
 var lyr = lOkrsky;
 lyr.addTo(map);
 
@@ -522,17 +477,17 @@ function generateTooltip(feature) {
 
 
 
-  t = '<table><tr><td class="grey bold">' + props["OBEC_CISLO"]+ ' ('+String(props["ep19_volicu"]) + ' voličů )</td>';
+  t = '<table><tr><td class="grey bold">' + props["OBEC_CISLO"]+ ' ('+String(props["ep19_volicu"]) + ' voličů)</td>';
   volby.forEach(function (item, index) {
   t += '<td class="right grey bold">'+item.toUpperCase()+'</td>';
   });
   t+='</tr>';
-  t += '<tr><td class="grey bold">Volební účast</td>';
+  t += '<tr><td class="grey">Volební účast</td>';
   volby.forEach(function (item, index) {
     if(item=="mhmp18"){
-      t += '<td class="grey bold">'+String(Math.round((props[item+"_oo"]/props[item+"_volicu"])*100))+'% ('+String(props[item+"_oo"])+')</td>';
+      t += '<td class="grey">'+String(Math.round((props[item+"_oo"]/props[item+"_volicu"])*100))+'% ('+String(props[item+"_oo"])+')</td>';
     }else{
-  t += '<td class="grey bold">'+String(Math.round((props[item+"_platnych"]/props[item+"_volicu"])*100))+'% ('+String(props[item+"_platnych"])+')</td>';
+  t += '<td class="grey">'+String(Math.round((props[item+"_platnych"]/props[item+"_volicu"])*100))+'% ('+String(props[item+"_platnych"])+')</td>';
   }});
   t+='</tr>';
 
@@ -613,24 +568,28 @@ comparing.update = function() {
   }
 };
 */
-/*
+
 $('#uzemi').on('change', function() {
 
   map.spin(false);
   map.spin(true);
   v = $('input[name=uj]:checked', '#uzemi').val();
-  if (v == "auto") {
-    //autoLayer = true;
-    valUj = $("#uj_auto").html();
-    //switchMap();
-  } else {
-    //autoLayer = false;
-    valUj = v;
-    //switchMap();
-  }
+  valUj = v;
+  switchMap();
   map.spin(false);
 
 });
+
+$('#barva').on('change', function() {
+  map.spin(false);
+  map.spin(true);
+  valScale = $('#color_Select').children("option:selected").val();
+  switchMap();
+  legendUpdate();
+  map.spin(false);
+});
+
+
 // */
 
 $('#strana').on('change', function() {
@@ -764,7 +723,7 @@ $(document).ready(function() {
   legendUpdate();
 
   map.spin(false);
-  //valUj == "okrsky";
+  valUj == "okrsky";
   //var $radios = $('input:radio[name=uj]');
   //$radios.filter('[value="okrsky"]').prop('checked', true);
   //valIndi == "vol_ucast";
