@@ -408,7 +408,7 @@ style: style,
   onEachFeature: onEachFeature
 });
 
-var lMC = new L.GeoJSON.AJAX("MC.geojson", {
+var lMC = new L.GeoJSON.AJAX("mc.geojson", {
   style: style,
   onEachFeature: onEachFeature
 });
