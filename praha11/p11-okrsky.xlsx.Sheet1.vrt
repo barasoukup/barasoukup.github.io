@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGRVRTDataSource>
+    <OGRVRTLayer name="p11-okrsky-Sheet1">
+        <SrcDataSource relativeToVRT="1">p11-okrsky.xlsx</SrcDataSource>
+        <!--Header=True-->
+        <SrcSql dialect="sqlite">SELECT * FROM 'Sheet1' LIMIT 62 OFFSET 1</SrcSql>
+        <Field name="Field1" src="Field1" type="Integer"/>
+        <Field name="OBEC" src="Field2" type="Integer"/>
+        <Field name="OKRSEK" src="Field3" type="Integer"/>
+        <Field name="mc18_volicu" src="Field4" type="Integer"/>
+        <Field name="mc18_odevz_obal" src="Field5" type="Integer"/>
+        <Field name="mc18_platnych" src="Field6" type="Integer"/>
+        <Field name="mc18_hpp" src="Field7" type="Integer"/>
+        <Field name="mc18_jmnd" src="Field8" type="Integer"/>
+        <Field name="mc18_cssd" src="Field9" type="Integer"/>
+        <Field name="mc18_pirati" src="Field10" type="Integer"/>
+        <Field name="mc18_ano" src="Field11" type="Integer"/>
+        <Field name="mc18_spd" src="Field12" type="Integer"/>
+        <Field name="mc18_ods" src="Field13" type="Integer"/>
+        <Field name="mc18_kscm" src="Field14" type="Integer"/>
+        <Field name="mc18_stan_top09" src="Field15" type="Integer"/>
+        <Field name="mc18_hpp_p" src="Field16" type="Real"/>
+        <Field name="mc18_jmnd_p" src="Field17" type="Real"/>
+        <Field name="mc18_cssd_p" src="Field18" type="Real"/>
+        <Field name="mc18_pirati_p" src="Field19" type="Real"/>
+        <Field name="mc18_ano_p" src="Field20" type="Real"/>
+        <Field name="mc18_spd_p" src="Field21" type="Real"/>
+        <Field name="mc18_ods_p" src="Field22" type="Real"/>
+        <Field name="mc18_kscm_p" src="Field23" type="Real"/>
+        <Field name="mc18_stan_top09_p" src="Field24" type="Real"/>
+        <Field name="mc18_vol_ucast" src="Field25" type="Real"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>
