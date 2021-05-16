@@ -1,4 +1,4 @@
-﻿var rok = "2019";
+﻿var rok = "2020";
 var valUj = "kraje";
 var valIndi = "pob";
 var viewPrehled = 0;
@@ -90,20 +90,19 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2019</td><td class="right grey bold">meziroční změna</td></tr>' +
-    '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">116 tis.</td><td class="right">+1,6 %</td></tr>' +
-    '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,29 %</td><td class="right">+0,01 p.b.</td></tr>' +
-    '<tr><td>Průměrný počet věřitelů</td><td class="right bold">9,8</td><td class="right">+0,2</td></tr>' +
-    '<tr><td>Podíl muži / ženy</td><td class="right bold">52 % / 48 %</td><td class="right">+1 p.b. muži</td></tr>' +
-    '<tr><td>Podíl manželů</td><td class="right bold">29 %</td><td class="right">-</td></tr>' +
-    '<tr><td>Průměrný / mediánový věk</td><td class="right bold">43,7 / 43</td><td class="right">-1,2 / -1</td></tr>' +
-    '<tr><td>Osobní bankroty vs. exekuce</td><td class="right bold">14,18 %</td><td class="right">+0,9 p.b.</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2020</td><td class="right grey bold">meziroční změna</td></tr>' +
+    '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">115 tis.</td><td class="right">-1 %</td></tr>' +
+    '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,27 %</td><td class="right">-0,02 p.b.</td></tr>' +
+    '<tr><td>Podíl muži / ženy</td><td class="right bold">54 % / 46 %</td><td class="right">+2 p.b. muži</td></tr>' +
+    '<tr><td>Podíl manželů</td><td class="right bold">27 %</td><td class="right">-2 p.b.</td></tr>' +
+    '<tr><td>Průměrný / mediánový věk</td><td class="right bold">45,8 / 45</td><td class="right">+2,1 / +2</td></tr>' +
+    '<tr><td>Osobní bankroty vs. exekuce</td><td class="right bold">14,02 %</td><td class="right">-0,16 p.b.</td></tr>' +
     '<tr><td><u>Věková struktura osob v bankrotu:</u></td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right bold">13 % (14 753)</td><td class="right">+3 168</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right bold">27 % (31 301)</td><td class="right">+753</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right bold">29 % (34 212)</td><td class="right">-288</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right bold">24 % (28 173)</td><td class="right">-1 523</td></tr>' +
-    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right bold">6 % (7 476)</td><td class="right">-1 289</td></tr>'+
+    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right bold">8 % (9 470)</td><td class="right">-5 283</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right bold">26 % (29 898)</td><td class="right">-1 403</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right bold">30 % (34 059)</td><td class="right">-153</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right bold">27 % (31 458)</td><td class="right">+3 285</td></tr>' +
+    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right bold">8 % (9 712)</td><td class="right">2 236</td></tr>'+
     '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>'+
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Zobrazit souhrnné údaje</a></div> ';
 
@@ -186,6 +185,18 @@ function getColor2(props) {
     } else if (valIndi == "pob_change9") {
           if (props["b8c"] > 0) {
             d = (props["b9c"] / props["b8c"] - 1) * 100;
+          } else {
+            d = 0
+          }
+    } else if (valIndi == "pob_change0") {
+          if (props["b9c"] > 0) {
+            d = (props["b0c"] / props["b9c"] - 1) * 100;
+          } else {
+            d = 0
+          }
+    } else if (valIndi == "pob_changec") {
+          if (props["b8c"] > 0) {
+            d = (props["b0c"] / props["b8c"] - 1) * 100;
           } else {
             d = 0
           }
@@ -583,28 +594,30 @@ function generateTooltip(feature) {
         '<tr><td class="grey italic">okres '+props.r +","+ props.k + '</td><td class="right grey">&nbsp;</td></tr>';
 
     }
+
+
     t += '<tr><td>Počet osob v osobním bankrotu</td><td class="right">' + ntn(props["b"+rok.substring(3,4)+"c"]) + '</td></tr>' +
     '<tr><td>Počet osob v exekuci</td><td class="right">' + ntn(props["poe"+rok.substring(3,4)]) + '</td></tr>' +
     '<tr><td class="vybrano">Osobní bankroty vs. exekuce</td><td class="right vybrano">' + ntn(props["b"+rok.substring(3,4)+"c"] * 100 / props["poe"+rok.substring(3,4)], 2) + ' %</td></tr>';
 
-  } else if (valIndi == "pob_change9") {
+  } else if (valIndi == "pob_change9" || valIndi == "pob_change0" || valIndi == "pob_changec") {
     if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">změna</td></tr>';
+      t = '<table><tr><td class="grey bold">' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">změna \'18–\'19</td><td class="right grey bold">změna \'19–\'20</td><td class="right grey bold">změna \'18–\'20</td></tr>';
     } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+      t = '<table><tr><td class="grey bold">okres ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">změna \'18–\'19</td><td class="right grey bold">změna \'19–\'20</td><td class="right grey bold">změna \'18–\'20</td></tr>' +
+        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">změna \'18–\'19</td><td class="right grey bold">změna \'19–\'20</td><td class="right grey bold">změna \'18–\'20</td></tr>' +
+        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }  else if (valUj == "pou") {
-      t = '<table><tr><td class="grey bold">pověřená obec ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+      t = '<table><tr><td class="grey bold">pověřená obec ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">změna \'18–\'19</td><td class="right grey bold">změna \'19–\'20</td><td class="right grey bold">změna \'18–\'20</td></tr>' +
+        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }  else if (valUj == "obce") {
-        t = '<table><tr><td class="grey bold">' + props.b.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">změna</td></tr>' +
-          '<tr><td class="grey italic">okres '+props.r+", " + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+        t = '<table><tr><td class="grey bold">' + props.b.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">změna \'18–\'19</td><td class="right grey bold">změna \'19–\'20</td><td class="right grey bold">změna \'18–\'20</td></tr>' +
+          '<tr><td class="grey italic">okres '+props.r+", " + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }
 
-    t += '<tr><td class="vybrano">Počet osob v osobním bankrotu</td><td class="right vybrano">' + ntn(props["b8c"]) + '</td><td class="right vybrano">' + ntn(props["b9c"]) + '</td>';
+    t += '<tr><td class="vybrano">Počet osob v osobním bankrotu</td><td class="right vybrano">' + ntn(props["b8c"]) + '</td><td class="right vybrano">' + ntn(props["b9c"]) + '</td><td class="right vybrano">' + ntn(props["b0c"]) + '</td>';
     if ((props["b9c"] - props["b8c"]) >= 0) {
       t += '<td class="right vybrano">+';
     } else {
@@ -614,64 +627,170 @@ function generateTooltip(feature) {
         if ((props["b9c"] - props["b8c"]) >= 0) {
           t += '+';
         }
-        t += ntn(props["b9c"] - props["b8c"]) + ' osob)</td></tr>';
-      t+='<tr><td>Podíl osob v bankrotu</td><td class="right">' + ntn(props["b8c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td><td class="right">' + ntn(props["b9c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td>';
+        t += ntn(props["b9c"] - props["b8c"]) + ' osob)</td>';
+        if ((props["b0c"] - props["b9c"]) >= 0) {
+          t += '<td class="right vybrano">+';
+        } else {
+          t += '<td class="right vybrano">'
+        }
+        t += ntn((props["b0c"] / props["b9c"] - 1) * 100, 1) + ' % ('
+            if ((props["b0c"] - props["b9c"]) >= 0) {
+              t += '+';
+            }
+            t += ntn(props["b0c"] - props["b9c"]) + ' osob)</td>';
+            if ((props["b0c"] - props["b8c"]) >= 0) {
+              t += '<td class="right vybrano">+';
+            } else {
+              t += '<td class="right vybrano">'
+            }
+            t += ntn((props["b0c"] / props["b8c"] - 1) * 100, 1) + ' % ('
+                if ((props["b0c"] - props["b8c"]) >= 0) {
+                  t += '+';
+                }
+                t += ntn(props["b0c"] - props["b8c"]) + ' osob)</td></tr>';
+
+
+      t+='<tr><td>Podíl osob v bankrotu</td><td class="right">' + ntn(props["b8c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td><td class="right">' + ntn(props["b9c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td><td class="right">' + ntn(props["b0c"] * 100 / props["o"+rok.substring(3,4)], 2) + ' %</td>';
       if ((props["b9c"] - props["b8c"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn((props["b9c"] - props["b8c"]) * 100 / props["o"+rok.substring(3,4)], 2) + ' p.b.</td></tr>' +
-      '<tr><td>Průměrný počet věřitelů</td><td class="right">' + ntn(props["b8pv"], 1) + '</td><td class="right">' + ntn(props["b9pv"], 1) + '</td>';
+      t += ntn((props["b9c"] - props["b8c"]) * 100 / props["o"+rok.substring(3,4)], 2) + ' p.b.</td>';
+      if ((props["b0c"] - props["b9c"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn((props["b0c"] - props["b9c"]) * 100 / props["o"+rok.substring(3,4)], 2) + ' p.b.</td>';
+      if ((props["b0c"] - props["b8c"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn((props["b0c"] - props["b8c"]) * 100 / props["o"+rok.substring(3,4)], 2) + ' p.b.</td></tr>' +
+      '<tr><td>Průměrný počet věřitelů</td><td class="right">' + ntn(props["b8pv"], 1) + '</td><td class="right">' + ntn(props["b9pv"], 1) + '</td><td class="right">-</td>';
       if ((props["b9pv"] - props["b8pv"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn(props["b9pv"] - props["b8pv"],1) + '</td></tr>' +
-      '<tr><td>Průměrný věk</td><td class="right">' + ntn(props["b8v_p"],1)+'</td><td class="right">' + ntn(props["b9v_p"],1)+'</td>';
+      t += ntn(props["b9pv"] - props["b8pv"],1) + '</td><td class="right">-</td><td class="right">-</td></tr>' +
+      '<tr><td>Průměrný věk</td><td class="right">' + ntn(props["b8v_p"],1)+'</td><td class="right">' + ntn(props["b9v_p"],1)+'</td><td class="right">' + ntn(props["b0v_p"],1)+'</td>';
       if ((props["b9v_p"] - props["b8v_p"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn(props["b9v_p"] - props["b8v_p"],1) + '</td></tr>' +
+      t += ntn(props["b9v_p"] - props["b8v_p"],1) + '</td>';
+      if ((props["b0v_p"] - props["b9v_p"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn(props["b0v_p"] - props["b9v_p"],1) + '</td>'
+      if ((props["b0v_p"] - props["b8v_p"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn(props["b0v_p"] - props["b8v_p"],1) + '</td></tr>' +
       '<tr class="odsadit"><td><u>Věková struktura osob v bankrotu:</u></td></tr>' +
-      '<tr><td>Počet osob ve věku 18 až 29 let</td><td class="right">' + ntn(props["b8v18_29"]) + '</td><td class="right">' + ntn(props["b9v18_29"]) + '</td>';
+      '<tr><td>Počet osob ve věku 18 až 29 let</td><td class="right">' + ntn(props["b8v18_29"]) + '</td><td class="right">' + ntn(props["b9v18_29"]) + '</td><td class="right">' + ntn(props["b0v18_29"]) + '</td>';
       if ((props["b9v18_29"] - props["b8v18_29"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn(props["b9v18_29"] - props["b8v18_29"]) + '</td></tr>' +
-      '<tr><td>Počet osob ve věku 30 až 39 let</td><td class="right">' + ntn(props["b8v30_39"]) + '</td><td class="right">' + ntn(props["b9v30_39"]) + '</td>';
-      if ((props["b9v30_39"] - props["b8v30_39"]) >= 0) {
+      t += ntn(props["b9v18_29"] - props["b8v18_29"]) + '</td>';
+      if ((props["b0v18_29"] - props["b9v18_29"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn(props["b9v30_39"] - props["b8v30_39"]) + '</td></tr>' +
-      '<tr><td>Počet osob ve věku 40 až 49 let</td><td class="right">' + ntn(props["b8v40_49"]) + '</td><td class="right">' + ntn(props["b9v40_49"]) + '</td>';
+      t += ntn(props["b0v18_29"] - props["b9v18_29"]) + '</td>';
+      if ((props["b0v18_29"] - props["b8v18_29"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn(props["b0v18_29"] - props["b8v18_29"]) + '</td></tr>'+
+      '<tr><td>Počet osob ve věku 30 až 39 let</td><td class="right">' + ntn(props["b8v30_39"]) + '</td><td class="right">' + ntn(props["b9v30_39"]) + '</td><td class="right">' + ntn(props["b0v30_39"]) + '</td>';
+        if ((props["b9v30_39"] - props["b8v30_39"]) >= 0) {
+          t += '<td class="right">+';
+        } else {
+          t += '<td class="right">'
+        }
+        t += ntn(props["b9v30_39"] - props["b8v30_39"]) + '</td>';
+        if ((props["b0v30_39"] - props["b9v30_39"]) >= 0) {
+          t += '<td class="right">+';
+        } else {
+          t += '<td class="right">'
+        }
+        t += ntn(props["b0v30_39"] - props["b9v30_39"]) + '</td>';
+        if ((props["b0v30_39"] - props["b8v30_39"]) >= 0) {
+          t += '<td class="right">+';
+        } else {
+          t += '<td class="right">'
+        }
+        t += ntn(props["b0v30_39"] - props["b8v30_39"]) + '</td></tr>'+
+        '<tr><td>Počet osob ve věku 40 až 49 let</td><td class="right">' + ntn(props["b8v40_49"]) + '</td><td class="right">' + ntn(props["b9v40_49"]) + '</td><td class="right">' + ntn(props["b0v40_49"]) + '</td>';
       if ((props["b9v40_49"] - props["b8v40_49"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn(props["b9v40_49"] - props["b8v40_49"]) + '</td></tr>' +
-      '<tr><td>Počet osob ve věku 50 až 65 let</td><td class="right">' + ntn(props["b8v50_64"]) + '</td><td class="right">' + ntn(props["b9v50_64"]) + '</td>';
+      t += ntn(props["b9v40_49"] - props["b8v40_49"]) + '</td>';
+      if ((props["b0v40_49"] - props["b9v40_49"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn(props["b0v40_49"] - props["b9v40_49"]) + '</td>';
+      if ((props["b0v40_49"] - props["b8v40_49"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn(props["b0v40_49"] - props["b8v40_49"]) + '</td></tr>'+
+      '<tr><td>Počet osob ve věku 50 až 64 let</td><td class="right">' + ntn(props["b8v50_64"]) + '</td><td class="right">' + ntn(props["b9v50_64"]) + '</td><td class="right">' + ntn(props["b0v50_64"]) + '</td>';
       if ((props["b9v50_64"] - props["b8v50_64"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn(props["b9v50_64"] - props["b8v50_64"]) + '</td></tr>' +
-      '<tr><td>Počet seniorů (65+ let)</td><td class="right">' + ntn(props["b8v65_"]) + '</td><td class="right">' + ntn(props["b9v65_"]) + '</td>';
-      if ((props["b9v65_"] - props["b8v65_"]) >= 0) {
+      t += ntn(props["b9v50_64"] - props["b8v50_64"]) + '</td>';
+      if ((props["b0v50_64"] - props["b9v50_64"]) >= 0) {
         t += '<td class="right">+';
       } else {
         t += '<td class="right">'
       }
-      t += ntn(props["b9v65_"] - props["b8v65_"]) + '</td></tr>'
+      t += ntn(props["b0v50_64"] - props["b9v50_64"]) + '</td>';
+      if ((props["b0v50_64"] - props["b8v50_64"]) >= 0) {
+        t += '<td class="right">+';
+      } else {
+        t += '<td class="right">'
+      }
+      t += ntn(props["b0v50_64"] - props["b8v50_64"]) + '</td></tr>'+
+      '<tr><td>Počet seniorů (65+ let)</td><td class="right">' + ntn(props["b8v65_"]) + '</td><td class="right">' + ntn(props["b9v65_"]) + '</td><td class="right">' + ntn(props["b0v65_"]) + '</td>';
+        if ((props["b9v65_"] - props["b8v65_"]) >= 0) {
+          t += '<td class="right">+';
+        } else {
+          t += '<td class="right">'
+        }
+        t += ntn(props["b9v65_"] - props["b8v65_"]) + '</td>';
+        if ((props["b0v65_"] - props["b9v65_"]) >= 0) {
+          t += '<td class="right">+';
+        } else {
+          t += '<td class="right">'
+        }
+        t += ntn(props["b0v65_"] - props["b9v65_"]) + '</td>';
+        if ((props["b0v65_"] - props["b8v65_"]) >= 0) {
+          t += '<td class="right">+';
+        } else {
+          t += '<td class="right">'
+        }
+        t += ntn(props["b0v65_"] - props["b8v65_"]) + '</td></tr>';
   }
 
   t += '<tr></table>';
