@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGRVRTDataSource>
+    <OGRVRTLayer name="obce_a20-kraje">
+        <SrcDataSource relativeToVRT="1">obce_a20.xlsx</SrcDataSource>
+        <!--Header=False-->
+        <SrcLayer>kraje</SrcLayer>
+        <Field name="kod_kraj" src="kod_kraj" type="String"/>
+        <Field name="o20" src="o20" type="Integer"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>
