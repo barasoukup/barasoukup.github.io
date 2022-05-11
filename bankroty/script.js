@@ -71,19 +71,18 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2020</td><td class="right grey bold">meziroční změna</td></tr>' +
-    '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">115 tis.</td><td class="right">-1 %</td></tr>' +
-    '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,27 %</td><td class="right">-0,02 p.b.</td></tr>' +
-    '<tr><td>Podíl muži / ženy</td><td class="right bold">54 % / 46 %</td><td class="right">+2 p.b. muži</td></tr>' +
-    '<tr><td>Podíl manželů</td><td class="right bold">27 %</td><td class="right">-2 p.b.</td></tr>' +
-    '<tr><td>Průměrný / mediánový věk</td><td class="right bold">45,8 / 45</td><td class="right">+2,1 / +2</td></tr>' +
-    '<tr><td>Osobní bankroty vs. exekuce</td><td class="right bold">14,02 %</td><td class="right">-0,16 p.b.</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2021</td><td class="right grey bold">meziroční změna</td></tr>' +
+    '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">114 tis.</td><td class="right">-1 %</td></tr>' +
+    '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,27 %</td><td class="right">±0 p.b.</td></tr>' +
+    '<tr><td>Podíl muži / ženy</td><td class="right bold">54 % / 46 %</td><td class="right">±0</td></tr>' +
+    '<tr><td>Podíl manželů</td><td class="right bold">24 %</td><td class="right">-3 p.b.</td></tr>' +
+    '<tr><td>Průměrný / mediánový věk</td><td class="right bold">45,8 / 45</td><td class="right">±0 / ±0</td></tr>' +
     '<tr><td><u>Věková struktura osob v bankrotu:</u></td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right bold">8 % (9 470)</td><td class="right">-5 283</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right bold">26 % (29 898)</td><td class="right">-1 403</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right bold">30 % (34 059)</td><td class="right">-153</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right bold">27 % (31 458)</td><td class="right">+3 285</td></tr>' +
-    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right bold">8 % (9 712)</td><td class="right">2 236</td></tr>'+
+    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right bold">8 % (9 570)</td><td class="right">+100</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right bold">26 % (29 905)</td><td class="right">+7</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right bold">29 % (33 287)</td><td class="right">-772</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right bold">28 % (31 561)</td><td class="right">+103</td></tr>' +
+    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right bold">9 % (9 729)</td><td class="right">+17</td></tr>'+
     '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>'+
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Zobrazit souhrnné údaje</a></div> ';
   return this._div;
