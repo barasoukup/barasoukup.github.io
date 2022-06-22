@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGRVRTDataSource>
+    <OGRVRTLayer name="obce-pou_poe">
+        <SrcDataSource relativeToVRT="1">obce.xlsx</SrcDataSource>
+        <!--Header=False-->
+        <SrcLayer>pou_poe</SrcLayer>
+        <Field name="pou_kod" src="pou_kod" type="String"/>
+        <Field name="poe1" src="poe1" type="Integer"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>

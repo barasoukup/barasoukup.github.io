@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGRVRTDataSource>
+    <OGRVRTLayer name="orp-orp">
+        <SrcDataSource relativeToVRT="1">orp.xlsx</SrcDataSource>
+        <!--Header=False-->
+        <SrcLayer>orp</SrcLayer>
+        <Field name="i" src="i" type="Integer"/>
+        <Field name="n" src="n" type="String"/>
+        <Field name="pe6" src="pe6" type="Integer"/>
+        <Field name="c6" src="c6" type="Integer64"/>
+        <Field name="poe6" src="poe6" type="Integer"/>
+        <Field name="k" src="k" type="String"/>
+        <Field name="poe7" src="poe7" type="Integer"/>
+        <Field name="pe7" src="pe7" type="Integer"/>
+        <Field name="p1e7" src="p1e7" type="Integer"/>
+        <Field name="p2e7" src="p2e7" type="Integer"/>
+        <Field name="p3e7" src="p3e7" type="Integer"/>
+        <Field name="p4e7" src="p4e7" type="Integer"/>
+        <Field name="p5e7" src="p5e7" type="Integer"/>
+        <Field name="pde7" src="pde7" type="Integer"/>
+        <Field name="pme7" src="pme7" type="Integer"/>
+        <Field name="pse7" src="pse7" type="Integer"/>
+        <Field name="poe7p" src="poe7p" type="Integer"/>
+        <Field name="pjo7p" src="pjo7p" type="Integer"/>
+        <Field name="pv7p" src="pv7p" type="Integer"/>
+        <Field name="poe9" src="poe9" type="Integer"/>
+        <Field name="pe9" src="pe9" type="Integer"/>
+        <Field name="pde9" src="pde9" type="Integer"/>
+        <Field name="pme9" src="pme9" type="Integer"/>
+        <Field name="pse9" src="pse9" type="Integer"/>
+        <Field name="p1e9" src="p1e9" type="Integer"/>
+        <Field name="p2e9" src="p2e9" type="Integer"/>
+        <Field name="p3e9" src="p3e9" type="Integer"/>
+        <Field name="p4e9" src="p4e9" type="Integer"/>
+        <Field name="p5e9" src="p5e9" type="Integer"/>
+        <Field name="poe9p" src="poe9p" type="Integer"/>
+        <Field name="pv9p" src="pv9p" type="Integer"/>
+        <Field name="c7" src="c7" type="Integer64"/>
+        <Field name="m7" src="m7" type="Integer"/>
+        <Field name="o6" src="o6" type="Integer"/>
+        <Field name="o7" src="o7" type="Integer"/>
+        <Field name="o8" src="o8" type="Integer"/>
+        <Field name="o9" src="o9" type="Integer"/>
+        <Field name="poe1" src="poe1" type="Integer"/>
+        <Field name="p45e1" src="p45e1" type="Integer"/>
+        <Field name="pe1" src="pe1" type="Integer"/>
+        <Field name="o1" src="o1" type="Integer"/>
+        <Field name="podil1" src="podil1" type="Real"/>
+        <Field name="poe1p" src="poe1p" type="Integer"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>

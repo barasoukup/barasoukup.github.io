@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OGRVRTDataSource>
+    <OGRVRTLayer name="EDIT_s_kody - exekuce-kraje">
+        <SrcDataSource relativeToVRT="1">EDIT_s_kody - exekuce.xlsx</SrcDataSource>
+        <!--Header=False-->
+        <SrcLayer>kraje</SrcLayer>
+        <Field name="kod_kraj" src="kod_kraj" type="String"/>
+        <Field name="poe1" src="poe1" type="Integer"/>
+        <Field name="p45e1" src="p45e1" type="Integer"/>
+        <Field name="pe1" src="pe1" type="Integer"/>
+    </OGRVRTLayer>
+</OGRVRTDataSource>

@@ -40,7 +40,7 @@ body {
   padding: 5px;
   height: 100%;
   display: none;
-  width:230px;
+  width:245px;
 }
 
 #map_sipka {
@@ -66,6 +66,10 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+#eu_find {
+  height: 100px
 }
 
 /*form {

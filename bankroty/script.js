@@ -524,152 +524,152 @@ function generateTooltip(feature) {
         t = '<table><tr><td class="grey bold">' + props.b.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td></tr>' +
           '<tr><td class="grey italic">okres '+props.r+", " + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }
-    t += '<tr><td class="vybrano">Počet osob v osobním bankrotu</td>'+
-    '<td class="right vybrano">' + ntn(props["b8c"])+ '</td>'+
-    '<td class="right vybrano">' + ntn(props["b9c"])+ ' (';
-    if ((props["b9c"] - props["b8c"]) >= 0) {
-      t += '+';
-    }
-    t += ntn((props["b9c"] / props["b8c"] - 1) * 100, 1) +" %)";
-    t += '</td>'+
-    '<td class="right vybrano">' + ntn(props["b0c"]) + ' (';
-    if ((props["b0c"] - props["b9c"]) >= 0) {
-      t += '+';
-    }
-    t += ntn((props["b0c"] / props["b9c"] - 1) * 100, 1) +" %)";
-    t += '</td>'+
-    '<td class="right vybrano">' + ntn(props["b1c"]) + " (";
-    if ((props["b1c"] - props["b0c"]) >= 0) {
-      t += '+';
-    }
-    t += ntn((props["b1c"] / props["b0c"] - 1) * 100, 1) +' %)</td></tr>';
-    t+='<tr><td>Podíl osob v bankrotu</td>'+
-    '<td class="right">' + ntn(props["b8c"] * 100 / props["o8"], 2) + ' %</td>'+
-    '<td class="right">' + ntn(props["b9c"] * 100 / props["o9"], 2) + ' % (';
-    if ((props["b9c"] - props["b8c"]) >= 0) {
-      t += '+';
-    }
-    t += ntn((props["b9c"] - props["b8c"]) * 100 / props["o9"], 2) + ' p.b.)</td>'+
-    '<td class="right">' + ntn(props["b0c"] * 100 / props["o0"], 2) + ' % (';
-    if ((props["b0c"] - props["b9c"]) >= 0) {
-      t += '+';
-    }
-    t += ntn((props["b0c"] - props["b9c"]) * 100 / props["o0"], 2) + ' p.b.)</td>'+
-    '<td class="right">' + ntn(props["b1c"] * 100 / props["o1"], 2) + ' % (';
-    if ((props["b1c"] - props["b0c"]) >= 0) {
-      t += '+';
-    }
-    t += ntn((props["b1c"] - props["b0c"]) * 100 / props["o1"], 2) + ' p.b.)</td></tr>';
-    t += '<tr><td>Průměrný počet věřitelů</td>'+
-    '<td class="right">' + ntn(props["b8pv"], 1) + '</td>'+
-    '<td class="right">' + ntn(props["b9pv"], 1) + '(';
-    if ((props["b9pv"] - props["b8pv"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b9pv"] - props["b8pv"],1) + ')</td><td class="right">-</td><td class="right">-</td></tr>';
-    t += '<tr><td>Průměrný věk</td><td class="right">' + ntn(props["b8v_p"],1)+'</td>'+
-    '<td class="right">' + ntn(props["b9v_p"],1)+' (';
-    if ((props["b9v_p"] - props["b8v_p"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b9v_p"] - props["b8v_p"],1)+ ' )</td>'+
-    '<td class="right">' + ntn(props["b0v_p"],1)+' (';
-    if ((props["b0v_p"] - props["b9v_p"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v_p"] - props["b9v_p"],1)+ ' )'+
-    '</td><td class="right">' + ntn(props["b1v_p"],1)+' (';
-    if ((props["b1v_p"] - props["b0v_p"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b1v_p"] - props["b0v_p"],1)+ ' )</td></tr>';
-    t += '<tr class="odsadit"><td><u>Věková struktura osob v bankrotu:</u></td></tr>';
-    t += '<tr><td>Počet osob ve věku 18 až 29 let</td>'+
-    '<td class="right">' + ntn(props["b8v18_29"]) + '</td>'+
-    '<td class="right">' + ntn(props["b9v18_29"]) + ' (';
-    if ((props["b9v18_29"] - props["b8v18_29"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b9v18_29"] - props["b8v18_29"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b0v18_29"]) + ' (';
-    if ((props["b0v18_29"] - props["b9v18_29"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v18_29"] - props["b9v18_29"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b1v18_29"]) + ' (';
-    if ((props["b0v18_29"] - props["b9v18_29"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v18_29"] - props["b9v18_29"]) + ')</td></tr>';
-    t += '<tr><td>Počet osob ve věku 30 až 39 let</td>'+
-    '<td class="right">' + ntn(props["b8v30_39"]) + '</td>'+
-    '<td class="right">' + ntn(props["b9v30_39"]) + ' (';
-    if ((props["b9v30_39"] - props["b8v30_39"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b9v30_39"] - props["b8v30_39"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b0v30_39"]) + ' (';
-    if ((props["b0v30_39"] - props["b9v30_39"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v30_39"] - props["b9v30_39"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b1v30_39"]) + ' (';
-    if ((props["b0v30_39"] - props["b9v30_39"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v30_39"] - props["b9v30_39"]) + ')</td></tr>';
-    t += '<tr><td>Počet osob ve věku 40 až 49 let</td>'+
-    '<td class="right">' + ntn(props["b8v40_49"]) + '</td>'+
-    '<td class="right">' + ntn(props["b9v40_49"]) + ' (';
-    if ((props["b9v40_49"] - props["b8v40_49"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b9v40_49"] - props["b8v40_49"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b0v40_49"]) + ' (';
-    if ((props["b0v40_49"] - props["b9v40_49"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v40_49"] - props["b9v40_49"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b1v40_49"]) + ' (';
-    if ((props["b0v40_49"] - props["b9v40_49"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v40_49"] - props["b9v40_49"]) + ')</td></tr>';
-    t += '<tr><td>Počet osob ve věku 50 až 65 let</td>'+
-    '<td class="right">' + ntn(props["b8v50_64"]) + '</td>'+
-    '<td class="right">' + ntn(props["b9v50_64"]) + ' (';
-    if ((props["b9v50_64"] - props["b8v50_64"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b9v50_64"] - props["b8v50_64"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b0v50_64"]) + ' (';
-    if ((props["b0v50_64"] - props["b9v50_64"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v50_64"] - props["b9v50_64"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b1v50_64"]) + ' (';
-    if ((props["b0v50_64"] - props["b9v50_64"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v50_64"] - props["b9v50_64"]) + ')</td></tr>';
-    t += '<tr><td>Počet seniorů (65+ let)</td>'+
-    '<td class="right">' + ntn(props["b8v65_"]) + '</td>'+
-    '<td class="right">' + ntn(props["b9v65_"]) + ' (';
-    if ((props["b9v65_"] - props["b8v65_"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b9v65_"] - props["b8v65_"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b0v65_"]) + ' (';
-    if ((props["b0v65_"] - props["b9v65_"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v65_"] - props["b9v65_"]) + ')</td>'+
-    '<td class="right">' + ntn(props["b1v65_"]) + ' (';
-    if ((props["b0v65_"] - props["b9v65_"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["b0v65_"] - props["b9v65_"]) + ')</td></tr>';}
-  t += '</table>';
+    years=["8","9","0","1"];
+
+    t += '<tr><td class="vybrano">Počet osob v osobním bankrotu</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right vybrano">' + ntn(props["b"+item+"c"]);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"c"] - props["b"+last_item+"c"]) >= 0) {
+            t += '+';
+          }
+          t += ntn((props["b"+item+"c"] / props["b"+last_item+"c"] - 1) * 100, 1) +" %)";
+        }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t+='</tr><tr><td>Podíl osob v bankrotu</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right">' + ntn(props["b"+item+"c"] * 100 / props["o"+item], 2) + ' %';
+        if (index!=0) {
+          t+= ' (';
+          if (((props["b"+item+"c"] * 100 / props["o"+item]) - (props["b"+last_item+"c"] * 100 / props["o"+last_item])) >= 0) {
+            t += '+';
+          }
+          t += ntn(((props["b"+item+"c"] * 100 / props["o"+item]) - (props["b"+last_item+"c"] * 100 / props["o"+last_item])), 2) + ' p.b.)'
+          }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '</tr><tr><td>Průměrný počet věřitelů</td>';
+    years.forEach(
+      function(item, index) {
+        if (item=="8" || item=="9")
+        {
+        t+='<td class="right">' + ntn(props["b"+item+"pv"] , 1);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"pv"] - props["b"+last_item+"pv"]) >= 0) {
+            t += '+';
+          }
+          t += ntn(props["b"+item+"pv"] - props["b"+last_item+"pv"], 1) + ')'
+          }
+        } else {
+          t+='<td class="right">-'
+        }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '<tr><td>Průměrný věk</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right">' + ntn(props["b"+item+"v_p"] , 1);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"v_p"] - props["b"+last_item+"v_p"]) >= 0) {
+            t += '+';
+          }
+          t += ntn(props["b"+item+"v_p"] - props["b"+last_item+"v_p"], 1) + ')'
+          }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '</tr><tr class="odsadit"><td><u>Věková struktura osob v bankrotu:</u></td></tr>';
+    t += '</tr><tr><td>Počet osob ve věku 18 až 29 let</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right">' + ntn(props["b"+item+"v18_29"]);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"v18_29"] - props["b"+last_item+"v18_29"]) >= 0) {
+            t += '+';
+          }
+          t += ntn(props["b"+item+"v18_29"] - props["b"+last_item+"v18_29"]) + ')'
+          }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '</tr><tr><td>Počet osob ve věku 30 až 39 let</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right">' + ntn(props["b"+item+"v30_39"]);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"v30_39"] - props["b"+last_item+"v30_39"]) >= 0) {
+            t += '+';
+          }
+          t += ntn(props["b"+item+"v30_39"] - props["b"+last_item+"v30_39"]) + ')'
+          }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '</tr><tr><td>Počet osob ve věku 40 až 49 let</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right">' + ntn(props["b"+item+"v40_49"]);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"v40_49"] - props["b"+last_item+"v40_49"]) >= 0) {
+            t += '+';
+          }
+          t += ntn(props["b"+item+"v40_49"] - props["b"+last_item+"v40_49"]) + ')'
+          }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '</tr><tr><td>Počet osob ve věku 50 až 65 let</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right">' + ntn(props["b"+item+"v50_64"]);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"v50_64"] - props["b"+last_item+"v50_64"]) >= 0) {
+            t += '+';
+          }
+          t += ntn(props["b"+item+"v50_64"] - props["b"+last_item+"v50_64"]) + ')'
+          }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '</tr><tr><td>Počet seniorů (65+ let)</td>';
+    years.forEach(
+      function(item, index) {
+        t+='<td class="right">' + ntn(props["b"+item+"v65_"]);
+        if (index!=0) {
+          t+= ' (';
+          if ((props["b"+item+"v65_"] - props["b"+last_item+"v65_"]) >= 0) {
+            t += '+';
+          }
+          t += ntn(props["b"+item+"v65_"] - props["b"+last_item+"v65_"]) + ')'
+          }
+        t+='</td>';
+        last_item = item;
+        }
+    )
+    t += '</tr>';
+}
+    t += '</table>';
   return t;
 }
 var comparing = L.control({
@@ -693,9 +693,9 @@ comparing.update = function() {
       if (valUj == "kraje") {
         heading += '<td class="grey"><b>Kraj ' + rok + '</b></td></tr>';
       } else if (valUj == "okresy") {
-        heading += '<td class="grey"><b>Okres ' + rok + '</b>/td></tr><tr><td>&nbsp;</td></tr>';
+        heading += '<td class="grey"><b>Okres ' + rok + '</b></td></tr><tr><td>&nbsp;</td></tr>';
       } else if (valUj == "orp") {
-        heading += '<td class="grey"><b>SO ORP ' + rok + '</b>/td></tr><tr><td>&nbsp;</td></tr>';
+        heading += '<td class="grey"><b>SO ORP ' + rok + '</b></td></tr><tr><td>&nbsp;</td></tr>';
       } else if (valUj == "pou") {
         heading += '<td class="grey"><b>Pověřená obec ' + rok + '</b></td></tr><tr><td>&nbsp;</td></tr>';
       } else if (valUj == "obce") {

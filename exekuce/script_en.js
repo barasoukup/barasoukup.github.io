@@ -1,4 +1,4 @@
-var rok = "2019";
+var rok = "2021";
 var valUj = "kraje";
 var valIndi = "poe";
 var viewPrehled = 0;
@@ -91,7 +91,7 @@ icko.rozbal = function() {
     '<ul><li><b>Central Register of Executions</b> – managed by Bailiff Chamber of the Czech Republic</li>' +
     '<li><b>Czech Statistical Office</b></li></ul>' +
     '<h4>Periods covered</h4>' +
-    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> and <b>2019</b></li></ul>' +
+    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b>,<b> 2019</b> and <b>2021</b></li></ul>' +
     '<h4>This map contains</h4>' +
     '<ul><li><b>natural persons only</b></li>' +
     '<li><b>N° of inhabitants 15+</b></li>' +
@@ -119,13 +119,11 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">The Czech Republic</td><td class="right grey bold">2019</td><td class="grey right bold">YtY change</td></tr>' +
-    '<tr><td>N° of people in enforcement proceedings (EP)</td><td class="right bold">775k</td><td class="right green">-6%</td></tr>' +
-    '<tr><td>N° of people with 3 or more EPs</td><td class="right bold">474k</td><td class="right green">-3.2%</td></tr>' +
-    '<tr><td>N° of people with 10 or more EPs</td><td class="right bold">157k</td><td class="right green">-1.0%</td></tr>' +
-    '<tr><td>Percentage of people in EPs</td><td class="right bold">8.6%</td><td class="right green">-0.5 PP</td></tr>' +
-    '<tr><td>Total number of EPs</td><td class="right bold">4,46M</td><td class="right green">-4.9%</td></tr>' +
-    '<tr><td>Debt principal</td><td class="right bold">297B CZK (2018)</td><td class="right">-</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">The Czech Republic</td><td class="right grey bold">2021</td><td class="grey right bold">change since 2019</td></tr>' +
+    '<tr><td>N° of people in enforcement proceedings (EP)</td><td class="right bold">698k</td><td class="right green">-10.0%</td></tr>' +
+    '<tr><td>N° of people with 10 or more EPs</td><td class="right bold">163k</td><td class="right red">+4.0%</td></tr>' +
+    '<tr><td>Percentage of people in EPs</td><td class="right bold">7.9%</td><td class="right green">-0.7 PP</td></tr>' +
+    '<tr><td>Total number of EPs</td><td class="right bold">4,43M</td><td class="right green">-0.7%</td></tr>' +
     '<tr><td><span class="italic">The published data covers only natural persons;<br>EP = enforcement proceeding<br>Data for 2019 are from April 24, 2020, other years from December 31</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Show info</a></div> ';
   return this._div;
@@ -223,9 +221,15 @@ function getColor2(props) {
       } else {
         d = 0
       }
+    } else if (valIndi == "poe_change1") {
+        if (props["poe9"] > 0) {
+          d = (props["poe1"] / props["poe9"] - 1) * 100;
+        } else {
+          d = 0
+        }
     } else if (valIndi == "poe_changec") {
       if (props["poe6"] > 0) {
-        d = (props["poe9"] / props["poe6"] - 1) * 100;
+        d = (props["poe1"] / props["poe6"] - 1) * 100;
       } else {
         d = 0
       }
@@ -449,21 +453,34 @@ function makeDivInfo(feature, index) {
   }
   t = heading + '<tr><td><b>' + ntn(feature.properties["poe" + rok.slice(3, 4)] * 100 / feature.properties["o"+ rok.slice(3, 4)], 2) + '%</b></td></tr>';
   if (rok != "2016") {
-    if (props["poe" + rok.slice(3, 4)] >= props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()]) {
+    poe_act = props["poe" + rok.slice(3, 4)];
+    o_act = props["o" + rok.slice(3, 4)];
+    if (rok == "2021") {
+      poe_last = props["poe9"];
+      o_last = props["o9"];
+    } else {
+      poe_last = props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()];
+      o_last = props["o" + (parseInt(rok.slice(3, 4)) - 1).toString()];
+    }
+    if (poe_act >= poe_last) {
       plus = "+";
     } else {
       plus = "";
     }
-    t += '<tr><td>' + plus + ntn((props["poe" + rok.slice(3, 4)] / props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()] - 1) * 100, 1) + '% (' + plus + ntn((props["poe" + rok.slice(3, 4)] - props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP)</td></tr>';
+    t += '<tr><td>' + plus + ntn((poe_act / poe_last - 1) * 100, 1) + '% (' + plus + ntn((poe_act / o_act - poe_last / o_last) * 100, 2) + ' PP)</td></tr>';
   }
+
   t += '<tr><td>' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>'
   if (rok == "2017" || rok == "2016") {
     t += '<tr><td>' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' CZK </td></tr>'
   }
-  if (rok != "2016") {
+  if (rok != "2016" && rok != "2021") {
     t += '<tr class="maly_detail "><td>&nbsp;</td></tr>' +
       '<tr class="maly_detail odsadit"><td>' + ntn((props["p3e" + rok.slice(3, 4)] + props["p4e" + rok.slice(3, 4)] + props["p5e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="maly_detail"><td>' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>'
+  }
+  if (rok == "2021") {
+      t += '<tr><td>' + ntn(props["p45e" + rok.slice(3, 4)]  * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>'
   }
   if (rok == "2017") {
     t += '<tr class="plny_detail"><td>' + ntn(props["m7"]) + ' CZK</td></tr>';
@@ -471,7 +488,7 @@ function makeDivInfo(feature, index) {
   t += '<tr class="plny_detail"><td>' + ntn(props["o"+ rok.slice(3, 4)]) + '</td></tr>' +
     '<tr class="plny_detail"><td>' + ntn(props["poe" + rok.slice(3, 4)]) + '</td></tr>' +
     '<tr class="plny_detail"><td>' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>';
-  if (rok != "2016") {
+  if (rok != "2016" && rok != "2021") {
     t += '<tr class="plny_detail odsadit"><td>&nbsp;</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
@@ -587,6 +604,65 @@ function cancel(index) {
   lyr.setStyle(style);
 }
 
+function generateChangeTooltip(props, secondYear, firstYear) {
+  var t;
+  if (valUj == "kraje") {
+    t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">YtY change</td></tr>';
+  } else if (valUj == "okresy") {
+    t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">YtY change</td></tr>' +
+      '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+  } else if (valUj == "orp") {
+    t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">YtY change</td></tr>' +
+      '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+  } else if (valUj == "obce") {
+    t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">YtY change</td></tr>' +
+      '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+  }
+  poe_second = props["poe"+secondYear.slice(3, 4)];
+  poe_first = props["poe"+firstYear.slice(3, 4)];
+  podil_second = poe_second * 100 / props["o"+secondYear.slice(3, 4)];
+  podil_first = poe_first * 100 / props["o"+firstYear.slice(3, 4)];
+  pe_second = props["pe"+secondYear.slice(3, 4)];
+  pe_first = props["pe"+firstYear.slice(3, 4)];
+  t += '<tr><td class="vybrano">N° of people in enforcement proceedings (EP)</td><td class="right vybrano">' + ntn(poe_second) + '</td><td class="right vybrano">' + ntn(poe_first) + '</td>';
+  if (poe_second >= poe_first) {
+    t += '<td class="right red vybrano">+';
+  } else {
+    t += '<td class="right green vybrano">'
+  }
+  t += ntn((poe_second / poe_first - 1) * 100, 1) + '% ('
+  if (poe_second >= poe_first) {
+    t += '+';
+  }
+  t += ntn(poe_second - poe_first) + ' persons)</td>';
+  t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(podil_second,2) + '% </td><td class="right">' + ntn(podil_first,2) + '% </td>';
+  if (podil_second >= podil_first) {
+    t += '<td class="right red">+';
+  } else {
+    t += '<td class="right green">'
+  }
+  t += ntn(podil_second-podil_first, 2) + ' p.b.</td></tr>' +
+    '<tr><td>Total number of EPs</td><td class="right">' + ntn(pe_second) + '</td><td class="right">' + ntn(pe_first) + '</td>';
+  if (pe_second >= pe_first) {
+    t += '<td class="right red">+';
+  } else {
+    t += '<td class="right green">'
+  }
+  t += ntn((pe_second / pe_first - 1) * 100, 1) + '% (';
+  if (pe_second >= pe_first) {
+    t += '+';
+  }
+  t += ntn(pe_second - pe_first) + ' EPs)</td></tr>' +
+    '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(pe_second / poe_second, 1) + '</td><td class="right">' + ntn(pe_first / poe_first, 1) + '</td>';
+  if (pe_second / poe_second >= pe_first / poe_first) {
+    t += '<td class="right red">+';
+  } else {
+    t += '<td class="right green">';
+  }
+  t += ntn((pe_second / poe_second) - (pe_first / poe_first), 1) + '</td></tr>';
+  return t;
+}
+
 function generateTooltip(feature) {
   var props = feature.properties;
   var t;
@@ -618,12 +694,17 @@ function generateTooltip(feature) {
       '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>' +
       '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>';
 
-    if (rok != "2016") {
+    if (rok != "2016" && rok != "2021") {
       t += '<tr><td><u>People in EPs details:</u></td></tr>' +
         '<tr><td>Percentage (N°) of children</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of young adults (18-29 y/o)</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of seniors (65+ y/o)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
-    }
+      }
+      if (rok== "2021"){
+          t += '<tr><td class="bold">Including:</td></tr>' +
+            '<tr><td>Percentage (N°) of people with 1 - 9 EPs</td><td class="right">' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)])) + ')</td></tr>' +
+            '<tr><td>Percentage (N°) of people with 10+ EPs</td><td class="right">' + ntn(props["p45e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["p45e" + rok.slice(3, 4)]) + ')</td></tr>';
+        }
   } else if (valIndi == "pove") {
     if (valUj == "kraje") {
       t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>';
@@ -687,232 +768,23 @@ function generateTooltip(feature) {
     }
     t += '<tr><td>Average debt principal per EP</td><td class="right">' + ntn(props["c" + rok.slice(3, 4)] / props["pe" + rok.slice(3, 4)]) + ' CZK</td></tr>';
   } else if (valIndi == "poe_change7") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">N° of people in enforcement proceedings (EP)</td><td class="right vybrano">' + ntn(props["poe7"]) + '</td><td class="right vybrano">' + ntn(props["poe6"]) + '</td>';
-    if ((props["poe7"] - props["poe6"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe7"] / props["poe6"] - 1) * 100, 1) + '% ('
-    if ((props["poe7"] - props["poe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe7"] - props["poe6"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe7"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
-    if ((props["poe7"] - props["poe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe7"] - props["poe6"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
-      '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe7"]) + '</td><td class="right">' + ntn(props["pe6"]) + '</td>';
-    if ((props["pe7"] - props["pe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe7"] / props["pe6"] - 1) * 100, 1) + '% (';
-    if ((props["pe7"] - props["pe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe7"] - props["pe6"]) + ' EPs)</td></tr>' +
-      '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(props["pe7"] / props["poe7"], 1) + '</td><td class="right">' + ntn(props["pe6"] / props["poe6"], 1) + '</td>';
-    if (ntn(props["pe7"] / props["poe7"], 3) >= ntn(props["pe6"] / props["poe6"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe7"] / props["poe7"]) / (props["pe6"] / props["poe6"]) - 1) * 100, 1) + '% (';
-    if ((props["pe7"] / props["poe7"]) >= (props["pe6"] / props["poe6"])) {
-      t += '+';
-    }
-    t += ntn((props["pe7"] / props["poe7"]) - (props["pe6"] / props["poe6"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2017","2016");
   } else if (valIndi == "poe_change8") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">YtY change</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">N° of people in enforcement proceedings (EP)</td><td class="right vybrano">' + ntn(props["poe8"]) + '</td><td class="right vybrano">' + ntn(props["poe7"]) + '</td>';
-    if ((props["poe8"] - props["poe7"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe8"] / props["poe7"] - 1) * 100, 1) + '% ('
-    if ((props["poe8"] - props["poe7"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe8"] - props["poe7"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe8"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe7"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
-    if ((props["poe8"] - props["poe7"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe8"] - props["poe7"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
-      '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe8"]) + '</td><td class="right">' + ntn(props["pe7"]) + '</td>';
-    if ((props["pe8"] - props["pe7"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe8"] / props["pe7"] - 1) * 100, 1) + '% (';
-    if ((props["pe8"] - props["pe7"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe8"] - props["pe7"]) + ' EPs)</td></tr>' +
-      '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(props["pe8"] / props["poe8"], 1) + '</td><td class="right">' + ntn(props["pe7"] / props["poe7"], 1) + '</td>';
-    if (ntn(props["pe8"] / props["poe8"], 3) >= ntn(props["pe7"] / props["poe7"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe8"] / props["poe8"]) / (props["pe7"] / props["poe7"]) - 1) * 100, 1) + '% (';
-    if ((props["pe8"] / props["poe8"]) >= (props["pe7"] / props["poe7"])) {
-      t += '+';
-    }
-    t += ntn((props["pe8"] / props["poe8"]) - (props["pe7"] / props["poe7"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2018","2017");
   } else if (valIndi == "poe_change9") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">N° of people in enforcement proceedings (EP)</td><td class="right vybrano">' + ntn(props["poe9"]) + '</td><td class="right vybrano">' + ntn(props["poe8"]) + '</td>';
-    if ((props["poe9"] - props["poe8"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe9"] / props["poe8"] - 1) * 100, 1) + '% ('
-    if ((props["poe9"] - props["poe8"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe9"] - props["poe8"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe8"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
-    if ((props["poe9"] - props["poe8"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe9"] - props["poe8"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
-      '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe9"]) + '</td><td class="right">' + ntn(props["pe8"]) + '</td>';
-    if ((props["pe9"] - props["pe8"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe9"] / props["pe8"] - 1) * 100, 1) + '% (';
-    if ((props["pe9"] - props["pe8"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe8"] - props["pe7"]) + ' EPs)</td></tr>' +
-      '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(props["pe9"] / props["poe9"], 1) + '</td><td class="right">' + ntn(props["pe8"] / props["poe8"], 1) + '</td>';
-    if (ntn(props["pe9"] / props["poe9"], 3) >= ntn(props["pe8"] / props["poe8"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe9"] / props["poe9"]) / (props["pe8"] / props["poe8"]) - 1) * 100, 1) + '% (';
-    if ((props["pe9"] / props["poe9"]) >= (props["pe8"] / props["poe8"])) {
-      t += '+';
-    }
-    t += ntn((props["pe9"] / props["poe9"]) - (props["pe8"] / props["poe8"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2019","2018");
+  } else if (valIndi == "poe_change1") {
+    t = generateChangeTooltip(props,"2021","2019");
   } else if (valIndi == "poe_changec") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">YtY change</td></tr>' +
-        '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">N° of people in enforcement proceedings (EP)</td><td class="right vybrano">' + ntn(props["poe9"]) + '</td><td class="right vybrano">' + ntn(props["poe6"]) + '</td>';
-    if ((props["poe9"] - props["poe6"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe9"] / props["poe6"] - 1) * 100, 1) + '% ('
-    if ((props["poe9"] - props["poe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe9"] - props["poe6"]) + ' persons)</td>';
-    t += '<tr><td>Percentage of people in EPs</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
-    if ((props["poe9"] - props["poe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe9"] - props["poe6"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' PP</td></tr>' +
-      '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe9"]) + '</td><td class="right">' + ntn(props["pe6"]) + '</td>';
-    if ((props["pe9"] - props["pe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe9"] / props["pe6"] - 1) * 100, 1) + '% (';
-    if ((props["pe9"] - props["pe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe9"] - props["pe6"]) + ' EPs)</td></tr>' +
-      '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(props["pe9"] / props["poe9"], 1) + '</td><td class="right">' + ntn(props["pe6"] / props["poe6"], 1) + '</td>';
-    if (ntn(props["pe9"] / props["poe9"], 3) >= ntn(props["pe6"] / props["poe6"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe9"] / props["poe9"]) / (props["pe6"] / props["poe6"]) - 1) * 100, 1) + '% (';
-    if ((props["pe9"] / props["poe9"]) >= (props["pe6"] / props["poe6"])) {
-      t += '+';
-    }
-    t += ntn((props["pe9"] / props["poe9"]) - (props["pe6"] / props["poe6"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2021","2016");
   }
-
   t += '<tr></table>';
   return t;
 }
 
-
 var comparing = L.control({
   position: 'bottomleft'
 });
-
 
 comparing.onAdd = function(map) {
   isComparing = true;
@@ -948,18 +820,21 @@ comparing.update = function() {
       if (rok == "2017" || rok == "2016") {
         t += '<tr><td>Average debt principal per person</td></tr>';
       }
-      if (rok != "2016") {
+      if (rok != "2016" && rok != "2021") {
         t += '<tr class="maly_detail odsadit"><td><u>People in EPs details:</u></td></tr>' +
           '<tr class="maly_detail"><td>Percentage (N°) of people with 3+ EPs</td></tr>' +
           '<tr class="maly_detail"><td>Percentage (N°) of seniors (65+ y/o)</td></tr>';
       }
+      if (rok == "2021") {
+          t += '<tr><td>Percentage (N°) of people with 10+ EPs</td></tr>';
+        }
       if (rok == "2017") {
         t += '<tr class="plny_detail"><td>Median debt principal per person</td></tr>';
       }
       t += '<tr class="plny_detail"><td>N° of people 15+ y/o</td></tr>' +
         '<tr class="plny_detail"><td>N° of people in enforcement proceedings (EP)</td></tr>' +
         '<tr class="plny_detail"><td>Total number of EPs</td></tr>';
-      if (rok != "2016") {
+      if (rok != "2016" && rok != "2021") {
         t += '<tr class="plny_detail odsadit"><td><u>People in EPs details:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of children</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of young adults (18-29 y/o)</td></tr>' +
@@ -1111,7 +986,17 @@ $('.year').click(function(e) {
 });
 
 function year_disabling() {
-  if (rok == "2019") {
+  if (rok == "2021") {
+    $('#rad_poe').attr('disabled', false);
+    $('#rad_pj').attr('disabled', true);
+    $('#rad_pove').attr('disabled', true);
+    $('#rad_poe_change7').attr('disabled', false);
+    $('#rad_poe_change8').attr('disabled', false);
+    $('#rad_poe_change9').attr('disabled', false);
+    $('#rad_poe_changec').attr('disabled', false);
+    $('#rad_orp').attr('disabled', false);
+    $('#rad_obce').attr('disabled', false);
+  } else if (rok == "2019") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
@@ -1249,4 +1134,5 @@ $(document).ready(function() {
   $radios.filter('[value="poe"]').prop('checked', true);
   $(".plny_detail").hide();
   map.spin(false);
+  year_disabling();
 });

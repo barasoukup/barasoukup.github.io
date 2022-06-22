@@ -1,4 +1,4 @@
-var rok = "2019";
+var rok = "2021";
 var valUj = "kraje";
 var valIndi = "poe";
 var viewPrehled = 0;
@@ -73,7 +73,7 @@ icko.rozbal = function() {
     '<ul><li><b>Centrální evidence exekucí</b> spravovaná Exekutorskou komorou ČR</li>' +
     '<li><b>Český statistický úřad</b></li></ul>' +
     '<h4>Časová období</h4>' +
-    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b> a <b>2019</b></li></ul>' +
+    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b>,<b> 2019</b> a <b>2021</b></li></ul>' +
     '<h4>Mapa obsahuje</h4>' +
     '<ul><li><b>pouze fyzické osoby</b></li>' +
     '<li><b>počet obyvatel starších 15 let</b></li>' +
@@ -102,13 +102,11 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKÁ REPUBLIKA</td><td class="right grey bold">2019</td><td class="grey right bold">meziroční změna</td></tr>' +
-    '<tr><td>Počet osob v exekuci</td><td class="right bold">775 tis.</td><td class="right green">-6,0 %</td></tr>' +
-    '<tr><td>Počet osob se 3 a více exekucemi</td><td class="right bold">474 tis.</td><td class="right green">-3,2 %</td></tr>' +
-    '<tr><td>Počet osob s 10 a více exekucemi</td><td class="right bold">157 tis.</td><td class="right green">-1,0 %</td></tr>' +
-    '<tr><td>Podíl osob v exekuci</td><td class="right bold">8,6 %</td><td class="right green">-0,5 p.b.</td></tr>' +
-    '<tr><td>Celkový počet exekucí</td><td class="right bold">4,46 mil.</td><td class="right green">-4,9 %</td></tr>' +
-    '<tr><td>Vymáhaná jistina</td><td class="right bold">297 mld. Kč (2018)</td><td class="right">-</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKO</td><td class="right grey bold">2021</td><td class="grey right bold">změna od 2019</td></tr>' +
+    '<tr><td>Počet osob v exekuci</td><td class="right bold">698 tis.</td><td class="right green">-10,0 %</td></tr>' +
+    '<tr><td>Počet osob s 10 a více exekucemi</td><td class="right bold">163 tis.</td><td class="right red">+4,0 %</td></tr>' +
+    '<tr><td>Podíl osob v exekuci</td><td class="right bold">7,9 %</td><td class="right green">-0,7 p.b.</td></tr>' +
+    '<tr><td>Celkový počet exekucí</td><td class="right bold">4,43 mil.</td><td class="right green">-0,7 %</td></tr>' +
     '<tr><td><span class="italic">Údaje jsou pouze za fyzické osoby.<br>Data za rok 2019 jsou z 20. 4. 2020, ostatní roky z 31. 12.</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Zobrazit souhrnné údaje</a></div> ';
   return this._div;
@@ -206,9 +204,15 @@ function getColor2(props) {
       } else {
         d = 0
       }
+    } else if (valIndi == "poe_change1") {
+        if (props["poe9"] > 0) {
+          d = (props["poe1"] / props["poe9"] - 1) * 100;
+        } else {
+          d = 0
+        }
     } else if (valIndi == "poe_changec") {
       if (props["poe6"] > 0) {
-        d = (props["poe9"] / props["poe6"] - 1) * 100;
+        d = (props["poe1"] / props["poe6"] - 1) * 100;
       } else {
         d = 0
       }
@@ -432,21 +436,34 @@ function makeDivInfo(feature, index) {
   }
   t = heading + '<tr><td><b>' + ntn(feature.properties["poe" + rok.slice(3, 4)] * 100 / feature.properties["o" + rok.slice(3, 4)], 2) + ' %</b></td></tr>';
   if (rok != "2016") {
-    if (props["poe" + rok.slice(3, 4)] >= props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()]) {
+    poe_act = props["poe" + rok.slice(3, 4)];
+    o_act = props["o" + rok.slice(3, 4)];
+    if (rok == "2021") {
+      poe_last = props["poe9"];
+      o_last = props["o9"];
+    } else {
+      poe_last = props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()];
+      o_last = props["o" + (parseInt(rok.slice(3, 4)) - 1).toString()];
+    }
+    if (poe_act >= poe_last) {
       plus = "+";
     } else {
       plus = "";
     }
-    t += '<tr><td>' + plus + ntn((props["poe" + rok.slice(3, 4)] / props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()] - 1) * 100, 1) + ' % (' + plus + ntn((props["poe" + rok.slice(3, 4)] - props["poe" + (parseInt(rok.slice(3, 4)) - 1).toString()]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' p.b.)</td></tr>';
+    t += '<tr><td>' + plus + ntn((poe_act / poe_last - 1) * 100, 1) + ' % (' + plus + ntn((poe_act / o_act - poe_last / o_last) * 100, 2) + ' p.b.)</td></tr>';
   }
+
   t += '<tr><td>' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>'
   if (rok == "2017" || rok == "2016") {
     t += '<tr><td>' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' Kč </td></tr>'
   }
-  if (rok != "2016") {
-      t += '<tr class="maly_detail "><td>&nbsp;</td></tr>' +
+  if (rok != "2016" && rok != "2021") {
+    t += '<tr class="maly_detail "><td>&nbsp;</td></tr>' +
       '<tr class="maly_detail odsadit"><td>' + ntn((props["p3e" + rok.slice(3, 4)] + props["p4e" + rok.slice(3, 4)] + props["p5e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="maly_detail"><td>' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>'
+  }
+  if (rok == "2021") {
+      t += '<tr><td>' + ntn(props["p45e" + rok.slice(3, 4)]  * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>'
   }
   if (rok == "2017") {
     t += '<tr class="plny_detail"><td>' + ntn(props["m7"]) + ' Kč</td></tr>';
@@ -454,7 +471,7 @@ function makeDivInfo(feature, index) {
   t += '<tr class="plny_detail"><td>' + ntn(props["o"+ rok.slice(3, 4)]) + '</td></tr>' +
     '<tr class="plny_detail"><td>' + ntn(props["poe" + rok.slice(3, 4)]) + '</td></tr>' +
     '<tr class="plny_detail"><td>' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>';
-  if (rok != "2016") {
+  if (rok != "2016" && rok != "2021") {
     t += '<tr class="plny_detail odsadit"><td>&nbsp;</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
@@ -570,6 +587,65 @@ function cancel(index) {
   lyr.setStyle(style);
 }
 
+function generateChangeTooltip(props, secondYear, firstYear) {
+  var t;
+  if (valUj == "kraje") {
+    t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">změna</td></tr>';
+  } else if (valUj == "okresy") {
+    t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">změna</td></tr>' +
+      '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+  } else if (valUj == "orp") {
+    t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">změna</td></tr>' +
+      '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+  } else if (valUj == "obce") {
+    t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">'+secondYear+'</td><td class="right grey bold">'+firstYear+'</td><td class="right grey bold">změna</td></tr>' +
+      '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+  }
+  poe_second = props["poe"+secondYear.slice(3, 4)];
+  poe_first = props["poe"+firstYear.slice(3, 4)];
+  podil_second = poe_second * 100 / props["o"+secondYear.slice(3, 4)];
+  podil_first = poe_first * 100 / props["o"+firstYear.slice(3, 4)];
+  pe_second = props["pe"+secondYear.slice(3, 4)];
+  pe_first = props["pe"+firstYear.slice(3, 4)];
+  t += '<tr><td class="vybrano">Počet osob v exekuci</td><td class="right vybrano">' + ntn(poe_second) + '</td><td class="right vybrano">' + ntn(poe_first) + '</td>';
+  if (poe_second >= poe_first) {
+    t += '<td class="right red vybrano">+';
+  } else {
+    t += '<td class="right green vybrano">'
+  }
+  t += ntn((poe_second / poe_first - 1) * 100, 1) + ' % ('
+  if (poe_second >= poe_first) {
+    t += '+';
+  }
+  t += ntn(poe_second - poe_first) + ' osob)</td>';
+  t += '<tr><td>Podíl osob v exekuci</td><td class="right">' + ntn(podil_second,2) + ' % </td><td class="right">' + ntn(podil_first,2) + ' % </td>';
+  if (podil_second >= podil_first) {
+    t += '<td class="right red">+';
+  } else {
+    t += '<td class="right green">'
+  }
+  t += ntn(podil_second-podil_first, 2) + ' p.b.</td></tr>' +
+    '<tr><td>Celkový počet exekucí</td><td class="right">' + ntn(pe_second) + '</td><td class="right">' + ntn(pe_first) + '</td>';
+  if (pe_second >= pe_first) {
+    t += '<td class="right red">+';
+  } else {
+    t += '<td class="right green">'
+  }
+  t += ntn((pe_second / pe_first - 1) * 100, 1) + ' % (';
+  if (pe_second >= pe_first) {
+    t += '+';
+  }
+  t += ntn(pe_second - pe_first) + ' exekucí)</td></tr>' +
+    '<tr><td>Průměrný počet exekucí na osobu</td><td class="right">' + ntn(pe_second / poe_second, 1) + '</td><td class="right">' + ntn(pe_first / poe_first, 1) + '</td>';
+  if (pe_second / poe_second >= pe_first / poe_first) {
+    t += '<td class="right red">+';
+  } else {
+    t += '<td class="right green">';
+  }
+  t += ntn((pe_second / poe_second) - (pe_first / poe_first), 1) + '</td></tr>';
+  return t;
+}
+
 function generateTooltip(feature) {
   var props = feature.properties;
   var t;
@@ -601,11 +677,16 @@ function generateTooltip(feature) {
       '<tr><td>Celkový počet exekucí</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>' +
       '<tr><td>Průměrný počet exekucí na osobu</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>';
 
-    if (rok != "2016") {
+    if (rok != "2016" && rok != "2021") {
       t += '<tr><td><u>Detail osob v exekuci:</u></td></tr>' +
         '<tr><td>Podíl (počet) dětí a mladistvých</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) seniorů (65+)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
+      }
+      if (rok== "2021"){
+        t += '<tr><td class="bold">Z toho:</td></tr>' +
+        '<tr><td>podíl (počet) osob s 1 – 9 exekucemi</td><td class="right">' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)])) + ')</td></tr>' +
+        '<tr><td>podíl (počet) osob s 10 a více exekucemi</td><td class="right">' + ntn(props["p45e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["p45e" + rok.slice(3, 4)]) + ')</td></tr>';
     }
   } else if (valIndi == "pove") {
     if (valUj == "kraje") {
@@ -637,7 +718,7 @@ function generateTooltip(feature) {
       '<tr><td>podíl (počet) osob s 10 – 29 exekucemi</td><td class="right">' + ntn(props["p4e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["p4e" + rok.slice(3, 4)]) + ')</td></tr>' +
       '<tr><td class="border_down">podíl (počet) osob s 30 a více exekucemi</td><td class="right border_down">' + ntn(props["p5e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["p5e" + rok.slice(3, 4)]) + ')</td></tr>' +
       '<tr><td class="vybrano">celkový podíl (počet) osob s více exekucemi</td><td class="right vybrano">' + ntn((props["p2e" + rok.slice(3, 4)] + props["p3e" + rok.slice(3, 4)] + props["p4e" + rok.slice(3, 4)] + props["p5e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["p2e" + rok.slice(3, 4)] + props["p3e" + rok.slice(3, 4)] + props["p4e" + rok.slice(3, 4)] + props["p5e" + rok.slice(3, 4)]) + ')</td></tr>';
-  } else if (valIndi == "pj") {
+} else if (valIndi == "pj") {
     if (valUj == "kraje") {
       t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>';
       if (rok == "2017") {
@@ -670,232 +751,23 @@ function generateTooltip(feature) {
     }
     t += '<tr><td>Průměrná jistina na exekuci</td><td class="right">' + ntn(props["c" + rok.slice(3, 4)] / props["pe" + rok.slice(3, 4)]) + ' Kč</td></tr>';
   } else if (valIndi == "poe_change7") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2017</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">Počet osob v exekuci</td><td class="right vybrano">' + ntn(props["poe7"]) + '</td><td class="right vybrano">' + ntn(props["poe6"]) + '</td>';
-    if ((props["poe7"] - props["poe6"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe7"] / props["poe6"] - 1) * 100, 1) + ' % ('
-    if ((props["poe7"] - props["poe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe7"] - props["poe6"]) + ' osob)</td>';
-    t += '<tr><td>Podíl osob v exekuci</td><td class="right">' + ntn(props["poe7"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
-    if ((props["poe7"] - props["poe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe7"] - props["poe6"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' p.b.</td></tr>' +
-      '<tr><td>Celkový počet exekucí</td><td class="right">' + ntn(props["pe7"]) + '</td><td class="right">' + ntn(props["pe6"]) + '</td>';
-    if ((props["pe7"] - props["pe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe7"] / props["pe6"] - 1) * 100, 1) + ' % (';
-    if ((props["pe7"] - props["pe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe7"] - props["pe6"]) + ' exekucí)</td></tr>' +
-      '<tr><td>Průměrný počet exekucí na osobu</td><td class="right">' + ntn(props["pe7"] / props["poe7"], 1) + '</td><td class="right">' + ntn(props["pe6"] / props["poe6"], 1) + '</td>';
-    if (ntn(props["pe7"] / props["poe7"], 3) >= ntn(props["pe6"] / props["poe6"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe7"] / props["poe7"]) / (props["pe6"] / props["poe6"]) - 1) * 100, 1) + ' % (';
-    if ((props["pe7"] / props["poe7"]) >= (props["pe6"] / props["poe6"])) {
-      t += '+';
-    }
-    t += ntn((props["pe7"] / props["poe7"]) - (props["pe6"] / props["poe6"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2017","2016");
   } else if (valIndi == "poe_change8") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">změna</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2017</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">Počet osob v exekuci</td><td class="right vybrano">' + ntn(props["poe8"]) + '</td><td class="right vybrano">' + ntn(props["poe7"]) + '</td>';
-    if ((props["poe8"] - props["poe7"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe8"] / props["poe7"] - 1) * 100, 1) + ' % ('
-    if ((props["poe8"] - props["poe7"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe8"] - props["poe7"]) + ' osob)</td>';
-    t += '<tr><td>Podíl osob v exekuci</td><td class="right">' + ntn(props["poe8"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe7"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
-    if ((props["poe8"] - props["poe7"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe8"] - props["poe7"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' p.b.</td></tr>' +
-      '<tr><td>Celkový počet exekucí</td><td class="right">' + ntn(props["pe8"]) + '</td><td class="right">' + ntn(props["pe7"]) + '</td>';
-    if ((props["pe8"] - props["pe7"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe8"] / props["pe7"] - 1) * 100, 1) + ' % (';
-    if ((props["pe8"] - props["pe7"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe8"] - props["pe7"]) + ' exekucí)</td></tr>' +
-      '<tr><td>Průměrný počet exekucí na osobu</td><td class="right">' + ntn(props["pe8"] / props["poe8"], 1) + '</td><td class="right">' + ntn(props["pe7"] / props["poe7"], 1) + '</td>';
-    if (ntn(props["pe8"] / props["poe8"], 3) >= ntn(props["pe7"] / props["poe7"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe8"] / props["poe8"]) / (props["pe7"] / props["poe7"]) - 1) * 100, 1) + ' % (';
-    if ((props["pe8"] / props["poe8"]) >= (props["pe7"] / props["poe7"])) {
-      t += '+';
-    }
-    t += ntn((props["pe8"] / props["poe8"]) - (props["pe7"] / props["poe7"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2018","2017");
   } else if (valIndi == "poe_change9") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2018</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">Počet osob v exekuci</td><td class="right vybrano">' + ntn(props["poe9"]) + '</td><td class="right vybrano">' + ntn(props["poe8"]) + '</td>';
-    if ((props["poe9"] - props["poe8"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe9"] / props["poe8"] - 1) * 100, 1) + ' % ('
-    if ((props["poe9"] - props["poe8"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe9"] - props["poe8"]) + ' osob)</td>';
-    t += '<tr><td>Podíl osob v exekuci</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe8"] * 100 / props["o"+ rok.slice(3, 4)], 2) + ' % </td>';
-    if ((props["poe9"] - props["poe8"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe9"] - props["poe8"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' p.b.</td></tr>' +
-      '<tr><td>Celkový počet exekucí</td><td class="right">' + ntn(props["pe9"]) + '</td><td class="right">' + ntn(props["pe8"]) + '</td>';
-    if ((props["pe9"] - props["pe8"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe9"] / props["pe8"] - 1) * 100, 1) + ' % (';
-    if ((props["pe9"] - props["pe8"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe8"] - props["pe7"]) + ' exekucí)</td></tr>' +
-      '<tr><td>Průměrný počet exekucí na osobu</td><td class="right">' + ntn(props["pe9"] / props["poe9"], 1) + '</td><td class="right">' + ntn(props["pe8"] / props["poe8"], 1) + '</td>';
-    if (ntn(props["pe9"] / props["poe9"], 3) >= ntn(props["pe8"] / props["poe8"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe9"] / props["poe9"]) / (props["pe8"] / props["poe8"]) - 1) * 100, 1) + ' % (';
-    if ((props["pe9"] / props["poe9"]) >= (props["pe8"] / props["poe8"])) {
-      t += '+';
-    }
-    t += ntn((props["pe9"] / props["poe9"]) - (props["pe8"] / props["poe8"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2019","2018");
+  } else if (valIndi == "poe_change1") {
+    t = generateChangeTooltip(props,"2021","2019");
   } else if (valIndi == "poe_changec") {
-    if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>';
-    } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    } else if (valUj == "obce") {
-      t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">2019</td><td class="right grey bold">2016</td><td class="right grey bold">změna</td></tr>' +
-        '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
-    }
-
-    t += '<tr><td class="vybrano">Počet osob v exekuci</td><td class="right vybrano">' + ntn(props["poe9"]) + '</td><td class="right vybrano">' + ntn(props["poe6"]) + '</td>';
-    if ((props["poe9"] - props["poe6"]) >= 0) {
-      t += '<td class="right red vybrano">+';
-    } else {
-      t += '<td class="right green vybrano">'
-    }
-    t += ntn((props["poe9"] / props["poe6"] - 1) * 100, 1) + ' % ('
-    if ((props["poe9"] - props["poe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["poe9"] - props["poe6"]) + ' osob)</td>';
-    t += '<tr><td>Podíl osob v exekuci</td><td class="right">' + ntn(props["poe9"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td><td class="right">' + ntn(props["poe6"] * 100 / props["o"+ rok.slice(3, 4)], 2) + '% </td>';
-    if ((props["poe9"] - props["poe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["poe9"] - props["poe6"]) * 100 / props["o"+ rok.slice(3, 4)], 2) + ' p.b.</td></tr>' +
-      '<tr><td>Celkový počet exekucí</td><td class="right">' + ntn(props["pe9"]) + '</td><td class="right">' + ntn(props["pe6"]) + '</td>';
-    if ((props["pe9"] - props["pe6"]) >= 0) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">'
-    }
-    t += ntn((props["pe9"] / props["pe6"] - 1) * 100, 1) + ' % (';
-    if ((props["pe9"] - props["pe6"]) >= 0) {
-      t += '+';
-    }
-    t += ntn(props["pe9"] - props["pe6"]) + ' exekucí)</td></tr>' +
-      '<tr><td>Průměrný počet exekucí na osobu</td><td class="right">' + ntn(props["pe9"] / props["poe9"], 1) + '</td><td class="right">' + ntn(props["pe6"] / props["poe6"], 1) + '</td>';
-    if (ntn(props["pe9"] / props["poe9"], 3) >= ntn(props["pe6"] / props["poe6"], 3)) {
-      t += '<td class="right red">+';
-    } else {
-      t += '<td class="right green">';
-    }
-    t += ntn(((props["pe9"] / props["poe9"]) / (props["pe6"] / props["poe6"]) - 1) * 100, 1) + ' % (';
-    if ((props["pe9"] / props["poe9"]) >= (props["pe6"] / props["poe6"])) {
-      t += '+';
-    }
-    t += ntn((props["pe9"] / props["poe9"]) - (props["pe6"] / props["poe6"]), 1) + ')</td></tr>';
+    t = generateChangeTooltip(props,"2021","2016");
   }
-
   t += '<tr></table>';
   return t;
 }
 
-
 var comparing = L.control({
   position: 'bottomleft'
 });
-
 
 comparing.onAdd = function(map) {
   isComparing = true;
@@ -931,18 +803,21 @@ comparing.update = function() {
       if (rok == "2017" || rok == "2016") {
         t += '<tr><td>Průměrná jistina na osobu</td></tr>';
       }
-      if (rok != "2016") {
+      if (rok != "2016" && rok != "2021") {
         t += '<tr class="maly_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
           '<tr class="maly_detail"><td>Podíl osob se 3 a více exekucemi</td></tr>' +
           '<tr class="maly_detail"><td>Podíl seniorů v exekuci </td></tr>';
       }
+      if (rok == "2021") {
+          t += '<tr><td>Podíl osob se 10 a více exekucemi</td></tr>';
+        }
       if (rok == "2017") {
         t += '<tr class="plny_detail"><td>Medián jistiny na osobu</td></tr>';
       }
       t += '<tr class="plny_detail"><td>Počet osob starších 15 let</td></tr>' +
         '<tr class="plny_detail"><td>Počet osob v exekuci</td></tr>' +
         '<tr class="plny_detail"><td>Celkový počet exekucí</td></tr>';
-      if (rok != "2016") {
+      if (rok != "2016" && rok != "2021") {
         t += '<tr class="plny_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob ve věku 18 až 29 let</td></tr>' +
@@ -1094,7 +969,17 @@ $('.year').click(function(e) {
 });
 
 function year_disabling() {
-  if (rok == "2019") {
+  if (rok == "2021") {
+    $('#rad_poe').attr('disabled', false);
+    $('#rad_pj').attr('disabled', true);
+    $('#rad_pove').attr('disabled', true);
+    $('#rad_poe_change7').attr('disabled', false);
+    $('#rad_poe_change8').attr('disabled', false);
+    $('#rad_poe_change9').attr('disabled', false);
+    $('#rad_poe_changec').attr('disabled', false);
+    $('#rad_orp').attr('disabled', false);
+    $('#rad_obce').attr('disabled', false);
+  } else if (rok == "2019") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
@@ -1232,4 +1117,5 @@ $(document).ready(function() {
   $radios.filter('[value="poe"]').prop('checked', true);
   $(".plny_detail").hide();
   map.spin(false);
+  year_disabling();
 });
