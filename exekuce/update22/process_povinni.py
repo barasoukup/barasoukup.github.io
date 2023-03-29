@@ -172,6 +172,24 @@ for uj in uzemni_jednotky:
                     props['pv'+R+'p'] = int(celek_table.loc[i]['vce_rank'])
                 props['m'+R] = int(celek_table.loc[i]['mvo'])
                 props['o'+R] = int(celek_table.loc[i]['o'])
+            else:
+                props['pe'+R] = 0
+                props['c'+R] = 0
+                props['poe'+R] = 0
+                props['p1e'+R] = 0
+                props['p2e'+R] = 0
+                props['p3e'+R] = 0
+                props['p4e'+R] = 0
+                props['p5e'+R] = 0
+                props['pde'+R] = 0
+                props['pme'+R] = 0
+                props['pse'+R] = 0
+                if uj[0] in ("orp",'okresy','kraje'):
+                    props['poe'+R+'p'] = 0
+                    props['pjo'+R+'p'] = 0
+                    props['pv'+R+'p'] = 0
+                props['m'+R] = 0
+                props['o'+R] = 0
         with open(f.split(".")[0]+R+".geojson", "w",encoding="utf-8") as outfile:
             json.dump(data, outfile, separators=(',', ':'))
             

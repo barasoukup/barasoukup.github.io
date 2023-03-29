@@ -36,7 +36,7 @@ L.Control.include({
 base = L.tileLayer('https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=CA9jkYsvrAOGl2YSpa5x7n43tiWMiS4jKLMCLCRlzrKrsdUER1yROrONSmeedP3c', {
   minZoom: 5,
   maxZoom: 20,
-  attribution: '<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - přispěvatelé<a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>, zdroj dat <a href="http://www.ekcr.cz/">Exekutorská komora ČR</a>, kartografické zpracování <a href="mailto:bara.so@email.cz">Bára Soukupová</a>'
+  attribution: '<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - přispěvatelé <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>, zdroj dat <a href="http://www.ekcr.cz/">Exekutorská komora ČR</a>, kartografické zpracování <a href="mailto:bara.so@email.cz">Bára Soukupová</a>'
 });
 
 map.addLayer(base);
@@ -682,12 +682,19 @@ function generateTooltip(feature) {
       '<tr><td>Celkový počet exekucí</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>' +
       '<tr><td>Průměrný počet exekucí na osobu</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>';
 
-    if (rok != "2016" && rok != "2021") {
+    if (rok != "2016" && rok != "2021" && rok != "2022") {
       t += '<tr><td><u>Detail osob v exekuci:</u></td></tr>' +
         '<tr><td>Podíl (počet) dětí a mladistvých</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) seniorů (65+)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
       }
+	if (rok == "2022") {
+      t += '<tr><td><u>Detail osob v exekuci:</u></td></tr>' +
+        '<tr><td>Podíl (počet) dětí a mladistvých</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) osob ve věku 15 až 29 let</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) seniorů (65+)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
+      }
+	    
       if (rok== "2021"){
         t += '<tr><td class="bold">Z toho:</td></tr>' +
         '<tr><td>podíl (počet) osob s 1 – 9 exekucemi</td><td class="right">' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)])) + ')</td></tr>' +
@@ -818,13 +825,13 @@ comparing.update = function() {
       if (rok == "2021") {
           t += '<tr><td>Podíl osob se 10 a více exekucemi</td></tr>';
         }
-      if (rok == "2017" || rok == "2022") {
+      if (rok == "2017" || rok == "2022"s) {
         t += '<tr class="plny_detail"><td>Medián jistiny na osobu</td></tr>';
       }
       t += '<tr class="plny_detail"><td>Počet osob starších 15 let</td></tr>' +
         '<tr class="plny_detail"><td>Počet osob v exekuci</td></tr>' +
         '<tr class="plny_detail"><td>Celkový počet exekucí</td></tr>';
-      if (rok != "2016" && rok != "2021") {
+      if (rok != "2016" && rok != "2021" && rok != "2022") {
         t += '<tr class="plny_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob ve věku 18 až 29 let *</td></tr>' +
@@ -835,7 +842,18 @@ comparing.update = function() {
           '<tr class="plny_detail"><td>Podíl osob s 10 – 29 exekucemi</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob s 30 a více exekucemi</td></tr>';
       }
-      t += '<tr class="odsadit"><td><a id="detailLink" onclick="toggleDetail()" href="#">Zobrazit detailní údaje</a></td></tr></table><small>* pro rok 2022 0–14 let a 15-29 let</small>';
+	  if (rok == "2022") {
+        t += '<tr class="plny_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
+          '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 15 až 29 let *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl seniorů (65+)</td></tr>' +
+          '<tr class="plny_detail odsadit"><td>Podíl osob s 1 exekucí</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob s 2 exekucemi</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob s 3 – 9 exekucemi</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob s 10 – 29 exekucemi</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob s 30 a více exekucemi</td></tr>';
+      }
+      t += '<tr class="odsadit"><td><a id="detailLink" onclick="toggleDetail()" href="#">Zobrazit detailní údaje</a></td></tr></table>';
       div.innerHTML = t;
       comparing._div.appendChild(div);
       for (var i = 0; i < comparingList.length; i++) {

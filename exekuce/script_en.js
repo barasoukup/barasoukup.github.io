@@ -700,12 +700,19 @@ function generateTooltip(feature) {
       '<tr><td>Total number of EPs</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)]) + '</td></tr>' +
       '<tr><td>Average N° of EPs per person</td><td class="right">' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>';
 
-    if (rok != "2016" && rok != "2021") {
+    if (rok != "2016" && rok != "2021" && rok != "2022") {
       t += '<tr><td><u>People in EPs details:</u></td></tr>' +
         '<tr><td>Percentage (N°) of children</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of young adults (18-29 y/o)</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of seniors (65+ y/o)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
       }
+	  if (rok== "2022"){
+	  t += '<tr><td><u>People in EPs details:</u></td></tr>' +
+        '<tr><td>Percentage (N°) of children</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of young adults (15-29 y/o)</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of seniors (65+ y/o)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
+     
+	  }
       if (rok== "2021"){
           t += '<tr><td class="bold">Including:</td></tr>' +
             '<tr><td>Percentage (N°) of people with 1 - 9 EPs</td><td class="right">' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)]) * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn((props["poe" + rok.slice(3, 4)]-props["p45e" + rok.slice(3, 4)])) + ')</td></tr>' +
@@ -842,10 +849,21 @@ comparing.update = function() {
       t += '<tr class="plny_detail"><td>N° of people 15+ y/o</td></tr>' +
         '<tr class="plny_detail"><td>N° of people in enforcement proceedings (EP)</td></tr>' +
         '<tr class="plny_detail"><td>Total number of EPs</td></tr>';
-      if (rok != "2016" && rok != "2021") {
+      if (rok != "2016" && rok != "2021" && rok != "2022") {
         t += '<tr class="plny_detail odsadit"><td><u>People in EPs details:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of children</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of young adults (18-29 y/o)</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of seniors (65+ y/o)</td></tr>' +
+          '<tr class="plny_detail odsadit"><td>Percentage (N°) of people with 1 EP</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people with 2 EPs</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people with 3 - 9 EPs</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people with 10 - 29 EPs</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people with 30+ EPs</td></tr>';
+      }
+	  if (rok == "2022") {
+        t += '<tr class="plny_detail odsadit"><td><u>People in EPs details:</u></td></tr>' +
+          '<tr class="plny_detail odsadit"><td>Percentage (N°) of children</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of young adults (15-29 y/o)</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of seniors (65+ y/o)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of people with 1 EP</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of people with 2 EPs</td></tr>' +
