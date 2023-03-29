@@ -36,7 +36,7 @@ L.Control.include({
 base = L.tileLayer('https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=CA9jkYsvrAOGl2YSpa5x7n43tiWMiS4jKLMCLCRlzrKrsdUER1yROrONSmeedP3c', {
   minZoom: 5,
   maxZoom: 20,
-  attribution: '<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - přispěvatelé<a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>, zdroj dat <a href="http://www.ekcr.cz/">Exekutorská komora ČR</a>, kartografické zpracování <a href="mailto:bara.so@email.cz">Bára Soukupová</a>',
+  attribution: '<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - přispěvatelé<a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>, zdroj dat <a href="http://www.ekcr.cz/">Exekutorská komora ČR</a>, kartografické zpracování <a href="mailto:bara.so@email.cz">Bára Soukupová</a>'
 });
 
 map.addLayer(base);
@@ -818,7 +818,7 @@ comparing.update = function() {
       if (rok == "2021") {
           t += '<tr><td>Podíl osob se 10 a více exekucemi</td></tr>';
         }
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022") {
         t += '<tr class="plny_detail"><td>Medián jistiny na osobu</td></tr>';
       }
       t += '<tr class="plny_detail"><td>Počet osob starších 15 let</td></tr>' +

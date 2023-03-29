@@ -1,4 +1,4 @@
-var rok = "2021";
+var rok = "2022";
 var valUj = "kraje";
 var valIndi = "poe";
 var viewPrehled = 0;
@@ -51,11 +51,11 @@ function preklad(slovo) {
   }
 }
 
-base = L.tileLayer('https://api.mapbox.com/styles/v1/soukupma/cjky0su5j3dz52roblmfh2c4o/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic291a3VwbWEiLCJhIjoiMGVjMjZjMWZmYzM1YjAxZDYwMmViNWU4NTQzZWNmYjUifQ.t-OJ7Re1gQXfP1vpY1ASVA', {
+base = L.tileLayer('https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=CA9jkYsvrAOGl2YSpa5x7n43tiWMiS4jKLMCLCRlzrKrsdUER1yROrONSmeedP3c', {
   minZoom: 5,
   maxZoom: 20,
-  attribution: 'Basemap &copy; <a href="https://www.mapbox.com/">Mapbox</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, data <a href="http://www.ekcr.cz/">Bailiff Chamber of the Czech Republic</a>, map creator <a href="mailto:bara.so@email.cz">Bára Soukupová</a>',
-  mapid: 'soukupma.68f89de5'
+  attribution: '<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a> contributors, data <a href="http://www.ekcr.cz/">Exekutorská komora ČR</a>, map creator <a href="mailto:bara.so@email.cz">Bára Soukupová</a>'
+ 
 });
 
 map.addLayer(base);
@@ -224,6 +224,12 @@ function getColor2(props) {
     } else if (valIndi == "poe_change1") {
         if (props["poe9"] > 0) {
           d = (props["poe1"] / props["poe9"] - 1) * 100;
+        } else {
+          d = 0
+        }
+	} else if (valIndi == "poe_change2") {
+        if (props["poe1"] > 0) {
+          d = (props["poe2"] / props["poe1"] - 1) * 100;
         } else {
           d = 0
         }
@@ -471,7 +477,7 @@ function makeDivInfo(feature, index) {
   }
 
   t += '<tr><td>' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>'
-  if (rok == "2017" || rok == "2016") {
+  if (rok == "2017" || rok == "2016" || rok == "2022") {
     t += '<tr><td>' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' CZK </td></tr>'
   }
   if (rok != "2016" && rok != "2021") {
@@ -482,7 +488,7 @@ function makeDivInfo(feature, index) {
   if (rok == "2021") {
       t += '<tr><td>' + ntn(props["p45e" + rok.slice(3, 4)]  * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>'
   }
-  if (rok == "2017") {
+  if (rok == "2017" || rok == "2022") {
     t += '<tr class="plny_detail"><td>' + ntn(props["m7"]) + ' CZK</td></tr>';
   }
   t += '<tr class="plny_detail"><td>' + ntn(props["o"+ rok.slice(3, 4)]) + '</td></tr>' +
@@ -738,19 +744,19 @@ function generateTooltip(feature) {
   } else if (valIndi == "pj") {
     if (valUj == "kraje") {
       t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>';
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022") {
         t += '<tr><td class="poradi">Region ranking <span class="netucne">(1 = the worst)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' of 14</td></td>';
       }
     } else if (valUj == "okresy") {
       t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022") {
         t += '<tr><td class="poradi">District ranking <span class="netucne">(1 = the worst)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' of 77</td></td>';
       }
     } else if (valUj == "orp") {
       t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022") {
         t += '<tr><td class="poradi">Municipalities with extended powers ranking <span class="netucne">(1 = the worst)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' of 206</td></td>';
       }
     } else if (valUj == "obce") {
@@ -761,7 +767,7 @@ function generateTooltip(feature) {
         maximumFractionDigits: 0
       }) + ' CZK</td></tr>' +
       '<tr><td class="vybrano">Average debt principal per person</td><td class="right vybrano">' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' CZK</td></tr>';
-    if (rok == "2017") {
+    if (rok == "2017" || rok == "2022") {
       t += '<tr><td>Median debt principal per person</td><td class="right">' + (props["m" + rok.slice(3, 4)]).toLocaleString('en-us', {
         maximumFractionDigits: 0
       }) + ' CZK</td></tr>';
@@ -775,6 +781,8 @@ function generateTooltip(feature) {
     t = generateChangeTooltip(props,"2019","2018");
   } else if (valIndi == "poe_change1") {
     t = generateChangeTooltip(props,"2021","2019");
+  } else if (valIndi == "poe_change2") {
+    t = generateChangeTooltip(props,"2022","2021");
   } else if (valIndi == "poe_changec") {
     t = generateChangeTooltip(props,"2021","2016");
   }
@@ -817,7 +825,7 @@ comparing.update = function() {
         t += '<tr><td>YtY change of percentage of people in EPs';
       }
       t += '<tr><td>Average N° of EPs per person</td></tr>';
-      if (rok == "2017" || rok == "2016") {
+      if (rok == "2017" || rok == "2016" || rok == "2022") {
         t += '<tr><td>Average debt principal per person</td></tr>';
       }
       if (rok != "2016" && rok != "2021") {
@@ -828,7 +836,7 @@ comparing.update = function() {
       if (rok == "2021") {
           t += '<tr><td>Percentage (N°) of people with 10+ EPs</td></tr>';
         }
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022") {
         t += '<tr class="plny_detail"><td>Median debt principal per person</td></tr>';
       }
       t += '<tr class="plny_detail"><td>N° of people 15+ y/o</td></tr>' +
@@ -986,7 +994,17 @@ $('.year').click(function(e) {
 });
 
 function year_disabling() {
-  if (rok == "2021") {
+	if (rok == "2022") {
+    $('#rad_poe').attr('disabled', false);
+    $('#rad_pj').attr('disabled', false);
+    $('#rad_pove').attr('disabled', false);
+    $('#rad_poe_change7').attr('disabled', false);
+    $('#rad_poe_change8').attr('disabled', false);
+    $('#rad_poe_change9').attr('disabled', false);
+    $('#rad_poe_changec').attr('disabled', false);
+    $('#rad_orp').attr('disabled', false);
+    $('#rad_obce').attr('disabled', false);
+ } else if (rok == "2021") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
     $('#rad_pove').attr('disabled', true);
