@@ -21,7 +21,7 @@ obce_obyv = df.groupby(['koduzemi']).agg({'value': ['sum']})
 df = pd.read_csv("Open-Data-povinni.csv")
 
 #kod roku
-R = 2 
+R = "2" 
 #struktura území stažená https://www.czso.cz/csu/czso/i_zakladni_uzemni_ciselniky_na_uzemi_cr_a_klasifikace_cz_nuts
 #opravit Praha pou = 10000 a orp = 1000
 uzemi = pd.read_excel('struktura_uzemi_cr_1_1_2013_az_1_1_2023.xlsx',sheet_name="1.1.2023", header =[0,1], index_col = 0) 
@@ -62,7 +62,7 @@ uzemni_jednotky = [
 	("pou", "kod_pou",[]),
 	("orp", "kod_orp",["orp.geojson"]),
 	("okresy", "kod_okres", ["okresy.geojson"]),
-	("kraje", "kod_kraj", ["kraje.geojson","kraje_en.geojson"])]
+	("kraje", "kod_kraj", ["kraje_en.geojson","kraje.geojson"])]
 
 
 
@@ -136,20 +136,47 @@ for uj in uzemni_jednotky:
     vicecetne_table = pd.pivot_table(vicecetne,index=uj[1], values='id',columns='pocetni_skupina', aggfunc="sum")
 
     celek_table = pocty.merge(veky_table,right_index=True, left_index=True).merge(vicecetne_table,right_index=True, left_index=True)
-    if uj[0] in ("orp",'okresy','kraje'):
-        celek_table= celek_table.join(obyv_agg[uj[0]])
-        celek_table["podil_oe"] = celek_table["poe"] / celek_table["o"] 
-        celek_table["podil_oe_rank"] = celek_table["podil_oe"].rank()
+    celek_table = celek_table.fillna(0)
+    celek_table= celek_table.join(obyv_agg[uj[0]])
+    celek_table["podil_oe"] = celek_table["poe"] / celek_table["o"] 
+    celek_table["podil_oe_rank"] = celek_table["podil_oe"].rank(ascending=False)
+    celek_table["pvo_rank"] = celek_table["pvo"].rank(ascending=False)
+    celek_table["podil_vce"] = (celek_table["p2"] +celek_table["p3"]+celek_table["p4"]+celek_table["p5"])/ celek_table["poe"]
+    celek_table["vce_rank"] = celek_table["podil_vce"].rank(ascending=False)
     
-    # celek_table.to_excel(uj[0]+".xlsx")  
-    # for f in uj[2]:
-    #     with open(f,encoding="utf-8") as file:
-    #         data = json.load(file)
-    #     features = data["features"]
-    #     for feature in features:
-    #         props = feature["properties"]
-    #         i = props['i']
-    #         props['pe'+R] = celek_table.loc[i]['pe']
+    celek_table.to_excel(uj[0]+".xlsx")  
+    for f in uj[2]:
+        with open(f,encoding="utf-8") as file:
+            data = json.load(file)
+        features = data["features"]
+        for feature in features:
+            props = feature["properties"] 
+            i = props['i']
+            if isinstance(i, str) and i.isnumeric():
+                i = int(i)
+            if i in celek_table.index:
+                props['pe'+R] = int(celek_table.loc[i]['pe'])
+                props['c'+R] = int(celek_table.loc[i]['cv'])
+                props['poe'+R] = int(celek_table.loc[i]['poe'])
+                props['p1e'+R] = int(celek_table.loc[i]['p1'])
+                props['p2e'+R] = int(celek_table.loc[i]['p2'])
+                props['p3e'+R] = int(celek_table.loc[i]['p3'])
+                props['p4e'+R] = int(celek_table.loc[i]['p4'])
+                props['p5e'+R] = int(celek_table.loc[i]['p5'])
+                props['pde'+R] = int(celek_table.loc[i]['v0_14'])
+                props['pme'+R] = int(celek_table.loc[i]['v15_29'])
+                props['pse'+R] = int(celek_table.loc[i]['v65_'])
+                if uj[0] in ("orp",'okresy','kraje'):
+                    props['poe'+R+'p'] = int(celek_table.loc[i]['podil_oe_rank'])
+                    props['pjo'+R+'p'] = int(celek_table.loc[i]['pvo_rank'])
+                    props['pv'+R+'p'] = int(celek_table.loc[i]['vce_rank'])
+                props['m'+R] = int(celek_table.loc[i]['mvo'])
+                props['o'+R] = int(celek_table.loc[i]['o'])
+        with open(f.split(".")[0]+R+".geojson", "w",encoding="utf-8") as outfile:
+            json.dump(data, outfile, separators=(',', ':'))
+            
+            
+            
             
         
         

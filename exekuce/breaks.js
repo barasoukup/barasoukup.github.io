@@ -67,8 +67,29 @@ var breaks = {
       colors: ['#006837','#1a9850','#66bd63','#a6d96a', '#d9ef8b', '#fee08b', '#fdae61', '#f46d43', '#d73027', '#a50026']
     }
   },
+  poe_change2: {
+    title: "Procentuální změna počtu osob v exekuci 2021 – 2022",
+    step: 0.1,
+    decimals: 1,
+    kraje: {
+      breaks: [-20, -15, -10, -5 ,0, 5, 10, 15, 20],
+      colors: ['#006837','#1a9850','#66bd63','#a6d96a', '#d9ef8b', '#fee08b', '#fdae61', '#f46d43', '#d73027', '#a50026']
+    },
+    okresy: {
+      breaks: [-20, -15, -10, -5 ,0, 5, 10, 15, 20],
+      colors: ['#006837','#1a9850','#66bd63','#a6d96a', '#d9ef8b', '#fee08b', '#fdae61', '#f46d43', '#d73027', '#a50026']
+    },
+    orp: {
+      breaks: [-20, -15, -10, -5 ,0, 5, 10, 15, 20],
+      colors: ['#006837','#1a9850','#66bd63','#a6d96a', '#d9ef8b', '#fee08b', '#fdae61', '#f46d43', '#d73027', '#a50026']
+    },
+    obce: {
+      breaks: [-20, -15, -10, -5 ,0, 5, 10, 15, 20],
+      colors: ['#006837','#1a9850','#66bd63','#a6d96a', '#d9ef8b', '#fee08b', '#fdae61', '#f46d43', '#d73027', '#a50026']
+    }
+  },
   poe_changec: {
-    title: "Procentuální změna počtu osob v exekuci 2016 – 2021",
+    title: "Procentuální změna počtu osob v exekuci 2016 – 2022",
     step: 0.1,
     decimals: 1,
     kraje: {

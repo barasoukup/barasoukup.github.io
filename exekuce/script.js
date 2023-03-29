@@ -1,4 +1,4 @@
-var rok = "2021";
+var rok = "2022";
 var valUj = "kraje";
 var valIndi = "poe";
 var viewPrehled = 0;
@@ -73,7 +73,7 @@ icko.rozbal = function() {
     '<ul><li><b>Centrální evidence exekucí</b> spravovaná Exekutorskou komorou ČR</li>' +
     '<li><b>Český statistický úřad</b></li></ul>' +
     '<h4>Časová období</h4>' +
-    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b>,<b> 2019</b> a <b>2021</b></li></ul>' +
+    '<ul><li><b>2016</b>,<b> 2017</b>,<b> 2018</b>,<b> 2019</b>, <b>2021</b> a <b>2022</b></li></ul>' +
     '<h4>Mapa obsahuje</h4>' +
     '<ul><li><b>pouze fyzické osoby</b></li>' +
     '<li><b>počet obyvatel starších 15 let</b></li>' +
@@ -207,6 +207,12 @@ function getColor2(props) {
     } else if (valIndi == "poe_change1") {
         if (props["poe9"] > 0) {
           d = (props["poe1"] / props["poe9"] - 1) * 100;
+        } else {
+          d = 0
+        }
+	} else if (valIndi == "poe_change2") {
+        if (props["poe1"] > 0) {
+          d = (props["poe2"] / props["poe1"] - 1) * 100;
         } else {
           d = 0
         }
@@ -454,7 +460,7 @@ function makeDivInfo(feature, index) {
   }
 
   t += '<tr><td>' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>'
-  if (rok == "2017" || rok == "2016") {
+  if (rok == "2017" || rok == "2016" || rok == "2022") {
     t += '<tr><td>' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' Kč </td></tr>'
   }
   if (rok != "2016" && rok != "2021") {
@@ -465,7 +471,7 @@ function makeDivInfo(feature, index) {
   if (rok == "2021") {
       t += '<tr><td>' + ntn(props["p45e" + rok.slice(3, 4)]  * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>'
   }
-  if (rok == "2017") {
+  if (rok == "2017" || rok == "2022") {
     t += '<tr class="plny_detail"><td>' + ntn(props["m7"]) + ' Kč</td></tr>';
   }
   t += '<tr class="plny_detail"><td>' + ntn(props["o"+ rok.slice(3, 4)]) + '</td></tr>' +
@@ -721,19 +727,19 @@ function generateTooltip(feature) {
 } else if (valIndi == "pj") {
     if (valUj == "kraje") {
       t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>';
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022" ) {
         t += '<tr><td class="poradi">Pořadí kraje <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' z 14</td></td>';
       }
     } else if (valUj == "okresy") {
       t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022") {
         t += '<tr><td class="poradi">Pořadí okresu <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' z 77</td></td>';
       }
     } else if (valUj == "orp") {
       t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
-      if (rok == "2017") {
+      if (rok == "2017" || rok == "2022") {
         t += '<tr><td class="poradi">Pořadí ORP <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' z 206</td></td>';
       }
     } else if (valUj == "obce") {
@@ -744,7 +750,7 @@ function generateTooltip(feature) {
         maximumFractionDigits: 0
       }) + ' Kč</td></tr>' +
       '<tr><td class="vybrano">Průměrná jistina na osobu</td><td class="right vybrano">' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' Kč</td></tr>';
-    if (rok == "2017") {
+    if (rok == "2017" || rok == "2022") {
       t += '<tr><td>Medián jistiny na osobu</td><td class="right">' + (props["m" + rok.slice(3, 4)]).toLocaleString('cs-CZ', {
         maximumFractionDigits: 0
       }) + ' Kč</td></tr>';
@@ -758,6 +764,8 @@ function generateTooltip(feature) {
     t = generateChangeTooltip(props,"2019","2018");
   } else if (valIndi == "poe_change1") {
     t = generateChangeTooltip(props,"2021","2019");
+  } else if (valIndi == "poe_change2") {
+    t = generateChangeTooltip(props,"2022","2021");
   } else if (valIndi == "poe_changec") {
     t = generateChangeTooltip(props,"2021","2016");
   }
@@ -800,7 +808,7 @@ comparing.update = function() {
         t += '<tr><td>Meziroční změna počtu osob v exekuci</td></tr>';
       }
       t += '<tr><td>Průměrný počet exekucí na osobu</td></tr>';
-      if (rok == "2017" || rok == "2016") {
+      if (rok == "2017" || rok == "2016" || rok == "2022") {
         t += '<tr><td>Průměrná jistina na osobu</td></tr>';
       }
       if (rok != "2016" && rok != "2021") {
@@ -819,8 +827,8 @@ comparing.update = function() {
         '<tr class="plny_detail"><td>Celkový počet exekucí</td></tr>';
       if (rok != "2016" && rok != "2021") {
         t += '<tr class="plny_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
-          '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých</td></tr>' +
-          '<tr class="plny_detail"><td>Podíl osob ve věku 18 až 29 let</td></tr>' +
+          '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 18 až 29 let *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl seniorů (65+)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl osob s 1 exekucí</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob s 2 exekucemi</td></tr>' +
@@ -828,7 +836,7 @@ comparing.update = function() {
           '<tr class="plny_detail"><td>Podíl osob s 10 – 29 exekucemi</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob s 30 a více exekucemi</td></tr>';
       }
-      t += '<tr class="odsadit"><td><a id="detailLink" onclick="toggleDetail()" href="#">Zobrazit detailní údaje</a></td></tr></table>';
+      t += '<tr class="odsadit"><td><a id="detailLink" onclick="toggleDetail()" href="#">Zobrazit detailní údaje</a></td></tr></table><small>* pro rok 2022 0–14 let a 15-29 let</small>';
       div.innerHTML = t;
       comparing._div.appendChild(div);
       for (var i = 0; i < comparingList.length; i++) {
@@ -969,7 +977,17 @@ $('.year').click(function(e) {
 });
 
 function year_disabling() {
-  if (rok == "2021") {
+if (rok == "2022") {
+    $('#rad_poe').attr('disabled', false);
+    $('#rad_pj').attr('disabled', false);
+    $('#rad_pove').attr('disabled', false);
+    $('#rad_poe_change7').attr('disabled', false);
+    $('#rad_poe_change8').attr('disabled', false);
+    $('#rad_poe_change9').attr('disabled', false);
+    $('#rad_poe_changec').attr('disabled', false);
+    $('#rad_orp').attr('disabled', false);
+    $('#rad_obce').attr('disabled', false);
+ } else if (rok == "2021") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
     $('#rad_pove').attr('disabled', true);
