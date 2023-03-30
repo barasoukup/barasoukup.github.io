@@ -459,7 +459,7 @@ function makeDivInfo(feature, index) {
   }
 
   t += '<tr><td>' + ntn(props["pe" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)], 1) + '</td></tr>'
-  if (rok == "2017" || rok == "2016" || rok == "2022") {
+  if (rok == "2017" || rok == "2016") {
     t += '<tr><td>' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' Kč </td></tr>'
   }
   if (rok != "2016" && rok != "2021") {
@@ -470,7 +470,7 @@ function makeDivInfo(feature, index) {
   if (rok == "2021") {
       t += '<tr><td>' + ntn(props["p45e" + rok.slice(3, 4)]  * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>'
   }
-  if (rok == "2017" || rok == "2022") {
+  if (rok == "2017" ) {
     t += '<tr class="plny_detail"><td>' + ntn(props["m7"]) + ' Kč</td></tr>';
   }
   t += '<tr class="plny_detail"><td>' + ntn(props["o"+ rok.slice(3, 4)]) + '</td></tr>' +
@@ -733,19 +733,19 @@ function generateTooltip(feature) {
 } else if (valIndi == "pj") {
     if (valUj == "kraje") {
       t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>';
-      if (rok == "2017" || rok == "2022" ) {
+      if (rok == "2017") {
         t += '<tr><td class="poradi">Pořadí kraje <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' z 14</td></td>';
       }
     } else if (valUj == "okresy") {
       t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
-      if (rok == "2017" || rok == "2022") {
+      if (rok == "2017") {
         t += '<tr><td class="poradi">Pořadí okresu <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' z 77</td></td>';
       }
     } else if (valUj == "orp") {
       t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
         '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
-      if (rok == "2017" || rok == "2022") {
+      if (rok == "2017") {
         t += '<tr><td class="poradi">Pořadí ORP <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pjo" + rok.slice(3, 4) + "p"] + ' z 206</td></td>';
       }
     } else if (valUj == "obce") {
@@ -756,7 +756,7 @@ function generateTooltip(feature) {
         maximumFractionDigits: 0
       }) + ' Kč</td></tr>' +
       '<tr><td class="vybrano">Průměrná jistina na osobu</td><td class="right vybrano">' + ntn(props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' Kč</td></tr>';
-    if (rok == "2017" || rok == "2022") {
+    if (rok == "2017") {
       t += '<tr><td>Medián jistiny na osobu</td><td class="right">' + (props["m" + rok.slice(3, 4)]).toLocaleString('cs-CZ', {
         maximumFractionDigits: 0
       }) + ' Kč</td></tr>';
@@ -814,7 +814,7 @@ comparing.update = function() {
         t += '<tr><td>Meziroční změna počtu osob v exekuci</td></tr>';
       }
       t += '<tr><td>Průměrný počet exekucí na osobu</td></tr>';
-      if (rok == "2017" || rok == "2016" || rok == "2022") {
+      if (rok == "2017" || rok == "2016") {
         t += '<tr><td>Průměrná jistina na osobu</td></tr>';
       }
       if (rok != "2016" && rok != "2021") {
@@ -825,7 +825,7 @@ comparing.update = function() {
       if (rok == "2021") {
           t += '<tr><td>Podíl osob se 10 a více exekucemi</td></tr>';
         }
-      if (rok == "2017" || rok == "2022"s) {
+      if (rok == "2017") {
         t += '<tr class="plny_detail"><td>Medián jistiny na osobu</td></tr>';
       }
       t += '<tr class="plny_detail"><td>Počet osob starších 15 let</td></tr>' +
@@ -996,7 +996,7 @@ $('.year').click(function(e) {
 function year_disabling() {
 if (rok == "2022") {
     $('#rad_poe').attr('disabled', false);
-    $('#rad_pj').attr('disabled', false);
+    $('#rad_pj').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
