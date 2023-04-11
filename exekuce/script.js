@@ -181,6 +181,8 @@ function getColor2(props) {
   try {
     if (valIndi == "pj") {
       d = props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)];
+    } else if (valIndi == "vc") {
+      d = props["vc" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)];
     } else if (valIndi == "poe") {
       d = props["poe" + rok.slice(3, 4)] * 100 / props["o"+ rok.slice(3, 4)];
     } else if (valIndi == "pove") {
@@ -480,6 +482,9 @@ function makeDivInfo(feature, index) {
     t += '<tr class="plny_detail odsadit"><td>&nbsp;</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["p1e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["p2e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
@@ -686,12 +691,18 @@ function generateTooltip(feature) {
       t += '<tr><td><u>Detail osob v exekuci:</u></td></tr>' +
         '<tr><td>Podíl (počet) dětí a mladistvých</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right">' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa3" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right">' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa4" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) osob ve věku 50 až 64 let</td><td class="right">' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa5" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) seniorů (65+)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
       }
 	if (rok == "2022") {
       t += '<tr><td><u>Detail osob v exekuci:</u></td></tr>' +
         '<tr><td>Podíl (počet) dětí a mladistvých</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) osob ve věku 15 až 29 let</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right">' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa3" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right">' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa4" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Podíl (počet) osob ve věku 50 až 64 let</td><td class="right">' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa5" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) seniorů (65+)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
       }
 	    
@@ -762,6 +773,32 @@ function generateTooltip(feature) {
       }) + ' Kč</td></tr>';
     }
     t += '<tr><td>Průměrná jistina na exekuci</td><td class="right">' + ntn(props["c" + rok.slice(3, 4)] / props["pe" + rok.slice(3, 4)]) + ' Kč</td></tr>';
+  } else if (valIndi == "vc") {
+      if (valUj == "kraje") {
+        t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>';
+        t += '<tr><td class="poradi">Pořadí kraje <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pvc" + rok.slice(3, 4) + "p"] + ' z 14</td></td>';
+      } else if (valUj == "okresy") {
+        t = '<table><tr><td class="grey bold">okres ' + props.r.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
+          '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
+          t += '<tr><td class="poradi">Pořadí okresu <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pvc" + rok.slice(3, 4) + "p"] + ' z 77</td></td>';
+      } else if (valUj == "orp") {
+        t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
+          '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
+          t += '<tr><td class="poradi">Pořadí ORP <span class="netucne">(1 = nejhorší)</span></td><td class="right poradi">' + props["pvc" + rok.slice(3, 4) + "p"] + ' z 206</td></td>';
+      } else if (valUj == "obce") {
+        t = '<table><tr><td class="grey bold">obec ' + props.b.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
+          '<tr><td class="grey"><i>okres ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
+      }
+      t += '<tr><td>Exekučně vymáhaná částka</td><td class="right">' + props["vc" + rok.slice(3, 4)].toLocaleString('cs-CZ', {
+          maximumFractionDigits: 0
+        }) + ' Kč</td></tr>' +
+        '<tr><td class="vybrano">Průměrná vymáhaná částka na osobu</td><td class="right vybrano">' + ntn(props["vc" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' Kč</td></tr>';
+      
+        t += '<tr><td>Medián vymáhané částky na osobu</td><td class="right">' + (props["mvc" + rok.slice(3, 4)]).toLocaleString('cs-CZ', {
+          maximumFractionDigits: 0
+        }) + ' Kč</td></tr>';
+
+      t += '<tr><td>Průměrná vymáhaná částka na 1 exekuci</td><td class="right">' + ntn(props["vc" + rok.slice(3, 4)] / props["pe" + rok.slice(3, 4)]) + ' Kč</td></tr>';
   } else if (valIndi == "poe_change7") {
     t = generateChangeTooltip(props,"2017","2016");
   } else if (valIndi == "poe_change8") {
@@ -835,6 +872,9 @@ comparing.update = function() {
         t += '<tr class="plny_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob ve věku 18 až 29 let *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 30 až 39 let *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 40 až 49 let *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 50 až 64 let *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl seniorů (65+)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl osob s 1 exekucí</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob s 2 exekucemi</td></tr>' +
@@ -846,6 +886,9 @@ comparing.update = function() {
         t += '<tr class="plny_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob ve věku 15 až 29 let *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 30 až 39 let *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 40 až 49 let *</td></tr>' +
+          '<tr class="plny_detail"><td>Podíl osob ve věku 50 až 64 let *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl seniorů (65+)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl osob s 1 exekucí</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob s 2 exekucemi</td></tr>' +
@@ -995,8 +1038,9 @@ $('.year').click(function(e) {
 
 function year_disabling() {
 if (rok == "2022") {
-    $('#rad_poe').attr('disabled', false);
+    $('#rad_poe').attr('disabled', false);	
     $('#rad_pj').attr('disabled', true);
+    $('#rad_vc').attr('disabled', false);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1007,6 +1051,7 @@ if (rok == "2022") {
  } else if (rok == "2021") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', true);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1017,6 +1062,7 @@ if (rok == "2022") {
   } else if (rok == "2019") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1027,6 +1073,7 @@ if (rok == "2022") {
   } else if (rok == "2018") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1037,6 +1084,7 @@ if (rok == "2022") {
   } else if (rok == "2017") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', false);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1047,6 +1095,7 @@ if (rok == "2022") {
   } else if (rok == "2016") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', false);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', true);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);

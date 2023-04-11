@@ -498,6 +498,9 @@ function makeDivInfo(feature, index) {
     t += '<tr class="plny_detail odsadit"><td>&nbsp;</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["p1e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["p2e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
@@ -704,12 +707,18 @@ function generateTooltip(feature) {
       t += '<tr><td><u>People in EPs details:</u></td></tr>' +
         '<tr><td>Percentage (N°) of children</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of young adults (18-29 y/o)</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of people 30-39 y/o</td><td class="right">' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa3" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of people 40-49 y/o</td><td class="right">' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa4" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of people 50-64 y/o</td><td class="right">' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa5" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of seniors (65+ y/o)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
       }
 	  if (rok== "2022"){
 	  t += '<tr><td><u>People in EPs details:</u></td></tr>' +
         '<tr><td>Percentage (N°) of children</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of young adults (15-29 y/o)</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of people 30-39 y/o</td><td class="right">' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa3" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of people 40-49 y/o</td><td class="right">' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa4" + rok.slice(3, 4)]) + ')</td></tr>' +
+        '<tr><td>Percentage (N°) of people 50-64 y/o</td><td class="right">' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa5" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of seniors (65+ y/o)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
      
 	  }
@@ -853,6 +862,9 @@ comparing.update = function() {
         t += '<tr class="plny_detail odsadit"><td><u>People in EPs details:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of children</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of young adults (18-29 y/o)</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people 30-39 y/o</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people 40-49 y/o</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people 50-64 y/o</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of seniors (65+ y/o)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of people with 1 EP</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of people with 2 EPs</td></tr>' +
@@ -864,6 +876,9 @@ comparing.update = function() {
         t += '<tr class="plny_detail odsadit"><td><u>People in EPs details:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of children</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of young adults (15-29 y/o)</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people 30-39 y/o</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people 40-49 y/o</td></tr>' +
+          '<tr class="plny_detail"><td>Percentage of people 50-64 y/o</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of seniors (65+ y/o)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of people with 1 EP</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of people with 2 EPs</td></tr>' +
@@ -1012,9 +1027,10 @@ $('.year').click(function(e) {
 });
 
 function year_disabling() {
-	if (rok == "2022") {
-    $('#rad_poe').attr('disabled', false);
+if (rok == "2022") {
+    $('#rad_poe').attr('disabled', false);	
     $('#rad_pj').attr('disabled', true);
+    $('#rad_vc').attr('disabled', false);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1025,7 +1041,8 @@ function year_disabling() {
  } else if (rok == "2021") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
-    $('#rad_pove').attr('disabled', false);
+    $('#rad_vc').attr('disabled', true);
+    $('#rad_pove').attr('disabled', true);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
     $('#rad_poe_change9').attr('disabled', false);
@@ -1035,6 +1052,7 @@ function year_disabling() {
   } else if (rok == "2019") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1045,6 +1063,7 @@ function year_disabling() {
   } else if (rok == "2018") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', true);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1055,6 +1074,7 @@ function year_disabling() {
   } else if (rok == "2017") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', false);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', false);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);
@@ -1065,6 +1085,7 @@ function year_disabling() {
   } else if (rok == "2016") {
     $('#rad_poe').attr('disabled', false);
     $('#rad_pj').attr('disabled', false);
+    $('#rad_vc').attr('disabled', true);
     $('#rad_pove').attr('disabled', true);
     $('#rad_poe_change7').attr('disabled', false);
     $('#rad_poe_change8').attr('disabled', false);

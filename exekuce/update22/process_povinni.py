@@ -156,7 +156,7 @@ for uj in uzemni_jednotky:
                 i = int(i)
             if i in celek_table.index:
                 props['pe'+R] = int(celek_table.loc[i]['pe'])
-                props['c'+R] = int(celek_table.loc[i]['cv'])
+                props['vc'+R] = int(celek_table.loc[i]['cv'])
                 props['poe'+R] = int(celek_table.loc[i]['poe'])
                 props['p1e'+R] = int(celek_table.loc[i]['p1'])
                 props['p2e'+R] = int(celek_table.loc[i]['p2'])
@@ -165,12 +165,15 @@ for uj in uzemni_jednotky:
                 props['p5e'+R] = int(celek_table.loc[i]['p5'])
                 props['pde'+R] = int(celek_table.loc[i]['v0_14'])
                 props['pme'+R] = int(celek_table.loc[i]['v15_29'])
+                props['pa3'+R] = int(celek_table.loc[i]['v30_39']) #age 3x
+                props['pa4'+R] = int(celek_table.loc[i]['v40_49']) #age 4x
+                props['pa5'+R] = int(celek_table.loc[i]['v50_64']) #age 5x
                 props['pse'+R] = int(celek_table.loc[i]['v65_'])
                 if uj[0] in ("orp",'okresy','kraje'):
                     props['poe'+R+'p'] = int(celek_table.loc[i]['podil_oe_rank'])
-                    props['pjo'+R+'p'] = int(celek_table.loc[i]['pvo_rank'])
+                    props['pvc'+R+'p'] = int(celek_table.loc[i]['pvo_rank'])
                     props['pv'+R+'p'] = int(celek_table.loc[i]['vce_rank'])
-                props['m'+R] = int(celek_table.loc[i]['mvo'])
+                props['mvc'+R] = int(celek_table.loc[i]['mvo'])
                 props['o'+R] = int(celek_table.loc[i]['o'])
             else:
                 props['pe'+R] = 0
