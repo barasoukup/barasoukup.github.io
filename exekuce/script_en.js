@@ -499,11 +499,13 @@ function makeDivInfo(feature, index) {
   if (rok != "2016" && rok != "2021") {
     t += '<tr class="plny_detail odsadit"><td>&nbsp;</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
-      '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
-      '<tr class="plny_detail "><td>' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>';
+      if (rok == "2022") {
+	  t+='<tr class="plny_detail "><td>' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
-      '<tr class="plny_detail "><td>' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
-      '<tr class="plny_detail "><td>' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>';
+      }
+	  t+='<tr class="plny_detail "><td>' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["p1e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["p2e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["p3e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '%</td></tr>' +
@@ -709,9 +711,6 @@ function generateTooltip(feature) {
       t += '<tr><td><u>People in EPs details:</u></td></tr>' +
         '<tr><td>Percentage (N°) of children</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of young adults (18-29 y/o)</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
-        '<tr><td>Percentage (N°) of people 30-39 y/o</td><td class="right">' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa3" + rok.slice(3, 4)]) + ')</td></tr>' +
-        '<tr><td>Percentage (N°) of people 40-49 y/o</td><td class="right">' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa4" + rok.slice(3, 4)]) + ')</td></tr>' +
-        '<tr><td>Percentage (N°) of people 50-64 y/o</td><td class="right">' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pa5" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Percentage (N°) of seniors (65+ y/o)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + '% (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
       }
 	  if (rok== "2022"){
@@ -890,9 +889,6 @@ comparing.update = function() {
         t += '<tr class="plny_detail odsadit"><td><u>People in EPs details:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of children</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of young adults (18-29 y/o)</td></tr>' +
-          '<tr class="plny_detail"><td>Percentage of people 30-39 y/o</td></tr>' +
-          '<tr class="plny_detail"><td>Percentage of people 40-49 y/o</td></tr>' +
-          '<tr class="plny_detail"><td>Percentage of people 50-64 y/o</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of seniors (65+ y/o)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Percentage (N°) of people with 1 EP</td></tr>' +
           '<tr class="plny_detail"><td>Percentage of people with 2 EPs</td></tr>' +

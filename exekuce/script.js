@@ -481,10 +481,13 @@ function makeDivInfo(feature, index) {
   if (rok != "2016" && rok != "2021") {
     t += '<tr class="plny_detail odsadit"><td>&nbsp;</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
-      '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
-      '<tr class="plny_detail "><td>' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
+      '<tr class="plny_detail "><td>' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>';
+	   if (rok == "2022") {
+      t+='<tr class="plny_detail "><td>' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
-      '<tr class="plny_detail "><td>' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
+	   '<tr class="plny_detail "><td>' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' ;
+	   }
+	   t+=
       '<tr class="plny_detail "><td>' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail odsadit"><td>' + ntn(props["p1e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
       '<tr class="plny_detail "><td>' + ntn(props["p2e" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' %</td></tr>' +
@@ -691,9 +694,6 @@ function generateTooltip(feature) {
       t += '<tr><td><u>Detail osob v exekuci:</u></td></tr>' +
         '<tr><td>Podíl (počet) dětí a mladistvých</td><td class="right">' + ntn(props["pde" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pde" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right">' + ntn(props["pme" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pme" + rok.slice(3, 4)]) + ')</td></tr>' +
-        '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right">' + ntn(props["pa3" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa3" + rok.slice(3, 4)]) + ')</td></tr>' +
-        '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right">' + ntn(props["pa4" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa4" + rok.slice(3, 4)]) + ')</td></tr>' +
-        '<tr><td>Podíl (počet) osob ve věku 50 až 64 let</td><td class="right">' + ntn(props["pa5" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pa5" + rok.slice(3, 4)]) + ')</td></tr>' +
         '<tr><td>Podíl (počet) seniorů (65+)</td><td class="right">' + ntn(props["pse" + rok.slice(3, 4)] * 100 / props["poe" + rok.slice(3, 4)]) + ' % (' + ntn(props["pse" + rok.slice(3, 4)]) + ')</td></tr>'
       }
 	if (rok == "2022") {
@@ -872,9 +872,6 @@ comparing.update = function() {
         t += '<tr class="plny_detail odsadit"><td><u>Detail osob v exekuci:</u></td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl dětí a mladistvých *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob ve věku 18 až 29 let *</td></tr>' +
-          '<tr class="plny_detail"><td>Podíl osob ve věku 30 až 39 let *</td></tr>' +
-          '<tr class="plny_detail"><td>Podíl osob ve věku 40 až 49 let *</td></tr>' +
-          '<tr class="plny_detail"><td>Podíl osob ve věku 50 až 64 let *</td></tr>' +
           '<tr class="plny_detail"><td>Podíl seniorů (65+)</td></tr>' +
           '<tr class="plny_detail odsadit"><td>Podíl osob s 1 exekucí</td></tr>' +
           '<tr class="plny_detail"><td>Podíl osob s 2 exekucemi</td></tr>' +
