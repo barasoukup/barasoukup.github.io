@@ -199,6 +199,8 @@ function getColor2(props) {
   try {
     if (valIndi == "pj") {
       d = props["c" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)];
+    } else if (valIndi == "vc") {
+      d = props["vc" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)];
     } else if (valIndi == "poe") {
       d = props["poe" + rok.slice(3, 4)] * 100 / props["o"+ rok.slice(3, 4)];
     } else if (valIndi == "pove") {
@@ -789,6 +791,32 @@ function generateTooltip(feature) {
       }) + ' CZK</td></tr>';
     }
     t += '<tr><td>Average debt principal per EP</td><td class="right">' + ntn(props["c" + rok.slice(3, 4)] / props["pe" + rok.slice(3, 4)]) + ' CZK</td></tr>';
+  } else if (valIndi == "vc") {
+      if (valUj == "kraje") {
+        t = '<table><tr><td class="grey bold">' + props.k.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>';
+        t += '<tr><td class="poradi">Region ranking <span class="netucne">(1 = the worst)</span></td><td class="right poradi">' + props["pvc" + rok.slice(3, 4) + "p"] + ' of 14</td></td>';
+      } else if (valUj == "okresy") {
+        t = '<table><tr><td class="grey bold">district ' + props.r.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
+          '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
+          t += '<tr><td class="poradi">District ranking <span class="netucne">(1 = the worst)</span></td><td class="right poradi">' + props["pvc" + rok.slice(3, 4) + "p"] + ' of 77</td></td>';
+      } else if (valUj == "orp") {
+        t = '<table><tr><td class="grey bold">municipality ' + props.n.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
+          '<tr><td class="grey"><i>' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
+          t += '<tr><td class="poradi">Municipalities with extended powers ranking <span class="netucne">(1 = the worst)</span></td><td class="right poradi">' + props["pvc" + rok.slice(3, 4) + "p"] + ' of 206</td></td>';
+      } else if (valUj == "obce") {
+        t = '<table><tr><td class="grey bold">municipality ' + props.b.toUpperCase() + '</td><td class="right grey bold">' + rok + '</td></tr>' +
+          '<tr><td class="grey"><i>district ' + props.r + ', ' + props.k + '</i></td><td class="right grey">&nbsp;</td></tr>';
+      }
+      t += '<tr><td>Debt with interest </td><td class="right">' + props["vc" + rok.slice(3, 4)].toLocaleString('en-us', {
+          maximumFractionDigits: 0
+        }) + ' CZK</td></tr>' +
+        '<tr><td class="vybrano">Average debt with interest per person</td><td class="right vybrano">' + ntn(props["vc" + rok.slice(3, 4)] / props["poe" + rok.slice(3, 4)]) + ' CZK</td></tr>';
+      
+        t += '<tr><td>Median debt with interest per person</td><td class="right">' + (props["mvc" + rok.slice(3, 4)]).toLocaleString('en-us', {
+          maximumFractionDigits: 0
+        }) + ' CZK</td></tr>';
+
+      t += '<tr><td>Average debt with interest per EP</td><td class="right">' + ntn(props["vc" + rok.slice(3, 4)] / props["pe" + rok.slice(3, 4)]) + ' Kč</td></tr>';
   } else if (valIndi == "poe_change7") {
     t = generateChangeTooltip(props,"2017","2016");
   } else if (valIndi == "poe_change8") {
