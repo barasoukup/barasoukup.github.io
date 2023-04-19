@@ -177,7 +177,7 @@ for uj in uzemni_jednotky:
                 props['o'+R] = int(celek_table.loc[i]['o'])
             else:
                 props['pe'+R] = 0
-                props['c'+R] = 0
+                props['vc'+R] = 0
                 props['poe'+R] = 0
                 props['p1e'+R] = 0
                 props['p2e'+R] = 0
@@ -191,7 +191,7 @@ for uj in uzemni_jednotky:
                     props['poe'+R+'p'] = 0
                     props['pjo'+R+'p'] = 0
                     props['pv'+R+'p'] = 0
-                props['m'+R] = 0
+                props['mvc'+R] = 0
                 props['o'+R] = 0
         with open(f.split(".")[0]+R+".geojson", "w",encoding="utf-8") as outfile:
             json.dump(data, outfile, separators=(',', ':'))
