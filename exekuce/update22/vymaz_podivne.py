@@ -27,6 +27,9 @@ for obec in obce_features["features"]:
         props['p5e'+R] = 0
         props['pde'+R] = 0
         props['pme'+R] = 0
+        props['pa3'+R] = 0
+        props['pa4'+R] = 0
+        props['pa5'+R] = 0
         props['pse'+R] = 0
         props['mvc'+R] = 0
     
