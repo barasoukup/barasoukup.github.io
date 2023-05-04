@@ -106,6 +106,7 @@ prehled.onAdd = function(map) {
     '<tr><td>Počet osob s 10 a více exekucemi</td><td class="right bold">149 tis.</td><td class="right green">-9,3 %</td></tr>' +
     '<tr><td>Podíl osob v exekuci</td><td class="right bold">7,6 %</td><td class="right green">-0,3 p.b.</td></tr>' +
     '<tr><td>Celkový počet exekucí</td><td class="right bold">4,1 mil.</td><td class="right green">-8,0 %</td></tr>' +
+    '<tr><td>Celková vymáhaná částka</td><td class="right bold">620 mld. Kč</td><td class="right grey">-</td></tr>' +
     '<tr><td><span class="italic">Údaje jsou pouze za fyzické osoby.<br>Data za rok 2019 jsou z 20. 4. 2020, ostatní roky z 31. 12.</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Zobrazit souhrnné údaje</a></div> ';
   return this._div;
