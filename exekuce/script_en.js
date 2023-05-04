@@ -124,7 +124,7 @@ prehled.onAdd = function(map) {
     '<tr><td>N° of people with 10 or more EPs</td><td class="right bold">149k</td><td class="right green">-9.3%</td></tr>' +
     '<tr><td>Percentage of people in EPs</td><td class="right bold">7.6%</td><td class="right green">-0.3 PP</td></tr>' +
     '<tr><td>Total number of EPs</td><td class="right bold">4,1M</td><td class="right green">-8.0%</td></tr>' +
-    '<tr><td>Total debt with interest</td><td class="right bold">CZK 620 billion</td><td class="right grey">-</td></tr>' +
+    '<tr><td>Total debt with interest</td><td class="right bold">CZK 620 billion</td><td class="right">-</td></tr>' +
     '<tr><td><span class="italic">The published data covers only natural persons;<br>EP = enforcement proceeding<br>Data for 2019 are from April 24, 2020, other years from December 31</span></td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>' +
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Show info</a></div> ';
   return this._div;
