@@ -73,7 +73,7 @@ var prehled = L.control({
 prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
-    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKO</td><td class="right grey bold">2021</td><td class="right grey bold">meziroční změna</td></tr>' +
+    '<div id="prehledTable"><table><tr><td class="grey bold">ČESKO</td><td class="right grey bold">2022</td><td class="right grey bold">meziroční změna</td></tr>' +
     '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">106 tis.</td><td class="right">-0,4 %</td></tr>' +
     '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,1 %</td><td class="right">-</td></tr>' +
     '<tr><td>Podíl muži / ženy</td><td class="right bold">55 % / 45 %</td><td class="right">+ 1 p.b. ženy</td></tr>' +
