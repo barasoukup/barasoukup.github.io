@@ -18,7 +18,7 @@ df = df[df["kodukaz"].isin([110940,110950,110970,110980,110990])]
 df['value']=df["hodnota "].astype('int')
 obce_obyv = df.groupby(['koduzemi']).agg({'value': ['sum']})
 
-df = pd.read_csv("Open-Data-povinni.csv")
+df = pd.read_csv("Open-Data-povinni - upr.csv")
 
 #kod roku
 R = "2" 
