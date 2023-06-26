@@ -1,4 +1,4 @@
-var rok = "2021";
+var rok = "2022";
 var valUj = "kraje";
 var valIndi = "pob";
 var viewPrehled = 0;
@@ -25,12 +25,14 @@ map.getPane('obrysy').style.pointerEvents = 'none';
 L.Control.include({
   _refocusOnMap: L.Util.falseFn // Do nothing.
 });
-base = L.tileLayer('https://api.mapbox.com/styles/v1/soukupma/cjky0su5j3dz52roblmfh2c4o/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoic291a3VwbWEiLCJhIjoiMGVjMjZjMWZmYzM1YjAxZDYwMmViNWU4NTQzZWNmYjUifQ.t-OJ7Re1gQXfP1vpY1ASVA', {
+
+base = L.tileLayer('https://tile.jawg.io/jawg-light/{z}/{x}/{y}{r}.png?access-token=7kCv9CExnxRdkP4lOcVJapZyc88iYGyzTZKvpEVbzArhCNR7lTlaLdosF72iAcj6', {
   minZoom: 5,
   maxZoom: 20,
-  attribution: 'Podkladová mapa &copy; <a href="https://www.mapbox.com/">Mapbox</a>, &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>, zdroj dat Insolvenční rejstřík',
-  //mapid: 'soukupma.68f89de5'
+  attribution: '<a href=\"https://www.jawg.io\" target=\"_blank\">&copy; Jawg</a> - přispěvatelé <a href=\"https://www.openstreetmap.org\" target=\"_blank\">&copy; OpenStreetMap</a>, zdroj dat Insolvenční rejstřík, kartografické zpracování <a href="mailto:bara.so@email.cz">Bára Soukupová</a>'
 });
+
+
 map.addLayer(base);
 function resetView() {
   map.fitBounds([
@@ -72,17 +74,17 @@ prehled.onAdd = function(map) {
   this._div = L.DomUtil.create('div', 'prehled');
   this._div.innerHTML =
     '<div id="prehledTable"><table><tr><td class="grey bold">ČESKO</td><td class="right grey bold">2021</td><td class="right grey bold">meziroční změna</td></tr>' +
-    '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">114 tis.</td><td class="right">-1 %</td></tr>' +
-    '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,29 %</td><td class="right">-</td></tr>' +
-    '<tr><td>Podíl muži / ženy</td><td class="right bold">54 % / 46 %</td><td class="right">±0</td></tr>' +
-    '<tr><td>Podíl manželů</td><td class="right bold">24 %</td><td class="right">-3 p.b.</td></tr>' +
-    '<tr><td>Průměrný / mediánový věk</td><td class="right bold">45,8 / 45</td><td class="right">±0 / ±0</td></tr>' +
+    '<tr><td>Počet osob v osobním bankrotu</td><td class="right bold">106 tis.</td><td class="right">-0,4 %</td></tr>' +
+    '<tr><td>Podíl osob v bankrotu</td><td class="right bold">1,1 %</td><td class="right">-</td></tr>' +
+    '<tr><td>Podíl muži / ženy</td><td class="right bold">55 % / 45 %</td><td class="right">+ 1 p.b. ženy</td></tr>' +
+    '<tr><td>Podíl manželů</td><td class="right bold">23 %</td><td class="right">-1 p.b.</td></tr>' +
+    '<tr><td>Průměrný / mediánový věk</td><td class="right bold">46,1 / 45</td><td class="right">+0,3 / ±0</td></tr>' +
     '<tr><td><u>Věková struktura osob v bankrotu:</u></td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right bold">8 % (9 570)</td><td class="right">+100</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right bold">26 % (29 905)</td><td class="right">+7</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right bold">29 % (33 287)</td><td class="right">-772</td></tr>' +
-    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right bold">28 % (31 561)</td><td class="right">+103</td></tr>' +
-    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right bold">9 % (9 729)</td><td class="right">+17</td></tr>'+
+    '<tr><td>Podíl (počet) osob ve věku 18 až 29 let</td><td class="right bold">8 % (8 476)</td><td class="right">-1 094</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 30 až 39 let</td><td class="right bold">26 % (28 853)</td><td class="right">-1 052</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 40 až 49 let</td><td class="right bold">29 % (31 481)</td><td class="right">-1 806</td></tr>' +
+    '<tr><td>Podíl (počet) osob ve věku 50 až 65 let</td><td class="right bold">29 % (31 484)</td><td class="right">-77</td></tr>' +
+    '<tr><td>Podíl (počet) seniorů (65+ let)</td><td class="right bold">9 % (9 816)</td><td class="right">+87</td></tr>'+
     '<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td class="right"><a id="togglePrehledLink" onclick="togglePrehled()" href="#"><img src="images/70206.png" width="12px"></a></td></tr></table></div>'+
     '<div id="showSouhrnne" style="display:none"><a id="togglePrehledLink" onclick="togglePrehled()" href="#">Zobrazit souhrnné údaje</a></div> ';
   return this._div;
@@ -166,9 +168,15 @@ function getColor2(props) {
           } else {
             d = 0;
           }
+   } else if (valIndi == "pob_change2") {
+          if (props["b1c"] > 0) {
+            d = (props["b2c"] / props["b1c"] - 1) * 100;
+          } else {
+            d = 0;
+          }
     } else if (valIndi == "pob_changec") {
           if (props["b8c"] > 0) {
-            d = (props["b1c"] / props["b8c"] - 1) * 100;
+            d = (props["b2c"] / props["b8c"] - 1) * 100;
           } else {
             d = 0;
           }
@@ -508,23 +516,23 @@ function generateTooltip(feature) {
     '<tr><td>Počet osob v exekuci</td><td class="right">' + ntn(props["poe"+rok.substring(3,4)]) + '</td></tr>' +
     '<tr><td class="vybrano">Osobní bankroty vs. exekuce</td><td class="right vybrano">' + ntn(props["b"+rok.substring(3,4)+"c"] * 100 / props["poe"+rok.substring(3,4)], 2) + ' %</td></tr>';
   }
- else if (valIndi == "pob_change9" || valIndi == "pob_change0" || valIndi == "pob_change1" || valIndi == "pob_changec") {
+ else if (valIndi == "pob_change9" || valIndi == "pob_change0" || valIndi == "pob_change1" ||valIndi == "pob_change2" || valIndi == "pob_changec") {
     if (valUj == "kraje") {
-      t = '<table><tr><td class="grey bold">' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td></tr>';
+      t = '<table><tr><td class="grey bold">' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td><td class="right grey bold">2022</td></tr>';
     } else if (valUj == "okresy") {
-      t = '<table><tr><td class="grey bold">okres ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td></tr>' +
-        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+      t = '<table><tr><td class="grey bold">okres ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td><td class="right grey bold">2022</td></tr>' +
+        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     } else if (valUj == "orp") {
-      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td></tr>' +
-        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+      t = '<table><tr><td class="grey bold">SO ORP ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td><td class="right grey bold">2022</td></tr>' +
+        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }  else if (valUj == "pou") {
-      t = '<table><tr><td class="grey bold">pověřená obec ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td></tr>' +
-        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+      t = '<table><tr><td class="grey bold">pověřená obec ' + props.n.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td><td class="right grey bold">2022</td></tr>' +
+        '<tr><td class="grey italic">' + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }  else if (valUj == "obce") {
-        t = '<table><tr><td class="grey bold">' + props.b.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td></tr>' +
-          '<tr><td class="grey italic">okres '+props.r+", " + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
+        t = '<table><tr><td class="grey bold">' + props.b.toUpperCase() + '</td><td class="right grey bold">2018</td><td class="right grey bold">2019</td><td class="right grey bold">2020</td><td class="right grey bold">2021</td><td class="right grey bold">2022</td></tr>' +
+          '<tr><td class="grey italic">okres '+props.r+", " + props.k + '</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td><td class="right grey">&nbsp;</td></tr>';
     }
-    years=["8","9","0","1"];
+    years=["8","9","0","1","2"];
 
     t += '<tr><td class="vybrano">Počet osob v osobním bankrotu</td>';
     years.forEach(

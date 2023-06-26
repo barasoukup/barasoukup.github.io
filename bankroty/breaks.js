@@ -127,8 +127,34 @@ obce: {
   colors: ['#b35806','#f1a340','#fee0b6','#d8daeb','#998ec3','#542788']
   }
 },
+pob_change2: {
+title: "Procentuální změna počtu osob v bankrotu 2021 – 2022",
+step: 0.1,
+decimals:1,
+kraje: {
+  breaks: [-8, -4,0, 4, 8],
+  colors: ['#b35806','#f1a340','#fee0b6','#d8daeb','#998ec3','#542788']
+},
+okresy: {
+  breaks: [-8, -4,0, 4, 8],
+  colors: ['#b35806','#f1a340','#fee0b6','#d8daeb','#998ec3','#542788']
+  },
+orp: {
+  breaks: [-8, -4,0, 4, 8],
+  colors: ['#b35806','#f1a340','#fee0b6','#d8daeb','#998ec3','#542788']
+},
+pou: {
+breaks: [-8, -4,0, 4, 8],
+colors: ['#b35806','#f1a340','#fee0b6','#d8daeb','#998ec3','#542788']
+},
+
+obce: {
+  breaks: [-8, -4,0, 4, 8],
+  colors: ['#b35806','#f1a340','#fee0b6','#d8daeb','#998ec3','#542788']
+  }
+},
 pob_changec: {
-title: "Procentuální změna počtu osob v bankrotu 2018 – 2021",
+title: "Procentuální změna počtu osob v bankrotu 2018 – 2022",
 step: 0.1,
 decimals:1,
 kraje: {
