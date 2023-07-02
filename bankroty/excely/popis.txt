@@ -1,0 +1,12 @@
+bXm - Počet mužů v bankrotu v roce X
+bXz - Počet žen v bankrotu v roce X
+bXp - Počet párů v bankrotů v roce X
+bXc - Počet bankrotů celkem v roce X
+bXpv - Pruměrný počet veřitelů v roce X
+bXmv - Medián počtu věřitelů v roce X  
+bXv_p - Průměrný věk v roce X
+bXv_m - Mediánový věk v roce X
+bXvY-Z - Počet osob v bankrotu v roce X ve věku Y - Z
+poeX - Počet osob v exekuci v roce X
+oX - Počet obyvatel v roce X (pro rok 22 použita čísla z roku 21)
+
