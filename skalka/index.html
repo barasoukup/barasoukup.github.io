@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vila Skalka</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Prvorepubliková vila v České Třebové: stav, ocenění, varianty dvou bytů, rozpočet rekonstrukce.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+/* Layout: one reading column (~44rem) with wider figure/table bands; a survey-report feel, ochre of the facade as the only accent. */
+:root {
+  --paper: #f5f5f1;
+  --ink: #23272b;
+  --muted: #5d646b;
+  --rule: #d6d7d1;
+  --panel: #ebebe5;
+  --accent: #9a6a17;
+  --accent-soft: #f1e4c8;
+  --neg: #a23b2a;
+  --font-head: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Literata", Georgia, "Times New Roman", serif;
+  --measure: 44rem;
+  --wide: 68rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #16191c; --ink: #e5e4df; --muted: #a2a8ad; --rule: #33383d; --panel: #1f2327;
+    --accent: #d9a648; --accent-soft: #3a3020; --neg: #e2816f; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #16191c; --ink: #e5e4df; --muted: #a2a8ad; --rule: #33383d; --panel: #1f2327;
+  --accent: #d9a648; --accent-soft: #3a3020; --neg: #e2816f; color-scheme: dark;
+}
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 2.5rem 4rem;
+}
+main { display: grid; gap: 0; }
+.col { max-width: var(--measure); width: 100%; margin-inline: auto; min-width: 0; }
+.wide { max-width: var(--wide); width: 100%; margin-inline: auto; min-width: 0; }
+h1, h2, h3 { font-family: var(--font-head); text-wrap: balance; line-height: 1.2; letter-spacing: -0.005em; }
+h1 { font-size: clamp(2rem, 5vw, 2.9rem); font-weight: 700; margin: 0.2rem 0 0.6rem; }
+h2 { font-size: 1.6rem; font-weight: 700; margin: 3.2rem 0 0.8rem; padding-top: 1.2rem; border-top: 2px solid var(--ink); }
+h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.5rem; }
+p, ul, ol { margin: 0 0 1rem; }
+ul { padding-left: 1.2rem; }
+li { margin-bottom: 0.35rem; }
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+strong { font-weight: 600; }
+.eyebrow { font-family: var(--font-head); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.lede { font-size: 1.15rem; color: var(--ink); }
+.meta { color: var(--muted); font-size: 0.95rem; }
+nav.toc { font-family: var(--font-head); font-size: 0.92rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin: 1.4rem 0 0; padding: 0.8rem 0; border-block: 1px solid var(--rule); }
+nav.toc a { color: var(--ink); text-decoration: none; }
+nav.toc a:hover { color: var(--accent); }
+
+.figures { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 1.6rem 0; }
+.figures div { background: var(--paper); padding: 1rem 1.1rem; display: grid; gap: 0.25rem; align-content: start; }
+.figures .k { font-family: var(--font-head); font-size: 0.8rem; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+.figures .v { font-family: var(--font-head); font-size: 1.55rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.figures .v.neg { color: var(--neg); }
+.figures .s { font-size: 0.9rem; color: var(--muted); }
+
+.callout { background: var(--accent-soft); padding: 1rem 1.2rem; margin: 1.2rem 0; border-left: 4px solid var(--accent); }
+.callout p:last-child { margin-bottom: 0; }
+.formula { font-family: var(--font-head); font-weight: 600; background: var(--panel); padding: 0.9rem 1.1rem; margin: 1rem 0; font-size: 1.02rem; }
+
+.table { overflow-x: auto; margin: 1rem 0 1.4rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.93rem; line-height: 1.4; }
+th, td { text-align: left; vertical-align: top; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--font-head); font-weight: 600; font-size: 0.82rem; color: var(--muted); border-bottom: 1.5px solid var(--ink); }
+td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.sum td { font-weight: 600; border-top: 1.5px solid var(--ink); }
+tr.hl td { background: var(--accent-soft); }
+td .neg, .neg { color: var(--neg); }
+table.grid td.n { font-family: var(--font-head); }
+
+figure { margin: 1.4rem 0 1.8rem; }
+figure img { display: block; width: 100%; height: auto; max-width: 100%; background: #fff; border: 1px solid var(--rule); }
+figcaption { font-family: var(--font-head); font-size: 0.85rem; color: var(--muted); margin-top: 0.45rem; }
+.pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1.2rem; }
+.pair figure { margin: 0; }
+.trio { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; margin: 1rem 0 1.8rem; }
+.trio figure { margin: 0; }
+.note { font-size: 0.92rem; color: var(--muted); }
+footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--muted); }
+@media (max-width: 40rem) { body { font-size: 1rem; } h2 { font-size: 1.35rem; } }
+</style>
+
+</head>
+<body>
+<main>
+<header class="col">
+  <div class="eyebrow">Skalka 1521 · Česká Třebová · stav k 20. 10. 2026</div>
+  <h1>Vila Skalka: stav, varianty a rozpočet</h1>
+  <p class="lede">Co dům je, kolik dnes stojí a proč, jak by se dal upravit na dvě domácnosti a co by stála jeho rekonstrukce.</p>
+  <p class="meta">Všechny částky jsou v milionech Kč a jako rozpětí. Ceny jsou z ceníku prací 2026 a z nabídek realit, výměry ze skenu domu. Co je odhad, je tak označené.</p>
+  <nav class="toc" aria-label="Obsah">
+    <a href="#shrnuti">Shrnutí</a><a href="#dum">Dům dnes</a><a href="#oceneni">Ocenění</a><a href="#navrh">Návrh</a><a href="#rozpocet">Rozpočet</a><a href="#rozvaha">Rozvaha</a><a href="#dal">Co dál</a>
+  </nav>
+</header>
+
+<section class="col" id="shrnuti">
+  <h2>Shrnutí</h2>
+  <div class="figures">
+    <div><span class="k">Tržní hodnota dnes</span><span class="v">4,2–5,1</span><span class="s">pracovně 4,5–4,9; porovnání se 7 domy v Třebové</span></div>
+    <div><span class="k">Rekonstrukce na dva byty</span><span class="v">5,5–6,7</span><span class="s">varianta 2, citlivá obnova s tepelným čerpadlem, rezerva 25 %</span></div>
+    <div><span class="k">Hodnota po rekonstrukci</span><span class="v">5,8–7,5</span><span class="s">odhad z opravených domů, 40–50 tis. Kč/m²</span></div>
+    <div><span class="k">Co by dal kupec, který staví firmou</span><span class="v neg">−1,9 až 1,0</span><span class="s">reziduální metoda</span></div>
+  </div>
+  <ul>
+    <li><strong>Rekonstrukce firmou stojí víc, než kolik domu přidá.</strong> Dům za 4,5–4,9 mil. bude po rekonstrukci za 5,5–6,7 mil. mít hodnotu 5,8–7,5 mil. Pro vlastní bydlení to dává smysl, jako investice ne.</li>
+    <li><strong>Tržní cena domu dnes nestojí na nákladech rekonstrukce.</strong> Domy k rekonstrukci se v Třebové nabízejí za 4,5–5 mil. Kč, protože je kupují lidé pro sebe, kteří část práce dělají sami nebo volí levnější standard. Kdyby se cena počítala od nákladů firmy, vyšla by výrazně níž. Proto má smysl podívat se na cenu z více stran (kapitola Ocenění).</li>
+    <li><strong>Dům je menší, než jsme počítali.</strong> Sken ukázal užitnou plochu 141 m² bez sklepa, ne 185 m². Rekonstrukce tím zlevní málo (střecha a fasáda zůstávají stejné), hodnota po rekonstrukci ale vychází nižší.</li>
+    <li><strong>Střecha nad schodištěm zatéká.</strong> Opravit ji je dobré hned, ať se rozhodnete jakkoli.</li>
+  </ul>
+</section>
+
+<section id="dum">
+  <div class="col">
+    <h2>Dům dnes</h2>
+    <p>Prvorepubliková vila z roku 1930, ulice Skalka, č. p. 1521. Pozemek 773 m² na čtyřech sousedících parcelách:</p>
+    <ul>
+      <li>dům a zahrada, parcely 1673 a 3127/1, celkem 422 m²,</li>
+      <li>garáž a zahrada, parcely 2176 a 3128/2, celkem 351 m², podle územního plánu možná samostatně zastavitelné (neověřeno).</li>
+    </ul>
+    <p>Zastavěná plocha je podle katastrální mapy 96 m², k tomu balkon 7,5 m². Sken domu na katastr sedí: obrysy se překrývají z 97 %, rohy se liší nejvýš o 30 cm. Mezi domem a garáží je 3,27 m.</p>
+    <figure><img src="img/situace.png" alt="Katastrální mapa s parcelami a obrysem domu ze skenu" loading="lazy"><figcaption>Situace: katastrální mapa (ČÚZK) a obrys přízemí ze skenu. Béžově část A, zeleně část B, ulice Skalka vpravo.</figcaption></figure>
+    <div class="table"><table>
+      <thead><tr><th>Podlaží</th><th>Co tam je</th><th class="n">Plocha</th></tr></thead>
+      <tbody>
+        <tr><td>1PP, sklep</td><td>sklep pod ložnicí, chodbička, sklep pod obývákem, koupelna s plynovým kotlem, místnost pod terasou; cihelné klenbičky</td><td class="n">~59 m²</td></tr>
+        <tr><td>1NP, přízemí</td><td>schodiště, kuchyň, obývák s arkýřem, ložnice; v křídle WC, spíž a chodbička na balkon</td><td class="n">73,3 m²</td></tr>
+        <tr><td>2NP, patro</td><td>schodiště, chodba, kuchyň, obývák s arkýřem, ložnice, chodbička k půdě</td><td class="n">67,7 m²</td></tr>
+        <tr><td>Půda</td><td>pod mansardou a valbou, krov s plným bedněním</td><td class="n">nevyužitá</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="wide">
+    <div class="pair">
+      <figure><img src="img/pudorys-1np.png" alt="Čistý půdorys přízemí ze skenu" loading="lazy"><figcaption>Přízemí, čistý půdorys ze skenu</figcaption></figure>
+      <figure><img src="img/pudorys-2np.png" alt="Čistý půdorys patra ze skenu" loading="lazy"><figcaption>Patro, čistý půdorys ze skenu</figcaption></figure>
+    </div>
+    <div class="pair">
+      <figure><img src="img/sklep.png" alt="Náčrt sklepa podle popisu" loading="lazy"><figcaption>Sklep, náčrt podle popisu (sken chybí)</figcaption></figure>
+      <div style="display:grid;gap:1.2rem;align-content:start;min-width:0">
+        <figure><img src="img/3d-ulice.png" alt="3D hmota domu od ulice" loading="lazy"><figcaption>Hmota domu od ulice (odhadnuté výšky)</figcaption></figure>
+        <figure><img src="img/3d-zahrada.png" alt="3D hmota domu od zahrady" loading="lazy"><figcaption>Hmota domu od zahrady</figcaption></figure>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <h3>Technický stav (zjištěno 20. 10. 2026)</h3>
+    <div class="table"><table>
+      <thead><tr><th>Část</th><th>Stav</th><th>Co ještě ověřit</th></tr></thead>
+      <tbody>
+        <tr><td>Střecha</td><td>Původní krytina z roku 1930, pravděpodobně eternit. Nad schodištěm zatéká, v krytině je díra asi 10 cm. Krov na fotce z půdy vypadá zdravě.</td><td>eternit rozborem vzorku; zhlaví krokví nikdo neviděl</td></tr>
+        <tr><td>Sklep</td><td>Téměř celý dům je podsklepený, stropy jsou cihelné klenbičky. Nějaká vlhkost tam je.</td><td>rozsah vlhkosti měřením</td></tr>
+        <tr><td>Topení</td><td>Plynový kotel ve sklepě, radiátory v celém domě.</td><td>stav rozvodů</td></tr>
+        <tr><td>Kanalizace</td><td>Funkční odpad ve sklepní koupelně. V 90. letech se předělávala, dům je možná napojený na veřejnou kanalizaci.</td><td>kamerou nebo u provozovatele</td></tr>
+        <tr><td>Elektroinstalace</td><td>Původní nebo hodně stará.</td><td>výměna nutná</td></tr>
+        <tr><td>Koupelna</td><td>V obytných podlažích chybí, je jen ve sklepě.</td><td>–</td></tr>
+        <tr><td>Okna</td><td>16 dvojitých oken a balkonové dveře, 28,9 m².</td><td>stav dřeva posoudí truhlář</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="col" id="oceneni">
+  <h2>Ocenění: kolik dům stojí dnes a proč</h2>
+  <p>Cena domu dnes je výchozí bod všech dalších úvah a zároveň do ní vstupuje cena budoucí rekonstrukce. Proto ukazuji tři metody vedle sebe, každou s předpoklady, aby šlo vidět, co cenu posouvá.</p>
+
+  <h3>1. Porovnávací metoda: co platí lidé za podobné domy</h3>
+  <p>Je to hlavní metoda znalců i bank. Bere nabídky podobných domů ve stejném městě a upravuje je o rozdíly.</p>
+</section>
+<div class="wide"><div class="table"><table>
+  <thead><tr><th>Dům (nabídky září–říjen 2026)</th><th class="n">Plocha</th><th class="n">Pozemek</th><th>Stav</th><th class="n">Nabídka</th><th class="n">Kč/m²</th></tr></thead>
+  <tbody>
+    <tr class="hl"><td><a href="https://www.sreality.cz/detail/prodej/dum/rodinny/ceska-trebova-parnik-cechova/3836420172">Čechova, Parník</a></td><td class="n">127 m²</td><td class="n">572 m²</td><td>k celkové rekonstrukci</td><td class="n">4,90</td><td class="n">38,6 tis.</td></tr>
+    <tr><td><a href="https://www.sreality.cz/detail/prodej/dum/rodinny/ceska-trebova-ceska-trebova-lidicka/3596918860">Lidická</a></td><td class="n">76 m²</td><td class="n">361 m²</td><td>velmi dobrý</td><td class="n">4,64</td><td class="n">61,1 tis.</td></tr>
+    <tr><td><a href="https://www.sreality.cz/detail/prodej/dum/rodinny/ceska-trebova-parnik-ustecka/2834354252">Ústecká, Parník</a></td><td class="n">129 m²</td><td class="n">200 m²</td><td>velmi dobrý</td><td class="n">4,75</td><td class="n">36,8 tis.</td></tr>
+    <tr><td>Moravská</td><td class="n">100 m²</td><td class="n">423 m²</td><td>k částečné rekonstrukci</td><td class="n">4,47</td><td class="n">44,7 tis.</td></tr>
+    <tr><td>Kozlov</td><td class="n">157 m²</td><td class="n">322 m²</td><td>neznámý</td><td class="n">5,29</td><td class="n">33,7 tis.</td></tr>
+    <tr><td><a href="https://www.sreality.cz/detail/prodej/dum/rodinny/ceska-trebova-ceska-trebova-tylova/3343241292">Tylova</a></td><td class="n">150 m²</td><td class="n">171 m²</td><td>rekonstruované jen přízemí</td><td class="n">3,29</td><td class="n">21,9 tis.</td></tr>
+    <tr><td>Kollárova 320, Parník</td><td class="n">114 m²</td><td class="n">724 m²</td><td>neznámý</td><td class="n">2,99</td><td class="n">26,2 tis.</td></tr>
+  </tbody>
+</table></div>
+<p class="note col" style="padding:0">Plochy jsou z inzerátů. Někteří prodávající do nich počítají sklep, takže srovnání po m² je jen orientační.</p></div>
+<section class="col">
+  <p><strong>Úprava od nejbližšího srovnání</strong> (Čechova, také k celkové rekonstrukci):</p>
+  <div class="table"><table>
+    <thead><tr><th>Krok</th><th>Výpočet</th><th class="n">mil. Kč</th></tr></thead>
+    <tbody>
+      <tr><td>Čechova, nabídka</td><td></td><td class="n">4,90</td></tr>
+      <tr><td>Větší plocha</td><td>141 m² proti 127 m², 14 m² × 20 000–30 000 Kč (odhad ceny dalšího m² ve starém domě)</td><td class="n">+0,28 až +0,42</td></tr>
+      <tr><td>Větší pozemek</td><td>773 m² proti 572 m², 201 m² × 900–1 650 Kč (stavební pozemky v Třebové)</td><td class="n">+0,18 až +0,33</td></tr>
+      <tr><td>Horší stav</td><td>bez koupelny, zatéká, eternit, vlhkost ve sklepě (odhad)</td><td class="n"><span class="neg">−0,4 až −0,7</span></td></tr>
+      <tr class="sum"><td>Nabídková cena</td><td></td><td class="n">4,7–5,3</td></tr>
+      <tr><td>Sleva z nabídky při prodeji</td><td>realizované ceny bývají o 3–10 % nižší (odhad)</td><td class="n"></td></tr>
+      <tr class="sum hl"><td>Realistická prodejní cena</td><td></td><td class="n">4,2–5,1</td></tr>
+    </tbody>
+  </table></div>
+  <p>Dřívější odhad 4,5–4,9 mil. Kč leží uprostřed tohoto rozpětí, a proto ho dál používám jako pracovní. Technický stav domu (zatékání, eternit, vlhkost) ale táhne spíš k dolní polovině.</p>
+
+  <h3>2. Hodnota po rekonstrukci a výnosová kontrola</h3>
+  <p>Jak by dům vypadal na trhu po opravě:</p>
+  <ul>
+    <li><strong>Porovnáním:</strong> opravené starší domy v Třebové se nabízejí za 37–61 tis. Kč/m², větší domy spíš u dolní hranice. Pro 141 m² při 40–50 tis. Kč/m² a s příplatkem za velkou zahradu 0,2–0,4 mil. Kč to dává <strong>5,8–7,5 mil. Kč</strong> (odhad).</li>
+    <li><strong>Výnosově</strong> (kdyby se oba byty pronajímaly): 2+1 kolem 56 m² ve vile za 11 000–15 000 Kč měsíčně. Po odečtení výpadků, oprav a pojištění (20 %) to je 211–288 tis. Kč ročně. Při výnosnosti 4,5–5,5 % to odpovídá hodnotě <strong>3,8–6,4 mil. Kč</strong> (odhad).</li>
+  </ul>
+  <p>Výnosová hodnota vychází níž než porovnávací. Jako pronájem v ubývajícím městě dům nevydělá tolik, kolik stojí. Jeho hodnota stojí na tom, že v něm někdo chce bydlet.</p>
+
+  <h3>3. Reziduální metoda: co by zaplatil kupec, který rekonstruuje firmou</h3>
+  <p>Tady se do ceny domu promítá cena rekonstrukce:</p>
+  <div class="formula">cena dnes = hodnota po rekonstrukci − rekonstrukce − zisk a riziko kupce (10–15 %) − náklady prodeje (3 %)</div>
+  <p>Při hodnotě po rekonstrukci 5,8–7,5 mil. a rekonstrukci 5,5–6,7 mil. vychází <strong>−1,9 až 1,0 mil. Kč</strong>. Developer nebo kupec, který vše zadá firmě, by tedy za dům nedal skoro nic.</p>
+  <p><strong>Citlivost</strong> (zisk kupce 12,5 %, mil. Kč). Řádky jsou hodnota po rekonstrukci, sloupce cena rekonstrukce s rezervou:</p>
+  <div class="table"><table class="grid">
+    <thead><tr><th>Hodnota po \ Rekonstrukce</th><th class="n">4,5</th><th class="n">5,5</th><th class="n">6,5</th><th class="n">7,5</th></tr></thead>
+    <tbody>
+      <tr><td>6,0</td><td class="n">0,6</td><td class="n neg">−0,4</td><td class="n neg">−1,4</td><td class="n neg">−2,4</td></tr>
+      <tr><td>6,5</td><td class="n">1,0</td><td class="n">0,0</td><td class="n neg">−1,0</td><td class="n neg">−2,0</td></tr>
+      <tr><td>7,0</td><td class="n">1,4</td><td class="n">0,4</td><td class="n neg">−0,6</td><td class="n neg">−1,6</td></tr>
+      <tr><td>7,5</td><td class="n">1,8</td><td class="n">0,8</td><td class="n neg">−0,2</td><td class="n neg">−1,2</td></tr>
+    </tbody>
+  </table></div>
+  <p>Každý milion, o který rekonstrukce zdraží, sníží reziduální cenu o milion. Proto je stavebně-technický průzkum tak důležitý: zúží obě strany výpočtu.</p>
+
+  <div class="callout">
+    <p><strong>Co z ocenění plyne</strong></p>
+    <ul>
+      <li><strong>Trh dnes platí víc, než dává reziduální výpočet.</strong> Kupci domů k rekonstrukci v Třebové jsou hlavně lidé, kteří v domě chtějí bydlet. Část práce udělají sami, volí levnější standard, nebo jim stojí za to zaplatit víc za vilu se zahradou. Proto se domy k rekonstrukci nabízejí za 4,5–5 mil. Kč.</li>
+      <li><strong>Reziduální výpočet ukazuje riziko.</strong> Dům bez průzkumu je sázka na stav střechy, krovu a vlhkosti. Každé zjištění průzkumu posouvá cenu oběma směry.</li>
+      <li><strong>Nezávislý znalecký posudek</strong> (6 500–11 900 Kč) dá ceně pevný základ. Znalec použije porovnávací metodu. Výsledky průzkumu (rozbor eternitu, statik, vlhkost) mu poslouží jako podklad pro slevu za stav.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="navrh">
+  <div class="col">
+    <h2>Návrh: dva byty nad sebou</h2>
+    <p>Ve střední nosné zdi je komínové těleso (fotky 2341, 2359, 2360). Vedle něj zbývá jen 0,6–0,7 m zdi, na dveře to nestačí. Proto jsou nové varianty navržené tak, aby do střední zdi nezasahovaly. Varianta 4 kombinuje přízemí z varianty 2 s patrem z varianty 1. Varianta 5 vrací dům k tomu, jak byl myšlen: dvougenerační dům se společnou halou a schodištěm, bez úplného oddělení bytů.</p>
+    <div class="table"><table>
+      <thead><tr><th></th><th>1: koupelny nad sebou</th><th>2: koupelny s oknem</th><th>3: patro 2+kk</th><th>4: hybrid 2 + 1</th><th>5: dvougenerační dům</th></tr></thead>
+      <tbody>
+        <tr><td>Byt 1NP</td><td>2+1, 56,4 m², kuchyň 8,5</td><td>2+1, 62,2 m², kuchyň 14,5, ložnice 24,1</td><td>jako 2</td><td>jako 2</td><td>kuchyň 14,5, ložnice 24,1 z haly</td></tr>
+        <tr><td>Byt 2NP</td><td>2+1, 49,3 m²</td><td>2+1, 56,5 m² + podesta</td><td>2+kk, 49,7 m², koupelna 8,5</td><td>jako 1</td><td>jako dnes + koupelna 6,8</td></tr>
+        <tr><td>Koupelny</td><td>nad sebou, bez okna</td><td>s oknem; přízemí v křídle, patro v chodbičce k půdě</td><td>s oknem; přízemí v křídle, patro v dnešní kuchyni</td><td>přízemí s oknem v křídle, patro bez okna</td><td>obě s oknem</td></tr>
+        <tr><td>Zahrada</td><td>společná přes křídlo</td><td>terasa k bytu v přízemí</td><td>jako 2</td><td>jako 2</td><td>společná přes křídlo</td></tr>
+        <tr><td>Slabina</td><td>malé kuchyně, koupelny bez okna</td><td>vstupní dveře horního bytu na schodech</td><td>horní byt bez samostatné kuchyně</td><td>koupelna v patře bez okna</td><td>byty nejsou oddělené, nehodí se k pronájmu</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+  <div class="wide">
+    <figure><img src="img/varianta-2.png" alt="Varianta 2, přízemí a patro" loading="lazy"><figcaption>Varianta 2: přízemí a patro. Červeně nové zdi a zazdívky, fialově komínové těleso (odhad z fotek), modře stoupačky.</figcaption></figure>
+  </div>
+  <div class="col">
+    <p>Varianta 2 v detailu:</p>
+    <ul>
+      <li><strong>Přízemí:</strong> byt zabere křídlo. Z WC a spíže vznikne koupelna 3,4 m² s oknem, chodbička je zádveří a vstup do bytu. Do kuchyně se prorazí dveře v boční zdi, daleko od komínů. Ložnice zůstane celá, 24,1 m².</li>
+      <li><strong>Patro:</strong> koupelna 6,8 m² s vanou a pračkou v chodbičce k půdě, vchod dnešními dveřmi z podesty. Podesta a horní rameno schodiště budou součástí bytu, nové vstupní dveře na schodech. Na půdu se půjde z podesty skládacími schody.</li>
+      <li><strong>Společné prostory:</strong> vstupní chodba a schodiště v přízemí. Měřiče a technika budou ve sklepě u kotle.</li>
+      <li><strong>Zahrada:</strong> z dnešního balkonu bude terasa 9 m² se schodištěm do zahrady, přístupná z bytu v přízemí. Horní byt chodí do zahrady sklepem (dveře pod terasou) nebo kolem domu. Stříšku ani verandu nechceme, dům jich má dost.</li>
+      <li><strong>Kanalizace:</strong> stoupačka z koupelny v patře povede rohem ložnice v přízemí v předstěně, koupelna v přízemí odvádí přímo do sklepa, kuchyně mají stoupačku u boční zdi.</li>
+      <li><strong>Ověřit:</strong> kam se na schodech vejdou vstupní dveře horního bytu a jestli to dovolí požárně bezpečnostní řešení. Průraz do kuchyně posoudí statik.</li>
+    </ul>
+  </div>
+  <div class="wide">
+    <div class="trio">
+      <figure><img src="img/varianta-1.png" alt="Varianta 1" loading="lazy"><figcaption>Varianta 1: koupelny nad sebou bez okna, menší kuchyně</figcaption></figure>
+      <figure><img src="img/varianta-3.png" alt="Varianta 3" loading="lazy"><figcaption>Varianta 3: patro 2+kk s koupelnou do zahrady</figcaption></figure>
+      <figure><img src="img/varianta-4.png" alt="Varianta 4" loading="lazy"><figcaption>Varianta 4: přízemí z varianty 2, patro z varianty 1</figcaption></figure>
+    </div>
+    <figure><img src="img/varianta-5.png" alt="Varianta 5, dvougenerační dům" loading="lazy"><figcaption>Varianta 5: dvougenerační dům se společnou halou a schodištěm</figcaption></figure>
+  </div>
+  <div class="col">
+    <p><strong>Varianta 5: dvougenerační dům</strong></p>
+    <ul>
+      <li>Společný vstup, hala a schodiště jako dnes. Každé podlaží má svou kuchyň a koupelnu, ale byty nejsou oddělené. Odpadají požární dveře, akustické podhledy, dveře na schodech i průrazy.</li>
+      <li><strong>Přízemí:</strong> kuchyň 14,5, obývák 18,5, ložnice 24,1 a koupelna 3,4 m² s oknem v křídle. Kuchyň i ložnice mají dál dveře z haly, ložnice tedy není průchozí. Chodbička v křídle vede na terasu a do zahrady pro obě domácnosti.</li>
+      <li><strong>Patro:</strong> zůstává jak je, jen z chodbičky k půdě bude koupelna 6,8 m² s oknem a vanou, vchod dnešními dveřmi z podesty.</li>
+      <li><strong>Rozpočet:</strong> 5,2–6,4 mil. Kč, asi o 0,3 mil. Kč méně než dva oddělené byty.</li>
+      <li><strong>Úřady:</strong> počet bytů se nemění, jde o stavební úpravy. Nejspíš stačí jednodušší povolení, rozsah ověřit na stavebním úřadě.</li>
+      <li><strong>Slabiny:</strong> domácnosti se potkávají v hale, na podestě a v chodbičce na terasu. Pro pronájem cizím lidem se to nehodí, pro rodinu ano.</li>
+    </ul>
+  </div>
+  <div class="wide">
+  </div>
+  <div class="col">
+    <h3>Barevnost fasády</h3>
+    <p>Fasáda je dnes jedna okrová barva, na uliční straně a na křídle zešedlá. Obnova by vrátila jednotný okrový tón se světlými šambránami a zelenošedými okny. Barvy jsou ilustrativní, hmota domu je model s odhadnutými výškami.</p>
+  </div>
+  <div class="wide">
+    <div class="pair">
+      <figure><img src="img/barvy-dnes-ulice.png" alt="Dnešní barevnost, pohled od ulice" loading="lazy"><figcaption>Dnes, od ulice</figcaption></figure>
+      <figure><img src="img/barvy-okrova-ulice.png" alt="Okrová obnova, pohled od ulice" loading="lazy"><figcaption>Okrová obnova, od ulice</figcaption></figure>
+      <figure><img src="img/barvy-dnes-zahrada.png" alt="Dnešní barevnost, pohled od zahrady" loading="lazy"><figcaption>Dnes, od zahrady</figcaption></figure>
+      <figure><img src="img/barvy-okrova-zahrada.png" alt="Okrová obnova, pohled od zahrady" loading="lazy"><figcaption>Okrová obnova, od zahrady</figcaption></figure>
+    </div>
+  </div>
+  <div class="col">
+    <figure><img src="img/terasa.png" alt="Terasa na místě balkonu se schodištěm do zahrady" loading="lazy"><figcaption>Terasa na místě dnešního balkonu se schodištěm do zahrady</figcaption></figure>
+  </div>
+</section>
+
+<section class="col" id="rozpocet">
+  <h2>Rozpočet rekonstrukce</h2>
+  <p>Rozpočet je položkový: výměry ze skenu, ceny z ceníku 2026. Liší se ve třech úrovních obnovy, dispozice je ve všech stejná (varianta 2).</p>
+  <div class="table"><table>
+    <thead><tr><th>Scénář</th><th>Obsah</th><th class="n">Bez rezervy</th><th class="n">Krajní, rezerva 20–30 %</th><th class="n">Pracovní rozpětí</th></tr></thead>
+    <tbody>
+      <tr><td>R1: Úsporná citlivá obnova</td><td>oprava fasády, repase oken, nový plynový kotel</td><td class="n">2,7–6,4</td><td class="n">3,2–8,3</td><td class="n"><strong>5,1–6,2</strong></td></tr>
+      <tr class="hl"><td>R2: Citlivá obnova s tepelným čerpadlem</td><td>oprava fasády, repase oken, TČ, lokální rekuperace</td><td class="n">2,9–6,9</td><td class="n">3,5–8,9</td><td class="n"><strong>5,5–6,7</strong></td></tr>
+      <tr><td>R3: Energetická obnova</td><td>zateplení fasády, nová okna, TČ, rekuperace, fotovoltaika</td><td class="n">3,5–7,9</td><td class="n">4,2–10,3</td><td class="n"><strong>6,4–7,8</strong></td></tr>
+      <tr><td>R2-5: jako R2, dvougenerační dům (varianta 5)</td><td>bez požárních a akustických úprav, dveří na schodech a průrazů</td><td class="n">2,8–6,5</td><td class="n">3,3–8,5</td><td class="n"><strong>5,2–6,4</strong></td></tr>
+    </tbody>
+  </table></div>
+  <p>Krajní rozpětí sčítá všechny dolní a všechny horní meze najednou, takže je velmi široké. Pracovní rozpětí je střed součtu položek s rezervou 25 % a ±10 %. U domů starších 30 let vycházejí vícepráce průměrně na 28 %. Pro další propočty počítám se scénářem <strong>R2, 5,5–6,7 mil. Kč</strong>. Odpovídá i srovnání s reálnými projekty: podobně velký starý dům v Sánech (zastavěná plocha 120 m², užitná 160 m²) stál kolem 6 mil. Kč bez vybavení.</p>
+  <p><strong>Položky scénáře R2</strong> (mil. Kč):</p>
+  <div class="table"><table>
+    <thead><tr><th>Položka</th><th>Základ výpočtu</th><th class="n">Odhad</th></tr></thead>
+    <tbody>
+      <tr><td>Oprava díry ve střeše (hned)</td><td>pokrývač; odhad</td><td class="n">0,003–0,01</td></tr>
+      <tr><td>Vyklizení domu, sklepa a půdy</td><td>40–80 m³ (odhad) × 600–1 100 Kč/m³</td><td class="n">0,02–0,09</td></tr>
+      <tr><td>Průzkum, projekt změny stavby na dva byty, dozor</td><td>statik, PENB, projekt s požárním řešením a akustikou, rozpočet, dozor</td><td class="n">0,20–0,35</td></tr>
+      <tr><td>Lešení, bourání, odvoz</td><td>lešení ~330 m², 6–12 kontejnerů</td><td class="n">0,10–0,26</td></tr>
+      <tr><td>Střecha: vláknocementová krytina, demontáž eternitu, měděná klempířina, komíny, zateplení mansardy</td><td>210–230 m² podle 3D modelu</td><td class="n">0,35–0,73</td></tr>
+      <tr><td>Rezerva na krov</td><td>krov vypadá zdravě, zhlaví neviděná; odhad</td><td class="n">0–0,30</td></tr>
+      <tr><td>Zateplení stropu pod půdou</td><td>91 m² × 260–600 Kč/m²</td><td class="n">0,02–0,05</td></tr>
+      <tr><td>Vlhkost: drenáž, podřezání nebo injektáž, sanační omítky</td><td>obvod 43 m; rozsah upřesní měření</td><td class="n">0,15–0,43</td></tr>
+      <tr><td>Fasáda: oprava omítky bez zateplení</td><td>270–300 m² × 500–1 200 Kč/m²</td><td class="n">0,14–0,36</td></tr>
+      <tr><td>Okna: kompletní repase dvojitých oken + vchodové dveře</td><td>28,9 m² × 4 650–7 750 Kč/m² + dveře</td><td class="n">0,16–0,27</td></tr>
+      <tr><td>Elektroinstalace, dva rozvaděče, revize</td><td>141 m² × 950–1 800 Kč/m²</td><td class="n">0,15–0,31</td></tr>
+      <tr><td>Voda a kanalizace pro dva byty</td><td>rozvody, stoupačky; přípojky beze změny</td><td class="n">0,12–0,33</td></tr>
+      <tr><td>Tepelné čerpadlo, radiátory, vložkování komína</td><td>TČ 200–420 tis. Kč</td><td class="n">0,25–0,50</td></tr>
+      <tr><td>Lokální rekuperace</td><td>6 místností</td><td class="n">0,07–0,16</td></tr>
+      <tr><td>Vnitřní omítky, štuky a malby</td><td>567–595 m² stěn a stropů × 500–1 000 Kč/m²</td><td class="n">0,28–0,59</td></tr>
+      <tr><td>Podlahy včetně odstranění škváry</td><td>141 m² × 900–2 200 Kč/m²</td><td class="n">0,13–0,31</td></tr>
+      <tr><td>Dvě koupelny</td><td>2 × 80–250 tis. Kč</td><td class="n">0,16–0,50</td></tr>
+      <tr><td>Dvě kuchyně</td><td>2 × 120–220 tis. Kč</td><td class="n">0,24–0,44</td></tr>
+      <tr><td>Vnitřní dveře</td><td>~11 ks; odhad</td><td class="n">0,07–0,15</td></tr>
+      <tr><td>Dva byty: požární dveře, akustický podhled</td><td></td><td class="n">0,10–0,19</td></tr>
+      <tr><td>Varianta 2: průraz kuchyň–zádveří, zazdívky tří dveří, vstupní dveře horního bytu na schodech, předstěna se stoupačkou, výstup na půdu</td><td>odhad</td><td class="n">0,08–0,22</td></tr>
+      <tr><td>Terasa a schodiště do zahrady</td><td>9 m² + 9 stupňů; odhad</td><td class="n">0,12–0,30</td></tr>
+      <tr class="sum"><td>Součet bez rezervy</td><td></td><td class="n">2,9–6,9</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>DPH:</strong> ceníky DPH často neuvádějí, nebo jen u části položek. Firma účtuje na rekonstrukci rodinného domu 12 % včetně zabudovaného materiálu, materiál koupený sami stojí 21 %. Přesnou cenu dá až nabídka firmy podle projektu.</li>
+    <li><strong>V rozpočtu není:</strong> nábytek a vybavení, venkovní úpravy (plot, chodníky), nová vodovodní nebo kanalizační přípojka, statické zajištění podle statika a vestavba podkroví.</li>
+    <li><strong>Co rozpočet nejvíc zpřesní:</strong> rozbor krytiny, statik (krov, zhlaví trámů, nosné zdi), měření vlhkosti, prohlídka oken truhlářem a kamera do kanalizace. Dohromady desítky tisíc korun.</li>
+  </ul>
+</section>
+
+<section class="col" id="rozvaha">
+  <h2>Ekonomická rozvaha</h2>
+  <p>Rozvaha porovnává, kolik je v domě dnes a kolik by do něj šlo, s tím, kolik bude mít hodnotu po rekonstrukci. Nepředjímá, kdo a jak dům financuje.</p>
+  <div class="table"><table>
+    <thead><tr><th>Položka</th><th>Základ</th><th class="n">mil. Kč</th></tr></thead>
+    <tbody>
+      <tr><td>Tržní hodnota domu dnes</td><td>porovnávací metoda, pracovní rozpětí</td><td class="n">4,5–4,9</td></tr>
+      <tr><td>Rekonstrukce na dvě domácnosti</td><td>scénář R2, citlivá obnova s tepelným čerpadlem</td><td class="n">5,5–6,7</td></tr>
+      <tr class="sum"><td>Celkem v domě</td><td></td><td class="n">10,0–11,6</td></tr>
+      <tr><td>Hodnota po rekonstrukci</td><td>opravené domy v Třebové, odhad</td><td class="n">5,8–7,5</td></tr>
+      <tr class="hl"><td>Rozdíl</td><td>o kolik celkové náklady převýší hodnotu</td><td class="n"><span class="neg">−2,5 až −5,8</span></td></tr>
+    </tbody>
+  </table></div>
+  <p>Jako investice rekonstrukce nevychází. Dává smysl pro vlastní bydlení, kde se srovnává s tím, kolik by stálo bydlení jinde, a kde má cenu i to, co se v m² nevyjádří: vila z roku 1930, zahrada 773 m² a poloha. Ve variantě 5 (dvougenerační dům) je rekonstrukce o 0,3 mil. Kč levnější, na závěru to nic nemění.</p>
+
+  <h3>Nová zelená úsporám</h3>
+  <p>S bezúročným úvěrem z programu Nová zelená úsporám (NZÚ) se v plánu počítá. Pokrývá jen energetická opatření.</p>
+  <div class="table"><table>
+    <thead><tr><th>Energetické položky scénáře R2</th><th class="n">mil. Kč</th></tr></thead>
+    <tbody>
+      <tr><td>Střecha včetně zateplení mansardy</td><td class="n">0,35–0,73</td></tr>
+      <tr><td>Zateplení stropu pod půdou</td><td class="n">0,02–0,05</td></tr>
+      <tr><td>Repase oken</td><td class="n">0,16–0,27</td></tr>
+      <tr><td>Tepelné čerpadlo a radiátory</td><td class="n">0,25–0,50</td></tr>
+      <tr><td>Lokální rekuperace</td><td class="n">0,07–0,16</td></tr>
+      <tr class="sum"><td>Celkem způsobilé pro NZÚ (odhad)</td><td class="n">0,85–1,71</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li><strong>Výše úvěru:</strong> až 0,75 mil. Kč na dílčí renovaci, až 2 mil. Kč na komplexní renovaci rodinného domu, splatnost 10–15 let, úroky platí stát (<a href="https://mzp.gov.cz/cz/pro-media-a-verejnost/aktuality/archiv-tiskovych-zprav/efektivni-udrzitelna-a-lepe-cilena-nova">MŽP</a>).</li>
+    <li><strong>Dílčí, nebo komplexní:</strong> komplexní renovace vyžaduje energetický standard, kterého citlivá obnova bez zateplení fasády těžko dosáhne. Pro scénář R2 je reálné počítat s dílčí renovací, tedy s 0,75 mil. Kč. Energetická obnova R3 má na komplexní renovaci blíž.</li>
+    <li><strong>Co to přinese:</strong> podle MŽP ušetří úvěr 1 mil. Kč na 15 let proti komerčnímu úvěru s úrokem 6 % zhruba 0,5 mil. Kč na úrocích.</li>
+    <li><strong>Podmínky a nejistoty:</strong> trvalý pobyt všech členů domácnosti v domě. Rozpočet programu je proti loňsku výrazně menší a jak program pojede v roce 2027, není jisté.</li>
+  </ul>
+</section>
+
+<section class="col" id="dal">
+  <h2>Co dál</h2>
+  <div class="table"><table>
+    <thead><tr><th>Krok</th><th>Proč</th><th>Cena</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>Opravit díru ve střeše nad schodištěm</td><td>Voda ničí krov a stropy, a tím hodnotu domu.</td><td>jednotky tisíc Kč (odhad)</td></tr>
+      <tr><td>Statik a stavebně-technický průzkum</td><td>Krov, zhlaví trámů, klenby, průraz do kuchyně ve variantě 2.</td><td>8–25 tis. Kč bez DPH</td></tr>
+      <tr><td>Rozbor krytiny na azbest</td><td>Potvrdí eternit a postup při demontáži.</td><td>~2 400 Kč za vzorek (starší údaj)</td></tr>
+      <tr><td>Měření vlhkosti, kamera do kanalizace</td><td>Zúží položky vlhkost a rozvody.</td><td>kamera 1 400–7 000 Kč</td></tr>
+      <tr><td>Znalecký posudek ceny</td><td>Nezávislý podklad k ceně domu.</td><td>6 500–11 900 Kč</td></tr>
+      <tr><td>Územně plánovací informace, památková zóna</td><td>Co projde: dvě domácnosti, případně zástavba části s garáží.</td><td>správní poplatek</td></tr>
+    </tbody>
+  </table></div>
+  <footer>
+    <p>Zdroje: nabídky domů a nájmů na Sreality a regionálních portálech (září–říjen 2026); katastrální mapa ČÚZK (k. ú. Česká Třebová); program Nová zelená úsporám (MŽP); ceník prací 2026 sestavený z ceníků firem a poptávkových portálů. Výkresy jsou náčrty podle skenu, fotek a popisu, ne projekt. Stav k 20. 10. 2026.</p>
+  </footer>
+</section>
+</main>
+
+</body>
+</html>
